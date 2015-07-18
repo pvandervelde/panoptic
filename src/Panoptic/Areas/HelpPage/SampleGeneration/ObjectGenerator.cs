@@ -1,3 +1,9 @@
+//-----------------------------------------------------------------------
+// <copyright company="Panoptic">
+//     Copyright 2013 Panoptic. Licensed under the Apache License, Version 2.0.
+// </copyright>
+//-----------------------------------------------------------------------
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,8 +19,12 @@ namespace Panoptic.Areas.HelpPage
     /// </summary>
     public class ObjectGenerator
     {
+        /// <summary>
+        /// Defines the default size of the collection.
+        /// </summary>
         internal const int DefaultCollectionSize = 2;
-        private readonly SimpleTypeObjectGenerator SimpleObjectGenerator = new SimpleTypeObjectGenerator();
+
+        private readonly SimpleTypeObjectGenerator m_SimpleObjectGenerator = new SimpleTypeObjectGenerator();
 
         /// <summary>
         /// Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
@@ -42,7 +52,7 @@ namespace Panoptic.Areas.HelpPage
             {
                 if (SimpleTypeObjectGenerator.CanGenerateObject(type))
                 {
-                    return SimpleObjectGenerator.GenerateObject(type);
+                    return m_SimpleObjectGenerator.GenerateObject(type);
                 }
 
                 if (type.IsArray)
@@ -176,10 +186,12 @@ namespace Panoptic.Areas.HelpPage
                 parameterValues[i] = objectGenerator.GenerateObject(genericArgs[i], createdObjectReferences);
                 failedToCreateTuple &= parameterValues[i] == null;
             }
+
             if (failedToCreateTuple)
             {
                 return null;
             }
+
             object result = Activator.CreateInstance(type, parameterValues);
             return result;
         }
@@ -209,6 +221,7 @@ namespace Panoptic.Areas.HelpPage
                 // Failed to create key and values
                 return null;
             }
+
             object result = Activator.CreateInstance(keyValuePairType, keyObject, valueObject);
             return result;
         }
@@ -276,6 +289,7 @@ namespace Panoptic.Areas.HelpPage
             {
                 return possibleValues.GetValue(0);
             }
+
             return null;
         }
 
@@ -292,10 +306,12 @@ namespace Panoptic.Areas.HelpPage
             {
                 list = GenerateArray(typeof(object[]), size, createdObjectReferences);
             }
+
             if (list == null)
             {
                 return null;
             }
+
             if (isGeneric)
             {
                 Type argumentType = typeof(IEnumerable<>).MakeGenericType(queryableType.GetGenericArguments());
@@ -362,6 +378,7 @@ namespace Panoptic.Areas.HelpPage
 
                 result = defaultCtor.Invoke(new object[0]);
             }
+
             createdObjectReferences.Add(type, result);
             SetPublicProperties(type, result, createdObjectReferences);
             SetPublicFields(type, result, createdObjectReferences);
@@ -395,7 +412,7 @@ namespace Panoptic.Areas.HelpPage
 
         private class SimpleTypeObjectGenerator
         {
-            private long _index = 0;
+            private long m_Index = 0;
             private static readonly Dictionary<Type, Func<long, object>> DefaultGenerators = InitializeGenerators();
 
             [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", Justification = "These are simple type factories and cannot be split up.")]
@@ -403,53 +420,65 @@ namespace Panoptic.Areas.HelpPage
             {
                 return new Dictionary<Type, Func<long, object>>
                 {
-                    { typeof(Boolean), index => true },
-                    { typeof(Byte), index => (Byte)64 },
-                    { typeof(Char), index => (Char)65 },
+                    { typeof(bool), index => true },
+                    { typeof(byte), index => (byte)64 },
+                    { typeof(char), index => (char)65 },
                     { typeof(DateTime), index => DateTime.Now },
                     { typeof(DateTimeOffset), index => new DateTimeOffset(DateTime.Now) },
                     { typeof(DBNull), index => DBNull.Value },
-                    { typeof(Decimal), index => (Decimal)index },
-                    { typeof(Double), index => (Double)(index + 0.1) },
+                    { typeof(decimal), index => (decimal)index },
+                    { typeof(double), index => (double)(index + 0.1) },
                     { typeof(Guid), index => Guid.NewGuid() },
-                    { typeof(Int16), index => (Int16)(index % Int16.MaxValue) },
-                    { typeof(Int32), index => (Int32)(index % Int32.MaxValue) },
-                    { typeof(Int64), index => (Int64)index },
-                    { typeof(Object), index => new object() },
-                    { typeof(SByte), index => (SByte)64 },
-                    { typeof(Single), index => (Single)(index + 0.1) },
-                    { 
-                        typeof(String), index =>
+                    { typeof(short), index => (short)(index % short.MaxValue) },
+                    { typeof(int), index => (int)(index % int.MaxValue) },
+                    { typeof(long), index => (long)index },
+                    { typeof(object), index => new object() },
+                    { typeof(sbyte), index => (sbyte)64 },
+                    { typeof(float), index => (float)(index + 0.1) },
+                    {
+                        typeof(string), index =>
                         {
-                            return String.Format(CultureInfo.CurrentCulture, "sample string {0}", index);
+                            return string.Format(CultureInfo.CurrentCulture, "sample string {0}", index);
                         }
                     },
-                    { 
+                    {
                         typeof(TimeSpan), index =>
                         {
                             return TimeSpan.FromTicks(1234567);
                         }
                     },
-                    { typeof(UInt16), index => (UInt16)(index % UInt16.MaxValue) },
-                    { typeof(UInt32), index => (UInt32)(index % UInt32.MaxValue) },
-                    { typeof(UInt64), index => (UInt64)index },
-                    { 
+                    { typeof(ushort), index => (ushort)(index % ushort.MaxValue) },
+                    { typeof(uint), index => (uint)(index % uint.MaxValue) },
+                    { typeof(ulong), index => (ulong)index },
+                    {
                         typeof(Uri), index =>
                         {
-                            return new Uri(String.Format(CultureInfo.CurrentCulture, "http://webapihelppage{0}.com", index));
+                            return new Uri(string.Format(CultureInfo.CurrentCulture, "http://webapihelppage{0}.com", index));
                         }
                     },
                 };
             }
 
+            /// <summary>
+            /// Returns a value indicating whether or not an object can be generated.
+            /// </summary>
+            /// <param name="type">The type of object to generate.</param>
+            /// <returns>
+            /// <see langword="true"/> if an object can be generated; otherwise, <see langword="false"/>.
+            /// </returns>
             public static bool CanGenerateObject(Type type)
             {
                 return DefaultGenerators.ContainsKey(type);
             }
 
+            /// <summary>
+            /// Generates an object.
+            /// </summary>
+            /// <param name="type">The type of object to be generated.</param>
+            /// <returns>The object.</returns>
             public object GenerateObject(Type type)
             {
-                return DefaultGenerators[type](++_index);
+                return DefaultGenerators[type](++m_Index);
             }
         }
     }

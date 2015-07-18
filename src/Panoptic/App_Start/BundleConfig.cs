@@ -1,13 +1,26 @@
-﻿using System.Web;
+﻿//-----------------------------------------------------------------------
+// <copyright company="Panoptic">
+//     Copyright 2013 Panoptic. Licensed under the Apache License, Version 2.0.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using System.Web;
 using System.Web.Optimization;
 
 namespace Panoptic
 {
+    /// <summary>
+    /// The configuration for bundles.
+    /// </summary>
     public class BundleConfig
     {
-        // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
+        /// <summary>
+        /// Registers the bundles.
+        /// </summary>
+        /// <param name="bundles">The bundle collection.</param>
         public static void RegisterBundles(BundleCollection bundles)
         {
+            // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 

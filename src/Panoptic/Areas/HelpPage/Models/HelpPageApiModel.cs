@@ -1,3 +1,9 @@
+//-----------------------------------------------------------------------
+// <copyright company="Panoptic">
+//     Copyright 2013 Panoptic. Licensed under the Apache License, Version 2.0.
+// </copyright>
+//-----------------------------------------------------------------------
+
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http.Headers;
