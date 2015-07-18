@@ -40,6 +40,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <Import Project="../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/common.props" Condition=" Exists('../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/common.props') " />
+  <Import Project="../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/common.net.props" Condition=" Exists('../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/common.net.props') " />
+  <Import Project="../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/csharp.props" Condition=" Exists('../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/csharp.props') " />
+  <PropertyGroup>
+    <!-- Override the outdir because web projects aren't able to have their bin paths redirected (due to IIS) -->
+    <OutDir Condition=" '$(Configuration)' == 'Debug' ">bin\</OutDir>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac, Version=2.2.4.900, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Autofac.2.2.4.900\lib\NET40\Autofac.dll</HintPath>
@@ -195,7 +202,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.BuildInformation.cs" />
+    <Compile Include="Properties\AssemblyInfo.Company.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.VersionNumber.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -204,6 +214,8 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="nbuildkit.csharp.readme.txt" />
+    <Content Include="nbuildkit.readme.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -286,6 +298,9 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/common.targets" Condition=" Exists('../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/common.targets') " />
+  <Import Project="../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/common.net.targets" Condition=" Exists('../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/common.net.targets') " />
+  <Import Project="../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/csharp.targets" Condition=" Exists('../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/csharp.targets') " />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
