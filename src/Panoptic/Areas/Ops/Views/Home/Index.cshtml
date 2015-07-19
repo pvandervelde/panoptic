@@ -1,0 +1,130 @@
+﻿@model Panoptic.Areas.Ops.Models.OpsModel
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<div class="jumbotron">
+    <h1>@Html.DisplayFor(model => model.Name)</h1>
+    <p class="lead">@Html.DisplayFor(model => model.Description)</p>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Status</h2>
+        <p>
+            The status of the different environments.
+        </p>
+
+        @foreach (var environment in Model.EnvironmentStatus)
+        {
+            <h3>@Html.DisplayFor(model => environment.Name)</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Issues</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var service in environment.Services)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(model => service.Name)</td>
+                            <td class="alert alert-success">@Html.DisplayFor(model => service.Status)</td>
+                            <td>@Html.DisplayFor(model => service.Notification)</td>
+                        </tr>
+                    }
+                    
+                    <!--
+                    <tr>
+                        <td>Service 2</td>
+                        <td class="alert alert-warning">Warning</td>
+                        <td>Slow to respond</td>
+                    </tr>
+                    <tr>
+                        <td>Service 3</td>
+                        <td class="alert alert-success">OK</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Service 4</td>
+                        <td class="alert alert-danger">Error</td>
+                        <td>Non-responsive</td>
+                    </tr>
+                    -->
+                </tbody>
+            </table>
+
+            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+        }
+    </div>
+    <div class="col-md-4">
+        <h2>Releases</h2>
+        <p>
+            The different versions of the tools that are active
+        </p>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tool 1</td>
+                    <td>0.5.14</td>
+                    <td>2015-05-01</td>
+                </tr>
+                <tr>
+                    <td>Tool 2</td>
+                    <td>0.5.12</td>
+                    <td>2015-05-01</td>
+                </tr>
+                <tr>
+                    <td>Tool 3</td>
+                    <td>0.1.1</td>
+                    <td>2015-05-01</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>News</h2>
+        <p>
+            Random news
+        </p>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">2015-05-01: Tool 1 released</h3>
+            </div>
+            <div class="panel-body">
+                An awesome new version of this tool was released.
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">2015-05-01: Tool 2 released</h3>
+            </div>
+            <div class="panel-body">
+                An awesome new version of this tool was released.
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">2015-05-01: Tool 3 released</h3>
+            </div>
+            <div class="panel-body">
+                An awesome new version of this tool was released.
+            </div>
+        </div>
+    </div>
+</div>
