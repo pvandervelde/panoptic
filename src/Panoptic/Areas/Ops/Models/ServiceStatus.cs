@@ -7,35 +7,23 @@
 namespace Panoptic.Areas.Ops.Models
 {
     /// <summary>
-    /// Stores information about the status of a service.
+    /// Defines the status for a service.
     /// </summary>
-    public sealed class ServiceStatusModel
+    public enum ServiceStatus
     {
         /// <summary>
-        /// Gets or sets the name of the service.
+        /// The service status is OK.
         /// </summary>
-        public string Name
-        {
-            get;
-            set;
-        }
+        Ok,
 
         /// <summary>
-        /// Gets or sets the status text.
+        /// The service status is warning.
         /// </summary>
-        public ServiceStatus Status
-        {
-            get;
-            set;
-        }
+        Warning,
 
         /// <summary>
-        /// Gets or sets the notification text.
+        /// The service status is error.
         /// </summary>
-        public string Notification
-        {
-            get;
-            set;
-        }
+        Error
     }
 }

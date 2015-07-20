@@ -1,7 +1,40 @@
-﻿@model Panoptic.Areas.Ops.Models.OpsModel
+﻿@using Panoptic.Areas.Ops.Models
+@model Panoptic.Areas.Ops.Models.OpsModel
 
 @{
     ViewBag.Title = Model.Name;
+}
+
+@functions {
+    internal string StatusToText(ServiceStatusModel serviceStatus)
+    {
+        switch (serviceStatus.Status)
+        {
+            case ServiceStatus.Ok:
+                return "Ok";
+            case ServiceStatus.Warning:
+                return "Warning";
+            case ServiceStatus.Error:
+                return "Error";
+            default:
+                return "alert-info";
+        }
+    }
+
+    internal string StatusToCssAlertClass(ServiceStatusModel serviceStatus)
+    {
+        switch (serviceStatus.Status)
+        {
+            case ServiceStatus.Ok :
+                return "alert-success";
+            case ServiceStatus.Warning:
+                return "alert-warning";
+            case ServiceStatus.Error:
+                return "alert-danger";
+            default:
+                return "Unknown";
+        }
+    }
 }
 
 <div class="jumbotron">
@@ -31,36 +64,28 @@
                     {
                         <tr>
                             <td>@Html.DisplayFor(model => service.Name)</td>
-                            <td class="alert alert-success">@Html.DisplayFor(model => service.Status)</td>
+                            <td class="alert @StatusToCssAlertClass(service)">@StatusToText(service)</td>
                             <td>@Html.DisplayFor(model => service.Notification)</td>
                         </tr>
                     }
-                    
-                    <!--
-                    <tr>
-                        <td>Service 2</td>
-                        <td class="alert alert-warning">Warning</td>
-                        <td>Slow to respond</td>
-                    </tr>
-                    <tr>
-                        <td>Service 3</td>
-                        <td class="alert alert-success">OK</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Service 4</td>
-                        <td class="alert alert-danger">Error</td>
-                        <td>Non-responsive</td>
-                    </tr>
-                    -->
                 </tbody>
             </table>
 
             <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+            <br />
         }
     </div>
     <div class="col-md-4">
-        <h2>Releases</h2>
+        <h2></h2>
+
+        <h3>Outstanding issues</h3>
+        <p>
+            The outstanding issues
+        </p>
+
+
+        
+        <h3>Releases</h3>
         <p>
             The different versions of the tools that are active
         </p>
@@ -74,25 +99,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Tool 1</td>
-                    <td>0.5.14</td>
-                    <td>2015-05-01</td>
-                </tr>
-                <tr>
-                    <td>Tool 2</td>
-                    <td>0.5.12</td>
-                    <td>2015-05-01</td>
-                </tr>
-                <tr>
-                    <td>Tool 3</td>
-                    <td>0.1.1</td>
-                    <td>2015-05-01</td>
-                </tr>
+                @foreach (var release in Model.Releases)
+                {
+                    <tr>
+                        <td>@release.Name</td>
+                        <td>@release.Version.ToString(3)</td>
+                        <td>@release.Date.ToString("yyyy-MM-dd")</td>
+                    </tr>
+                }
             </tbody>
         </table>
-
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <h2>News</h2>

@@ -201,6 +201,8 @@
     <Compile Include="Areas\Ops\Controllers\HomeController.cs" />
     <Compile Include="Areas\Ops\Models\EnvironmentStatusModel.cs" />
     <Compile Include="Areas\Ops\Models\OpsModel.cs" />
+    <Compile Include="Areas\Ops\Models\ReleaseModel.cs" />
+    <Compile Include="Areas\Ops\Models\ServiceStatus.cs" />
     <Compile Include="Areas\Ops\Models\ServiceStatusModel.cs" />
     <Compile Include="Areas\Ops\OpsAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />

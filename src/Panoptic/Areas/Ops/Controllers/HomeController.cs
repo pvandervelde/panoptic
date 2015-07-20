@@ -34,19 +34,19 @@ namespace Panoptic.Areas.Ops.Controllers
                         new ServiceStatusModel
                         {
                             Name = "Service 1",
-                            Status = "OK",
+                            Status = ServiceStatus.Ok,
                             Notification = string.Empty,
                         },
                         new ServiceStatusModel
                         {
                             Name = "Service 2",
-                            Status = "Warning",
+                            Status = ServiceStatus.Warning,
                             Notification = "Eheeehehehehe",
                         },
                         new ServiceStatusModel
                         {
                             Name = "Service 3",
-                            Status = "Error",
+                            Status = ServiceStatus.Error,
                             Notification = "Panic!",
                         },
                     },
@@ -59,29 +59,53 @@ namespace Panoptic.Areas.Ops.Controllers
                         new ServiceStatusModel
                         {
                             Name = "Service 1",
-                            Status = "OK",
+                            Status = ServiceStatus.Ok,
                             Notification = string.Empty,
                         },
                         new ServiceStatusModel
                         {
                             Name = "Service 2",
-                            Status = "Warning",
+                            Status = ServiceStatus.Warning,
                             Notification = "Eheeehehehehe",
                         },
                         new ServiceStatusModel
                         {
                             Name = "Service 3",
-                            Status = "Error",
+                            Status = ServiceStatus.Error,
                             Notification = "Panic!",
                         },
                     },
                 },
             };
+
+            var releases = new List<ReleaseModel>
+            {
+                new ReleaseModel
+                {
+                    Name = "Tool 1",
+                    Version = new Version(1, 2, 3),
+                    Date = new DateTimeOffset(2015, 5, 15, 10, 35, 0, new TimeSpan(13, 0, 0)),
+                },
+                new ReleaseModel
+                {
+                    Name = "Tool 2",
+                    Version = new Version(1, 2, 3),
+                    Date = new DateTimeOffset(2015, 5, 15, 10, 35, 0, new TimeSpan(13, 0, 0)),
+                },
+                new ReleaseModel
+                {
+                    Name = "Tool 3",
+                    Version = new Version(1, 2, 3),
+                    Date = new DateTimeOffset(2015, 5, 15, 10, 35, 0, new TimeSpan(13, 0, 0)),
+                },
+            };
+
             var model = new OpsModel
             {
                 Name = "Ops",
                 Description = "Watching your servers",
                 EnvironmentStatus = environments,
+                Releases = releases,
             };
 
             return View(model);

@@ -4,15 +4,18 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace Panoptic.Areas.Ops.Models
 {
     /// <summary>
-    /// Stores information about the status of a service.
+    /// Stores information about a release.
     /// </summary>
-    public sealed class ServiceStatusModel
+    public sealed class ReleaseModel
     {
         /// <summary>
-        /// Gets or sets the name of the service.
+        /// Gets or sets the name.
         /// </summary>
         public string Name
         {
@@ -21,18 +24,19 @@ namespace Panoptic.Areas.Ops.Models
         }
 
         /// <summary>
-        /// Gets or sets the status text.
+        /// Gets or sets the version.
         /// </summary>
-        public ServiceStatus Status
+        public Version Version
         {
             get;
             set;
         }
 
         /// <summary>
-        /// Gets or sets the notification text.
+        /// Gets or sets the date on which the release was made.
         /// </summary>
-        public string Notification
+        [DisplayFormat(DataFormatString = "yyyy-MM-dd")]
+        public DateTimeOffset Date
         {
             get;
             set;

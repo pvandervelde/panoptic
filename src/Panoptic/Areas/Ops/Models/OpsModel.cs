@@ -41,5 +41,14 @@ namespace Panoptic.Areas.Ops.Models
             get;
             set;
         }
+
+        /// <summary>
+        /// Gets or sets the collection of releases
+        /// </summary>
+        public IEnumerable<ReleaseModel> Releases
+        {
+            get;
+            set;
+        }
     }
 }
