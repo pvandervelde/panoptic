@@ -29,6 +29,39 @@ namespace Panoptic.Areas.Ops.Controllers
                 new EnvironmentStatusModel
                 {
                     Name = "Production",
+                    Machines = new List<MachineStatusModel>
+                    {
+                        new MachineStatusModel
+                        {
+                            Name = "Server 1",
+                            Status = ServiceStatus.Ok,
+                            Notification = string.Empty,
+                        },
+                        new MachineStatusModel
+                        {
+                            Name = "Server 2",
+                            Status = ServiceStatus.Ok,
+                            Notification = string.Empty,
+                        },
+                        new MachineStatusModel
+                        {
+                            Name = "Server 3",
+                            Status = ServiceStatus.Ok,
+                            Notification = string.Empty,
+                        },
+                        new MachineStatusModel
+                        {
+                            Name = "Server 4",
+                            Status = ServiceStatus.Ok,
+                            Notification = string.Empty,
+                        },
+                        new MachineStatusModel
+                        {
+                            Name = "Server 5",
+                            Status = ServiceStatus.Ok,
+                            Notification = string.Empty,
+                        },
+                    },
                     Services = new List<ServiceStatusModel>
                     {
                         new ServiceStatusModel
@@ -54,6 +87,39 @@ namespace Panoptic.Areas.Ops.Controllers
                 new EnvironmentStatusModel
                 {
                     Name = "Staging",
+                    Machines = new List<MachineStatusModel>
+                    {
+                        new MachineStatusModel
+                        {
+                            Name = "Server 1",
+                            Status = ServiceStatus.Ok,
+                            Notification = string.Empty,
+                        },
+                        new MachineStatusModel
+                        {
+                            Name = "Server 2",
+                            Status = ServiceStatus.Ok,
+                            Notification = string.Empty,
+                        },
+                        new MachineStatusModel
+                        {
+                            Name = "Server 3",
+                            Status = ServiceStatus.Ok,
+                            Notification = string.Empty,
+                        },
+                        new MachineStatusModel
+                        {
+                            Name = "Server 4",
+                            Status = ServiceStatus.Ok,
+                            Notification = string.Empty,
+                        },
+                        new MachineStatusModel
+                        {
+                            Name = "Server 5",
+                            Status = ServiceStatus.Ok,
+                            Notification = string.Empty,
+                        },
+                    },
                     Services = new List<ServiceStatusModel>
                     {
                         new ServiceStatusModel
@@ -75,6 +141,47 @@ namespace Panoptic.Areas.Ops.Controllers
                             Notification = "Panic!",
                         },
                     },
+                },
+            };
+
+            var issues = new List<IssueSetModel>
+            {
+                new IssueSetModel
+                {
+                    Name = "Open",
+                    Count = 85,
+                },
+                new IssueSetModel
+                {
+                    Name = "In progress",
+                    Count = 7,
+                },
+                new IssueSetModel
+                {
+                    Name = "Closed",
+                    Count = 50,
+                },
+            };
+
+            var newsItems = new List<NewsItemModel>
+            {
+                new NewsItemModel
+                {
+                    Date = new DateTimeOffset(2015, 5, 15, 10, 35, 0, new TimeSpan(13, 0, 0)),
+                    Summary = "Tool 1 released",
+                    Description = "An awesome new version of this tool was released.",
+                },
+                new NewsItemModel
+                {
+                    Date = new DateTimeOffset(2015, 5, 15, 10, 35, 0, new TimeSpan(13, 0, 0)),
+                    Summary = "Tool 2 released",
+                    Description = "An awesome new version of this tool was released.",
+                },
+                new NewsItemModel
+                {
+                    Date = new DateTimeOffset(2015, 5, 15, 10, 35, 0, new TimeSpan(13, 0, 0)),
+                    Summary = "Tool 3 released",
+                    Description = "An awesome new version of this tool was released.",
                 },
             };
 
@@ -105,6 +212,8 @@ namespace Panoptic.Areas.Ops.Controllers
                 Name = "Ops",
                 Description = "Watching your servers",
                 EnvironmentStatus = environments,
+                Issues = issues,
+                NewsItems = newsItems,
                 Releases = releases,
             };
 

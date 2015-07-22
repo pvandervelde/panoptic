@@ -199,7 +199,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Areas\Ops\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Ops\Controllers\StatusController.cs" />
     <Compile Include="Areas\Ops\Models\EnvironmentStatusModel.cs" />
+    <Compile Include="Areas\Ops\Models\IssueSetModel.cs" />
+    <Compile Include="Areas\Ops\Models\MachineStatusModel.cs" />
+    <Compile Include="Areas\Ops\Models\NewsItemModel.cs" />
     <Compile Include="Areas\Ops\Models\OpsModel.cs" />
     <Compile Include="Areas\Ops\Models\ReleaseModel.cs" />
     <Compile Include="Areas\Ops\Models\ServiceStatus.cs" />
@@ -249,6 +253,7 @@
     <Content Include="Areas\Ops\Views\web.config" />
     <Content Include="Areas\Ops\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Ops\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Ops\Views\Status\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

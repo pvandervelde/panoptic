@@ -6,9 +6,9 @@
 }
 
 @functions {
-    internal string StatusToText(ServiceStatusModel serviceStatus)
+    internal string StatusToText(ServiceStatus status)
     {
-        switch (serviceStatus.Status)
+        switch (status)
         {
             case ServiceStatus.Ok:
                 return "Ok";
@@ -21,11 +21,11 @@
         }
     }
 
-    internal string StatusToCssAlertClass(ServiceStatusModel serviceStatus)
+    internal string StatusToCssAlertClass(ServiceStatus status)
     {
-        switch (serviceStatus.Status)
+        switch (status)
         {
-            case ServiceStatus.Ok :
+            case ServiceStatus.Ok:
                 return "alert-success";
             case ServiceStatus.Warning:
                 return "alert-warning";
@@ -42,10 +42,10 @@
     <p class="lead">@Html.DisplayFor(model => model.Description)</p>
 </div>
 <div class="row">
-    <div class="col-md-4">
-        <h2>Status</h2>
+    <div class="col-md-8">
+        <h2>Service status</h2>
         <p>
-            The status of the different environments.
+            The status of the different services.
         </p>
 
         @foreach (var environment in Model.EnvironmentStatus)
@@ -64,30 +64,47 @@
                     {
                         <tr>
                             <td>@Html.DisplayFor(model => service.Name)</td>
-                            <td class="alert @StatusToCssAlertClass(service)">@StatusToText(service)</td>
+                            <td class="alert @StatusToCssAlertClass(service.Status)">@StatusToText(service.Status)</td>
                             <td>@Html.DisplayFor(model => service.Notification)</td>
                         </tr>
                     }
                 </tbody>
             </table>
 
-            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+            <p>@Html.ActionLink("More information \u00bb", "Index", "Status", new { area = "ops", model = environment.Name }, new { @class = "btn btn-default" })</p>
             <br />
         }
     </div>
     <div class="col-md-4">
-        <h2></h2>
+        <h2>Outstanding issues</h2>
 
-        <h3>Outstanding issues</h3>
-        <p>
-            The outstanding issues
-        </p>
-
-
+        <div>
+            @foreach (var issueSet in Model.Issues)
+            {
+                <a class="btn btn-lg btn-primary" href="">
+                    <span>@issueSet.Name</span>
+                    <h1>@issueSet.Count</h1>
+                </a>
+            }
+        </div>
         
-        <h3>Releases</h3>
+        <h2>News</h2>
+
+        @foreach (var newsItem in Model.NewsItems)
+        {
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">@newsItem.Date.ToString("yyyy-MM-dd"): @newsItem.Summary</h3>
+                </div>
+                <div class="panel-body">
+                    @newsItem.Description
+                </div>
+            </div>
+        }
+
+        <h2>Active versions</h2>
         <p>
-            The different versions of the tools that are active
+            The different versions of the tools that are active.
         </p>
 
         <table class="table table-striped">
@@ -109,38 +126,5 @@
                 }
             </tbody>
         </table>
-    </div>
-    <div class="col-md-4">
-        <h2>News</h2>
-        <p>
-            Random news
-        </p>
-
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">2015-05-01: Tool 1 released</h3>
-            </div>
-            <div class="panel-body">
-                An awesome new version of this tool was released.
-            </div>
-        </div>
-
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">2015-05-01: Tool 2 released</h3>
-            </div>
-            <div class="panel-body">
-                An awesome new version of this tool was released.
-            </div>
-        </div>
-
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">2015-05-01: Tool 3 released</h3>
-            </div>
-            <div class="panel-body">
-                An awesome new version of this tool was released.
-            </div>
-        </div>
     </div>
 </div>

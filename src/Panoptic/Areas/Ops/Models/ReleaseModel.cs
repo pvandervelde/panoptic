@@ -15,6 +15,16 @@ namespace Panoptic.Areas.Ops.Models
     public sealed class ReleaseModel
     {
         /// <summary>
+        /// Gets or sets the date on which the release was made.
+        /// </summary>
+        [DisplayFormat(DataFormatString = "yyyy-MM-dd")]
+        public DateTimeOffset Date
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Gets or sets the name.
         /// </summary>
         public string Name
@@ -27,16 +37,6 @@ namespace Panoptic.Areas.Ops.Models
         /// Gets or sets the version.
         /// </summary>
         public Version Version
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Gets or sets the date on which the release was made.
-        /// </summary>
-        [DisplayFormat(DataFormatString = "yyyy-MM-dd")]
-        public DateTimeOffset Date
         {
             get;
             set;

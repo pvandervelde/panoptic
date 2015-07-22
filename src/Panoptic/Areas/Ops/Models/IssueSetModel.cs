@@ -4,37 +4,26 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Panoptic.Areas.Ops.Models
 {
     /// <summary>
-    /// Stores information about an operation environment.
+    /// Stores information about a set of issues.
     /// </summary>
-    public sealed class EnvironmentStatusModel
+    public class IssueSetModel
     {
         /// <summary>
-        /// Gets or sets the collection containing the machine statuses.
+        /// Gets or sets the number of issues
         /// </summary>
-        public IEnumerable<MachineStatusModel> Machines
+        public int Count
         {
             get;
             set;
         }
 
         /// <summary>
-        /// Gets or sets the name of the environment.
+        /// Gets or sets the name of the issue set.
         /// </summary>
         public string Name
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Gets or sets the collection containing the service statuses.
-        /// </summary>
-        public IEnumerable<ServiceStatusModel> Services
         {
             get;
             set;

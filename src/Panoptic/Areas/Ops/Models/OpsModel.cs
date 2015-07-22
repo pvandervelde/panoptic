@@ -3,10 +3,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Panoptic.Areas.Ops.Models
 {
@@ -15,15 +12,6 @@ namespace Panoptic.Areas.Ops.Models
     /// </summary>
     public sealed class OpsModel
     {
-        /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        public string Name
-        {
-            get;
-            set;
-        }
-
         /// <summary>
         /// Gets or sets the description.
         /// </summary>
@@ -37,6 +25,33 @@ namespace Panoptic.Areas.Ops.Models
         /// Gets or sets the collection of environments.
         /// </summary>
         public IEnumerable<EnvironmentStatusModel> EnvironmentStatus
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the collection containing the issue information.
+        /// </summary>
+        public IEnumerable<IssueSetModel> Issues
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        public string Name
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the collection containing the news items.
+        /// </summary>
+        public IEnumerable<NewsItemModel> NewsItems
         {
             get;
             set;

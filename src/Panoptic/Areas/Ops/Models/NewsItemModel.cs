@@ -4,37 +4,39 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Panoptic.Areas.Ops.Models
 {
     /// <summary>
-    /// Stores information about an operation environment.
+    /// Stores information about a news item.
     /// </summary>
-    public sealed class EnvironmentStatusModel
+    public class NewsItemModel
     {
         /// <summary>
-        /// Gets or sets the collection containing the machine statuses.
+        /// Gets or sets the date of the news item.
         /// </summary>
-        public IEnumerable<MachineStatusModel> Machines
+        [DisplayFormat(DataFormatString = "yyyy-MM-dd")]
+        public DateTimeOffset Date
         {
             get;
             set;
         }
 
         /// <summary>
-        /// Gets or sets the name of the environment.
+        /// Gets or sets the description of the news item.
         /// </summary>
-        public string Name
+        public string Description
         {
             get;
             set;
         }
 
         /// <summary>
-        /// Gets or sets the collection containing the service statuses.
+        /// Gets or sets the summary of the news item.
         /// </summary>
-        public IEnumerable<ServiceStatusModel> Services
+        public string Summary
         {
             get;
             set;

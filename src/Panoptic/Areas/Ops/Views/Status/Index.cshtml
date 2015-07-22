@@ -1,0 +1,98 @@
+﻿@using Panoptic.Areas.Ops.Models
+@model Panoptic.Areas.Ops.Models.EnvironmentStatusModel
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+@functions {
+    internal string StatusToText(ServiceStatus status)
+    {
+        switch (status)
+        {
+            case ServiceStatus.Ok:
+                return "Ok";
+            case ServiceStatus.Warning:
+                return "Warning";
+            case ServiceStatus.Error:
+                return "Error";
+            default:
+                return "alert-info";
+        }
+    }
+
+    internal string StatusToCssAlertClass(ServiceStatus status)
+    {
+        switch (status)
+        {
+            case ServiceStatus.Ok:
+                return "alert-success";
+            case ServiceStatus.Warning:
+                return "alert-warning";
+            case ServiceStatus.Error:
+                return "alert-danger";
+            default:
+                return "Unknown";
+        }
+    }
+}
+
+<div class="jumbotron">
+    <h1>@Html.DisplayFor(model => model.Name)</h1>
+    <p class="lead">Lots of information about the @Model.Name environment</p>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <h2>Services</h2>
+        <p>
+            The status of the different services.
+        </p>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Issues</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var service in Model.Services)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(model => service.Name)</td>
+                        <td class="alert @StatusToCssAlertClass(service.Status)">@StatusToText(service.Status)</td>
+                        <td>@Html.DisplayFor(model => service.Notification)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+
+        <h2>Machines</h2>
+        <p>
+            The status of the different machines.
+        </p>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Issues</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var machine in Model.Machines)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(model => machine.Name)</td>
+                        <td class="alert @StatusToCssAlertClass(machine.Status)">@StatusToText(machine.Status)</td>
+                        <td>@Html.DisplayFor(model => machine.Notification)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+    </div>
+</div>

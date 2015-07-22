@@ -21,18 +21,18 @@ namespace Panoptic.Areas.Ops.Models
         }
 
         /// <summary>
-        /// Gets or sets the status text.
+        /// Gets or sets the notification text.
         /// </summary>
-        public ServiceStatus Status
+        public string Notification
         {
             get;
             set;
         }
 
         /// <summary>
-        /// Gets or sets the notification text.
+        /// Gets or sets the status text.
         /// </summary>
-        public string Notification
+        public ServiceStatus Status
         {
             get;
             set;
