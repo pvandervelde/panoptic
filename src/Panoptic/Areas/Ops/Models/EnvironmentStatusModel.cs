@@ -14,6 +14,15 @@ namespace Panoptic.Areas.Ops.Models
     public sealed class EnvironmentStatusModel
     {
         /// <summary>
+        /// Gets or sets the description of the environment.
+        /// </summary>
+        public string Description
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Gets or sets the collection containing the machine statuses.
         /// </summary>
         public IEnumerable<MachineStatusModel> Machines

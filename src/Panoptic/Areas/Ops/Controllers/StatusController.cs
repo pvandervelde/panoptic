@@ -18,43 +18,59 @@ namespace Panoptic.Areas.Ops.Controllers
         /// <summary>
         /// GET: Ops/Status
         /// </summary>
-        /// <param name="modelName">The environment status model name.</param>
+        /// <param name="environment">The environment status model name.</param>
         /// <returns>The index view</returns>
-        public ActionResult Index(string modelName)
+        public ActionResult Index(string environment)
         {
             var model = new EnvironmentStatusModel
             {
-                Name = modelName,
+                Name = environment,
+                Description = string.Format("Lots of information about the {0} environment.", environment),
                 Machines = new List<MachineStatusModel>
                     {
                         new MachineStatusModel
                         {
                             Name = "Server 1",
                             Status = ServiceStatus.Ok,
+                            CpuPercentage = 15,
+                            MemoryTotalInGb = 4,
+                            MemoryInUseInGb = 3.25,
                             Notification = string.Empty,
                         },
                         new MachineStatusModel
                         {
                             Name = "Server 2",
                             Status = ServiceStatus.Ok,
+                            CpuPercentage = 15,
+                            MemoryTotalInGb = 4,
+                            MemoryInUseInGb = 3.25,
                             Notification = string.Empty,
                         },
                         new MachineStatusModel
                         {
                             Name = "Server 3",
                             Status = ServiceStatus.Ok,
+                            CpuPercentage = 15,
+                            MemoryTotalInGb = 4,
+                            MemoryInUseInGb = 3.25,
                             Notification = string.Empty,
                         },
                         new MachineStatusModel
                         {
                             Name = "Server 4",
                             Status = ServiceStatus.Ok,
+                            CpuPercentage = 15,
+                            MemoryTotalInGb = 4,
+                            MemoryInUseInGb = 3.25,
                             Notification = string.Empty,
                         },
                         new MachineStatusModel
                         {
                             Name = "Server 5",
                             Status = ServiceStatus.Ok,
+                            CpuPercentage = 15,
+                            MemoryTotalInGb = 4,
+                            MemoryInUseInGb = 3.25,
                             Notification = string.Empty,
                         },
                     },

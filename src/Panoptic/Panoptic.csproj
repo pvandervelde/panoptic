@@ -202,6 +202,7 @@
     <Compile Include="Areas\Ops\Controllers\StatusController.cs" />
     <Compile Include="Areas\Ops\Models\EnvironmentStatusModel.cs" />
     <Compile Include="Areas\Ops\Models\IssueSetModel.cs" />
+    <Compile Include="Areas\Ops\Models\MachineHardDriveStatusModel.cs" />
     <Compile Include="Areas\Ops\Models\MachineStatusModel.cs" />
     <Compile Include="Areas\Ops\Models\NewsItemModel.cs" />
     <Compile Include="Areas\Ops\Models\OpsModel.cs" />
@@ -278,14 +279,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0-alpha010\tools\analyzers\C#\StyleCop.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0-beta001\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
