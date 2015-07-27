@@ -212,6 +212,9 @@
     <Compile Include="Areas\Ops\Models\ServiceStatus.cs" />
     <Compile Include="Areas\Ops\Models\ServiceStatusModel.cs" />
     <Compile Include="Areas\Ops\OpsAreaRegistration.cs" />
+    <Compile Include="Areas\Services\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Services\Models\ServicesModel.cs" />
+    <Compile Include="Areas\Services\ServicesAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -258,6 +261,10 @@
     <Content Include="Areas\Ops\Views\Home\Index.cshtml" />
     <Content Include="Areas\Ops\Views\Status\Index.cshtml" />
     <Content Include="Areas\Ops\Views\MachineStatus\Index.cshtml" />
+    <Content Include="Areas\Services\Views\web.config" />
+    <Content Include="Areas\Services\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Services\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Services\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
