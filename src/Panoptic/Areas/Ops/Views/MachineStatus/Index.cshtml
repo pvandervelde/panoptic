@@ -1,5 +1,5 @@
 ﻿@using Panoptic.Areas.Ops.Models
-@model Panoptic.Areas.Ops.Models.EnvironmentStatusModel
+@model Panoptic.Areas.Ops.Models.MachineStatusModel
 
 @{
     ViewBag.Title = Model.Name;
@@ -43,37 +43,10 @@
 </div>
 <div>
     <div>
-        <h2>Services</h2>
+        <h2>Current status</h2>
         <p>
-            The status of the different services.
+            The current status of the machines.
         </p>
-
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Status</th>
-                    <th>Issues</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var service in Model.Services)
-                {
-                    <tr>
-                        <td>@Html.DisplayFor(model => service.Name)</td>
-                        <td class="alert @StatusToCssAlertClass(service.Status)">@StatusToText(service.Status)</td>
-                        <td>@Html.DisplayFor(model => service.Notification)</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-        <br />
-
-        <h2>Machines</h2>
-        <p>
-            The status of the different machines.
-        </p>
-
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -97,22 +70,43 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var machine in Model.Machines)
+                <tr>
+                    <td>@Html.DisplayFor(model => Model.Name)</td>
+                    <td class="alert @StatusToCssAlertClass(Model.Status)">@StatusToText(Model.Status)</td>
+                    <td>@Html.DisplayFor(model => Model.CpuPercentage) &#37;</td>
+                    <td>CPU history ...</td>
+                    <td>@Html.DisplayFor(model => Model.MemoryInUseInGb) Gb</td>
+                    <td>@Html.DisplayFor(model => Model.MemoryTotalInGb) Gb</td>
+                    <td>@Html.DisplayFor(model => Model.MemoryInUsePercentage) &#37;</td>
+                    <td>disks ....</td>
+                    <td>@Html.DisplayFor(model => Model.Notification)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Logs</h2>
+        <p>
+            The latest logs coming from the machine.
+        </p>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Log</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var log in Model.Logs)
                 {
                     <tr>
-                        <td>@Html.ActionLink(machine.Name, "Index", "MachineStatus", new { area = "ops", machine = machine.Name }, new { })</td>
-                        <td class="alert @StatusToCssAlertClass(machine.Status)">@StatusToText(machine.Status)</td>
-                        <td>@Html.DisplayFor(model => machine.CpuPercentage) &#37;</td>
-                        <td>CPU history ...</td>
-                        <td>@Html.DisplayFor(model => machine.MemoryInUseInGb) Gb</td>
-                        <td>@Html.DisplayFor(model => machine.MemoryTotalInGb) Gb</td>
-                        <td>@Html.DisplayFor(model => machine.MemoryInUsePercentage) &#37;</td>
-                        <td>disks ....</td>
-                        <td>@Html.DisplayFor(model => machine.Notification)</td>
+                        <td>@Html.DisplayFor(model => log.Date)</td>
+                        <td>@Html.DisplayFor(model => log.Type)</td>
+                        <td>@Html.DisplayFor(model => log.Text)</td>
                     </tr>
                 }
             </tbody>
         </table>
-        <br />
     </div>
 </div>

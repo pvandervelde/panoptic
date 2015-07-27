@@ -42,7 +42,7 @@
     <p class="lead">@Html.DisplayFor(model => model.Description)</p>
 </div>
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-4">
         <h2>Service status</h2>
         <p>
             The status of the different services.
@@ -56,7 +56,6 @@
                     <tr>
                         <th>Name</th>
                         <th>Status</th>
-                        <th>Issues</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,7 +64,6 @@
                         <tr>
                             <td>@Html.DisplayFor(model => service.Name)</td>
                             <td class="alert @StatusToCssAlertClass(service.Status)">@StatusToText(service.Status)</td>
-                            <td>@Html.DisplayFor(model => service.Notification)</td>
                         </tr>
                     }
                 </tbody>
@@ -87,7 +85,8 @@
                 </a>
             }
         </div>
-        
+    </div>
+    <div class="col-md-4">
         <h2>News</h2>
 
         @foreach (var newsItem in Model.NewsItems)
@@ -102,17 +101,23 @@
             </div>
         }
 
-        <h2>Active versions</h2>
+        <h2>Tools</h2>
         <p>
-            The different versions of the tools that are active.
+            The different information about the tools that are active.
         </p>
 
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th rowspan="2">Name</th>
+                    <th colspan="2">Release</th>
+                    <th colspan="2">Number of</th>
+                </tr>
+                <tr>
                     <th>Version</th>
                     <th>Date</th>
+                    <th>Releases</th>
+                    <th>Commits</th>
                 </tr>
             </thead>
             <tbody>
@@ -122,6 +127,8 @@
                         <td>@release.Name</td>
                         <td>@release.Version.ToString(3)</td>
                         <td>@release.Date.ToString("yyyy-MM-dd")</td>
+                        <td>10</td>
+                        <td>15</td>
                     </tr>
                 }
             </tbody>

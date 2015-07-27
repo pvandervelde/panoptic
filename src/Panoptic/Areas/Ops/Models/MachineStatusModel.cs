@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 
 namespace Panoptic.Areas.Ops.Models
 {
@@ -32,10 +33,28 @@ namespace Panoptic.Areas.Ops.Models
         }
 
         /// <summary>
+        /// Gets or sets the description for the machine.
+        /// </summary>
+        public string Description
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Gets or sets the collection that contains information about all the
         /// machine hard drives and their status.
         /// </summary>
         public MachineHardDriveStatusModel[] Disks
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the collection containing the logs for the machine.
+        /// </summary>
+        public IEnumerable<LogEntryModel> Logs
         {
             get;
             set;
