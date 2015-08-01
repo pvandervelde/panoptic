@@ -162,7 +162,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Ops\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -198,20 +197,6 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Areas\Ops\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Ops\Controllers\MachineStatusController.cs" />
-    <Compile Include="Areas\Ops\Controllers\StatusController.cs" />
-    <Compile Include="Areas\Ops\Models\EnvironmentStatusModel.cs" />
-    <Compile Include="Areas\Ops\Models\IssueSetModel.cs" />
-    <Compile Include="Areas\Ops\Models\LogEntryModel.cs" />
-    <Compile Include="Areas\Ops\Models\MachineHardDriveStatusModel.cs" />
-    <Compile Include="Areas\Ops\Models\MachineStatusModel.cs" />
-    <Compile Include="Areas\Ops\Models\NewsItemModel.cs" />
-    <Compile Include="Areas\Ops\Models\OpsModel.cs" />
-    <Compile Include="Areas\Ops\Models\ReleaseModel.cs" />
-    <Compile Include="Areas\Ops\Models\ServiceStatus.cs" />
-    <Compile Include="Areas\Ops\Models\ServiceStatusModel.cs" />
-    <Compile Include="Areas\Ops\OpsAreaRegistration.cs" />
     <Compile Include="Areas\Services\Controllers\HomeController.cs" />
     <Compile Include="Areas\Services\Models\ServicesModel.cs" />
     <Compile Include="Areas\Services\ServicesAreaRegistration.cs" />
@@ -256,11 +241,6 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="Areas\Ops\Views\web.config" />
-    <Content Include="Areas\Ops\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Ops\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Ops\Views\Status\Index.cshtml" />
-    <Content Include="Areas\Ops\Views\MachineStatus\Index.cshtml" />
     <Content Include="Areas\Services\Views\web.config" />
     <Content Include="Areas\Services\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Services\Views\Shared\_Layout.cshtml" />
@@ -297,6 +277,12 @@
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0-beta001\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Panoptic.Areas.Ops\Panoptic.Areas.Ops.csproj">
+      <Project>{9015af9b-d46b-40d0-9040-07aa77dd8bee}</Project>
+      <Name>Panoptic.Areas.Ops</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
