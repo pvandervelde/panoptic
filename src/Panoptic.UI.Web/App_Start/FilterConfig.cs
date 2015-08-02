@@ -6,7 +6,7 @@
 
 using System.Web.Mvc;
 
-namespace Panoptic
+namespace Panoptic.UI.Web
 {
     /// <summary>
     /// The configuration for the filters.

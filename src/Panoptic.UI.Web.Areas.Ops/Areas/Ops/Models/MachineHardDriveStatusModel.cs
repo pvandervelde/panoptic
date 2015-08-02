@@ -6,7 +6,7 @@
 
 using System;
 
-namespace Panoptic.Areas.Ops.Models
+namespace Panoptic.UI.Web.Areas.Ops.Models
 {
     /// <summary>
     /// Stores information about the status of a machine hard drive.

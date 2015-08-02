@@ -9,9 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Panoptic.Areas.Ops.Models;
+using Panoptic.UI.Web.Areas.Ops.Models;
 
-namespace Panoptic.Areas.Ops.Controllers
+namespace Panoptic.UI.Web.Areas.Ops.Controllers
 {
     /// <summary>
     /// Provides the status page for a specific machine.

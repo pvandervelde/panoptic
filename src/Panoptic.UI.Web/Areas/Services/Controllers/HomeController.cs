@@ -9,9 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Panoptic.Areas.Services.Models;
+using Panoptic.UI.Web.Areas.Services.Models;
 
-namespace Panoptic.Areas.Services.Controllers
+namespace Panoptic.UI.Web.Areas.Services.Controllers
 {
     /// <summary>
     /// Provides the index page for the services area.

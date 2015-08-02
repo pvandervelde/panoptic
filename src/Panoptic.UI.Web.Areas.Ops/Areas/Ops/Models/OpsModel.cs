@@ -5,7 +5,7 @@
 
 using System.Collections.Generic;
 
-namespace Panoptic.Areas.Ops.Models
+namespace Panoptic.UI.Web.Areas.Ops.Models
 {
     /// <summary>
     /// Stores information about the status of the operations area.

@@ -6,7 +6,7 @@
 
 using System.Web.Mvc;
 
-namespace Panoptic.Areas.Services
+namespace Panoptic.UI.Web.Areas.Services
 {
     /// <summary>
     /// Registers the Services area.

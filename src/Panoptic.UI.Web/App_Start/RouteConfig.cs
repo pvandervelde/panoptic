@@ -7,7 +7,7 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Panoptic
+namespace Panoptic.UI.Web
 {
     /// <summary>
     /// The configuration for routes.
@@ -26,7 +26,7 @@ namespace Panoptic
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] { "Panoptic.Controllers" });
+                namespaces: new[] { "Panoptic.UI.Web.Controllers" });
         }
     }
 }

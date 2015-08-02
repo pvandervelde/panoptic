@@ -7,7 +7,7 @@
 using System.Web;
 using System.Web.Optimization;
 
-namespace Panoptic
+namespace Panoptic.UI.Web
 {
     /// <summary>
     /// The configuration for bundles.

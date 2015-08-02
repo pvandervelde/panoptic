@@ -7,7 +7,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Panoptic.Areas.Ops.Models
+namespace Panoptic.UI.Web.Areas.Ops.Models
 {
     /// <summary>
     /// Stores information about a release.

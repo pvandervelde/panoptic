@@ -6,7 +6,7 @@
 
 using System.Web.Mvc;
 
-namespace Panoptic.Areas.Ops
+namespace Panoptic.UI.Web.Areas.Ops
 {
     /// <summary>
     /// Registers the Ops area.
@@ -34,7 +34,7 @@ namespace Panoptic.Areas.Ops
                 "Ops_default",
                 "Ops/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional },
-                new[] { "Panoptic.Areas.Ops.Controllers" });
+                new[] { "Panoptic.UI.Web.Areas.Ops.Controllers" });
         }
     }
 }

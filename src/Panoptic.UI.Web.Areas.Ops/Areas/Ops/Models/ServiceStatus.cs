@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Panoptic.Areas.Ops.Models
+namespace Panoptic.UI.Web.Areas.Ops.Models
 {
     /// <summary>
     /// Defines the status for a service.

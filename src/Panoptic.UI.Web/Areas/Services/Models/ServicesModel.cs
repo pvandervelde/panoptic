@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Panoptic.Areas.Services.Models
+namespace Panoptic.UI.Web.Areas.Services.Models
 {
     /// <summary>
     /// Stores information about the available services.

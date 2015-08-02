@@ -6,9 +6,9 @@
 
 using System.Collections.Generic;
 using System.Web.Mvc;
-using Panoptic.Areas.Ops.Models;
+using Panoptic.UI.Web.Areas.Ops.Models;
 
-namespace Panoptic.Areas.Ops.Controllers
+namespace Panoptic.UI.Web.Areas.Ops.Controllers
 {
     /// <summary>
     /// Provides the status pages for the different services in the available environments.

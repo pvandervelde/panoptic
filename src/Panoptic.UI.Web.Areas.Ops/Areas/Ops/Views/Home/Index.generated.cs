@@ -28,14 +28,14 @@ namespace ASP
     using System.Web.WebPages;
     
     #line 1 "..\..\Areas\Ops\Views\Home\Index.cshtml"
-    using Panoptic.Areas.Ops.Models;
+    using Panoptic.UI.Web.Areas.Ops.Models;
     
     #line default
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Areas/Ops/Views/Home/Index.cshtml")]
-    public partial class _Areas_Ops_Views_Home_Index_cshtml : System.Web.Mvc.WebViewPage<Panoptic.Areas.Ops.Models.OpsModel>
+    public partial class _Areas_Ops_Views_Home_Index_cshtml : System.Web.Mvc.WebViewPage<Panoptic.UI.Web.Areas.Ops.Models.OpsModel>
     {
         
         #line 8 "..\..\Areas\Ops\Views\Home\Index.cshtml"

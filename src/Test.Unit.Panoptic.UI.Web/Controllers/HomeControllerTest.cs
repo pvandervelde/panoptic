@@ -7,9 +7,8 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Panoptic.Controllers;
 
-namespace Test.Unit.Panoptic.Controllers
+namespace Panoptic.UI.Web.Controllers
 {
     [TestClass]
     [SuppressMessage("Microsoft.StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented",

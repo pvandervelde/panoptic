@@ -6,7 +6,7 @@
 
 using System.Web.Mvc;
 
-namespace Panoptic.Controllers
+namespace Panoptic.UI.Web.Controllers
 {
     /// <summary>
     /// The controller that handles the index page web calls.

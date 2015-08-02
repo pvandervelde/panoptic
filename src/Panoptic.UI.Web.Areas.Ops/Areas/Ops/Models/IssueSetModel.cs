@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Panoptic.Areas.Ops.Models
+namespace Panoptic.UI.Web.Areas.Ops.Models
 {
     /// <summary>
     /// Stores information about a set of issues.
