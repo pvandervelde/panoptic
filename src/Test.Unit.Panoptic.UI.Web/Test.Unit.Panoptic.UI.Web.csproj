@@ -9,8 +9,8 @@
     <ProjectGuid>{FB846DA1-0910-4864-AD01-260F54BC9B6D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Test.Unit.Panoptic</RootNamespace>
-    <AssemblyName>Test.Unit.Panoptic</AssemblyName>
+    <RootNamespace>Panoptic.UI.Web</RootNamespace>
+    <AssemblyName>Test.Unit.Panoptic.UI.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -159,7 +159,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Panoptic\Panoptic.csproj">
+    <ProjectReference Include="..\Panoptic.UI.Web\Panoptic.UI.Web.csproj">
       <Project>{EBD3F7AD-8459-4AF2-9264-78D3FE6C56F2}</Project>
       <Name>Panoptic</Name>
     </ProjectReference>

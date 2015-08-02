@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Panoptic</RootNamespace>
-    <AssemblyName>Panoptic</AssemblyName>
+    <RootNamespace>Panoptic.UI.Web</RootNamespace>
+    <AssemblyName>Panoptic.UI.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -279,7 +279,7 @@
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0-beta001\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Panoptic.Areas.Ops\Panoptic.Areas.Ops.csproj">
+    <ProjectReference Include="..\Panoptic.UI.Web.Areas.Ops\Panoptic.UI.Web.Areas.Ops.csproj">
       <Project>{9015af9b-d46b-40d0-9040-07aa77dd8bee}</Project>
       <Name>Panoptic.Areas.Ops</Name>
     </ProjectReference>

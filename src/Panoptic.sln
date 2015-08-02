@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panoptic", "Panoptic\Panoptic.csproj", "{EBD3F7AD-8459-4AF2-9264-78D3FE6C56F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panoptic.UI.Web", "Panoptic.UI.Web\Panoptic.UI.Web.csproj", "{EBD3F7AD-8459-4AF2-9264-78D3FE6C56F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Unit.Panoptic", "Test.Unit.Panoptic\Test.Unit.Panoptic.csproj", "{FB846DA1-0910-4864-AD01-260F54BC9B6D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Unit.Panoptic.UI.Web", "Test.Unit.Panoptic.UI.Web\Test.Unit.Panoptic.UI.Web.csproj", "{FB846DA1-0910-4864-AD01-260F54BC9B6D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "codeanalysis", "codeanalysis", "{168AD0F5-2B65-47A7-B4A9-CBAFAD5340D4}"
 	ProjectSection(SolutionItems) = preProject
@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "codeanalysis", "codeanalysi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{54903D03-1979-4593-89A7-D79A1DD591BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panoptic.Areas.Ops", "Panoptic.Areas.Ops\Panoptic.Areas.Ops.csproj", "{9015AF9B-D46B-40D0-9040-07AA77DD8BEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panoptic.UI.Web.Areas.Ops", "Panoptic.UI.Web.Areas.Ops\Panoptic.UI.Web.Areas.Ops.csproj", "{9015AF9B-D46B-40D0-9040-07AA77DD8BEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
