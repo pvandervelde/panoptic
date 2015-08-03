@@ -90,6 +90,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.Entity" />
@@ -166,19 +167,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DefaultRouteRegistrar.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Services\Controllers\HomeController.cs" />
     <Compile Include="Areas\Services\Models\ServicesModel.cs" />
     <Compile Include="Areas\Services\ServicesAreaRegistration.cs" />
+    <Compile Include="Composition\Composer.cs" />
+    <Compile Include="Composition\ConcurrentCache.cs" />
+    <Compile Include="Composition\DynamicInstantiationExportProvider.cs" />
+    <Compile Include="Composition\PartFactory.cs" />
+    <Compile Include="Composition\PartFactoryImport.cs" />
+    <Compile Include="Composition\PartLifetimeContext.cs" />
+    <Compile Include="Composition\TaggedExportsChangeEventArgs.cs" />
+    <Compile Include="Configuration\CatalogConfigurationElement.cs" />
+    <Compile Include="Configuration\CatalogConfigurationElementCollection.cs" />
+    <Compile Include="Configuration\CompositionConfigurationSection.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Composition\ImportControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.BuildInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.Company.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.VersionNumber.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -228,10 +245,16 @@
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0-beta001\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Panoptic.UI.Web.Areas.Ops\Panoptic.UI.Web.Areas.Ops.csproj">
-      <Project>{9015af9b-d46b-40d0-9040-07aa77dd8bee}</Project>
-      <Name>Panoptic.Areas.Ops</Name>
+    <ProjectReference Include="..\Panoptic.UI.Web.Common\Panoptic.UI.Web.Common.csproj">
+      <Project>{20f02164-25e7-46ee-bac0-c76e3107f224}</Project>
+      <Name>Panoptic.UI.Web.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
