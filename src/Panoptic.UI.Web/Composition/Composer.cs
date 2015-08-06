@@ -10,6 +10,7 @@ using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Primitives;
 using System.Linq;
+using Autofac.Core;
 using Panoptic.UI.Web.Common;
 
 namespace Panoptic.UI.Web.Composition
@@ -138,6 +139,8 @@ namespace Panoptic.UI.Web.Composition
             {
                 return;
             }
+
+            var type = typeof(IModule);
 
             EnsureContainer();
             Container.ComposeParts(instance);

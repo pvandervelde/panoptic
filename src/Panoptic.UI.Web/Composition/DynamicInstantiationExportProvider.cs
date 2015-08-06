@@ -23,11 +23,11 @@ namespace Panoptic.UI.Web.Composition
         private static readonly IEnumerable<Export> s_EmptyExports
             = Enumerable.Empty<Export>();
 
-        private static readonly string s_PartFactoryContractPrefix =
-            s_PartFactoryType.FullName.Substring(0, s_PartFactoryType.FullName.IndexOf("`"));
-
         private static readonly Type s_PartFactoryType
             = typeof(PartFactory<>);
+
+        private static readonly string s_PartFactoryContractPrefix =
+            s_PartFactoryType.FullName.Substring(0, s_PartFactoryType.FullName.IndexOf("`"));
 
         private readonly ConcurrentCache<ContractBasedImportDefinition, PartFactoryImport> m_DefinitionCache
             = new ConcurrentCache<ContractBasedImportDefinition, PartFactoryImport>();

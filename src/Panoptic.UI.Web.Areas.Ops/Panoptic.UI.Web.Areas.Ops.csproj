@@ -33,6 +33,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\panoptic.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -99,6 +100,7 @@
       <HintPath>..\..\packages\RazorGenerator.Mvc.2.3.6\lib\net40\RazorGenerator.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -148,24 +150,23 @@
     <Content Include="nbuildkit.csharp.readme.txt" />
     <Content Include="nbuildkit.readme.txt" />
     <Content Include="packages.config" />
-    <Content Include="Areas\Ops\Views\Home\Index.cshtml">
+    <Content Include="Views\Home\Index.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>
     </Content>
-    <Content Include="Areas\Ops\Views\MachineStatus\Index.cshtml">
+    <Content Include="Views\MachineStatus\Index.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>
     </Content>
-    <Content Include="Areas\Ops\Views\Status\Index.cshtml">
+    <Content Include="Views\Status\Index.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>
     </Content>
-    <Content Include="Areas\Ops\Views\web.config" />
-    <Content Include="Areas\Ops\Views\_ViewStart.cshtml">
+    <Content Include="Views\web.config" />
+    <Content Include="Views\_ViewStart.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
     </Content>
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -178,36 +179,37 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
-    <Compile Include="Areas\Ops\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Ops\Controllers\MachineStatusController.cs" />
-    <Compile Include="Areas\Ops\Controllers\StatusController.cs" />
-    <Compile Include="Areas\Ops\Models\EnvironmentStatusModel.cs" />
-    <Compile Include="Areas\Ops\Models\IssueSetModel.cs" />
-    <Compile Include="Areas\Ops\Models\LogEntryModel.cs" />
-    <Compile Include="Areas\Ops\Models\MachineHardDriveStatusModel.cs" />
-    <Compile Include="Areas\Ops\Models\MachineStatusModel.cs" />
-    <Compile Include="Areas\Ops\Models\NewsItemModel.cs" />
-    <Compile Include="Areas\Ops\Models\OpsModel.cs" />
-    <Compile Include="Areas\Ops\Models\ReleaseModel.cs" />
-    <Compile Include="Areas\Ops\Models\ServiceStatus.cs" />
-    <Compile Include="Areas\Ops\Models\ServiceStatusModel.cs" />
-    <Compile Include="Areas\Ops\OpsAreaRegistration.cs" />
-    <Compile Include="Areas\Ops\Views\Home\Index.generated.cs">
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MachineStatusController.cs" />
+    <Compile Include="Controllers\StatusController.cs" />
+    <Compile Include="Models\EnvironmentStatusModel.cs" />
+    <Compile Include="Models\IssueSetModel.cs" />
+    <Compile Include="Models\LogEntryModel.cs" />
+    <Compile Include="Models\MachineHardDriveStatusModel.cs" />
+    <Compile Include="Models\MachineStatusModel.cs" />
+    <Compile Include="Models\NewsItemModel.cs" />
+    <Compile Include="Models\OpsModel.cs" />
+    <Compile Include="Models\ReleaseModel.cs" />
+    <Compile Include="Models\ServiceStatus.cs" />
+    <Compile Include="Models\ServiceStatusModel.cs" />
+    <Compile Include="OpsAreaDescription.cs" />
+    <Compile Include="OpsRouteRegistrar.cs" />
+    <Compile Include="Views\Home\Index.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Index.cshtml</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Ops\Views\MachineStatus\Index.generated.cs">
+    <Compile Include="Views\MachineStatus\Index.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Index.cshtml</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Ops\Views\Status\Index.generated.cs">
+    <Compile Include="Views\Status\Index.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Index.cshtml</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Ops\Views\_ViewStart.generated.cs">
+    <Compile Include="Views\_ViewStart.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>_ViewStart.cshtml</DependentUpon>
@@ -216,8 +218,24 @@
     <Compile Include="Properties\AssemblyInfo.Company.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.VersionNumber.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Panoptic.UI.Web.Common\Panoptic.UI.Web.Common.csproj">
+      <Project>{20f02164-25e7-46ee-bac0-c76e3107f224}</Project>
+      <Name>Panoptic.UI.Web.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -255,9 +273,16 @@
   <Import Project="../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/csharp.targets" Condition=" Exists('../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/csharp.targets') " />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
+	   -->
+  <!--
   <Target Name="BeforeBuild">
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
   -->
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <OpsFiles Include="$(OutDir)\Panoptic.UI.Web.Areas.Ops.*" />
+      <OpsFiles Include="$(OutDir)\WebActivatorEx.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(OpsFiles)" DestinationFolder="$(MSBuildProjectDirectory)\..\Panoptic.UI.Web\bin\plugins\Panoptic.UI.Web.Areas.Ops" />
+  </Target>
 </Project>

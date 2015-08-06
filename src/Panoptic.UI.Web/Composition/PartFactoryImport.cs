@@ -13,6 +13,7 @@ using System.ComponentModel.Composition.ReflectionModel;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using Panoptic.UI.Web.Properties;
 
 namespace Panoptic.UI.Web.Composition
 {
@@ -23,13 +24,13 @@ namespace Panoptic.UI.Web.Composition
     {
         private const string SetterPrefix = "set_";
 
+        private static readonly Type s_PartFactoryImportType = typeof(PartFactoryImport);
+
         private static readonly MethodInfo s_CreatePartFactoryMetaMethod
             = s_PartFactoryImportType.GetMethod("CreatePartCreatorOfTWithMetadata", BindingFlags.Static | BindingFlags.NonPublic);
 
         private static readonly MethodInfo s_CreatePartFactoryMethod
             = s_PartFactoryImportType.GetMethod("CreatePartCreatorOfT", BindingFlags.Static | BindingFlags.NonPublic);
-
-        private static readonly Type s_PartFactoryImportType = typeof(PartFactoryImport);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PartFactoryImport" /> class.

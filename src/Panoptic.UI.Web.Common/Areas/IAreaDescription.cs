@@ -4,12 +4,12 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Panoptic.UI.Web.Common.Verbs
+namespace Panoptic.UI.Web.Common.Areas
 {
     /// <summary>
     /// Defines an action verb.
     /// </summary>
-    public interface IActionVerb
+    public interface IAreaDescription
     {
         /// <summary>
         /// Gets the action.
@@ -20,7 +20,7 @@ namespace Panoptic.UI.Web.Common.Verbs
         }
 
         /// <summary>
-        /// Gets the controller.
+        /// Gets the controller that provides the entry point for the area.
         /// </summary>
         string Controller
         {
@@ -28,7 +28,7 @@ namespace Panoptic.UI.Web.Common.Verbs
         }
 
         /// <summary>
-        /// Gets the description of the verb.
+        /// Gets the description of the area.
         /// </summary>
         string Description
         {
@@ -36,7 +36,15 @@ namespace Panoptic.UI.Web.Common.Verbs
         }
 
         /// <summary>
-        /// Gets the name of the verb.
+        /// Gets the ID of the area.
+        /// </summary>
+        string Id
+        {
+            get;
+        }
+
+        /// <summary>
+        /// Gets the name of the area.
         /// </summary>
         string Name
         {

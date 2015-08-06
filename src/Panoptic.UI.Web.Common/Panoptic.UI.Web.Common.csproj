@@ -114,14 +114,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\AreaCategories.cs" />
     <Compile Include="Controllers\ExportControllerAttribute.cs" />
     <Compile Include="Controllers\IControllerMetadata.cs" />
     <Compile Include="IComposer.cs" />
     <Compile Include="Routes\IRouteRegistrar.cs" />
     <Compile Include="Routes\IRouteRegistrarMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Verbs\IActionVerb.cs" />
-    <Compile Include="Verbs\IActionVerbMetadata.cs" />
+    <Compile Include="Areas\IAreaDescription.cs" />
+    <Compile Include="Areas\IAreaDescriptionMetadata.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="nbuildkit.csharp.readme.txt" />

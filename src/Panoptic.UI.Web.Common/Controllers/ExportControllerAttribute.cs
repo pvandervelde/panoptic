@@ -20,21 +20,40 @@ namespace Panoptic.UI.Web.Common.Controllers
         /// <summary>
         /// Initialises a new instance of the <see cref="ExportControllerAttribute"/> class.
         /// </summary>
-        /// <param name="name">The name of the controller.</param>
-        public ExportControllerAttribute(string name) : base(typeof(IController))
+        /// <param name="controllerType">The type of the controller.</param>
+        public ExportControllerAttribute(Type controllerType) : base(typeof(IController))
         {
             {
-                Lokad.Enforce.Argument(() => name);
-                Lokad.Enforce.Argument(() => name, Lokad.Rules.StringIs.NotEmpty);
+                Lokad.Enforce.Argument(() => controllerType);
             }
-
-            Name = name;
+            
+            ControllerName = controllerType.Name.Substring(
+                0,
+                controllerType.Name.IndexOf("Controller"));
+            TypeName = controllerType.Name;
+            TypeNamespace = controllerType.Namespace;
         }
 
         /// <summary>
         /// Gets the name of the controller.
         /// </summary>
-        public string Name
+        public string ControllerName
+        {
+            get;
+        }
+
+        /// <summary>
+        /// Gets the type name of the controller type.
+        /// </summary>
+        public string TypeName
+        {
+            get;
+        }
+
+        /// <summary>
+        /// Gets the namespace of the controller type.
+        /// </summary>
+        public string TypeNamespace
         {
             get;
         }

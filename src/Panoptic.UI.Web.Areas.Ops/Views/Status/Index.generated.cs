@@ -27,18 +27,18 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     
-    #line 1 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+    #line 1 "..\..\Views\Status\Index.cshtml"
     using Panoptic.UI.Web.Areas.Ops.Models;
     
     #line default
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    [System.Web.WebPages.PageVirtualPathAttribute("~/Areas/Ops/Views/Status/Index.cshtml")]
-    public partial class _Areas_Ops_Views_Status_Index_cshtml : System.Web.Mvc.WebViewPage<Panoptic.UI.Web.Areas.Ops.Models.EnvironmentStatusModel>
+    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Status/Index.cshtml")]
+    public partial class _Views_Status_Index_cshtml : System.Web.Mvc.WebViewPage<Panoptic.UI.Web.Areas.Ops.Models.EnvironmentStatusModel>
     {
         
-        #line 8 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+        #line 8 "..\..\Views\Status\Index.cshtml"
 
     internal string StatusToText(ServiceStatus status)
     {
@@ -73,7 +73,7 @@ namespace ASP
         #line default
         #line hidden
 
-        public _Areas_Ops_Views_Status_Index_cshtml()
+        public _Views_Status_Index_cshtml()
         {
         }
         public override void Execute()
@@ -84,7 +84,7 @@ WriteLiteral("\r\n");
 
 
             
-            #line 4 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+            #line 4 "..\..\Views\Status\Index.cshtml"
   
     ViewBag.Title = Model.Name;
 
@@ -99,7 +99,7 @@ WriteLiteral("\r\n\r\n<div class=\"jumbotron\">\r\n    <h1>");
 
 
             
-            #line 41 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+            #line 41 "..\..\Views\Status\Index.cshtml"
    Write(Html.DisplayFor(model => model.Name));
 
             
@@ -109,7 +109,7 @@ WriteLiteral("</h1>\r\n    <p class=\"lead\">");
 
 
             
-            #line 42 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+            #line 42 "..\..\Views\Status\Index.cshtml"
                Write(Html.DisplayFor(model => model.Description));
 
             
@@ -137,7 +137,7 @@ WriteLiteral(@"</p>
 
 
             
-            #line 60 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+            #line 60 "..\..\Views\Status\Index.cshtml"
                  foreach (var service in Model.Services)
                 {
 
@@ -148,7 +148,7 @@ WriteLiteral("                    <tr>\r\n                        <td>");
 
 
             
-            #line 63 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+            #line 63 "..\..\Views\Status\Index.cshtml"
                        Write(Html.DisplayFor(model => service.Name));
 
             
@@ -158,7 +158,7 @@ WriteLiteral("</td>\r\n                        <td class=\"alert ");
 
 
             
-            #line 64 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+            #line 64 "..\..\Views\Status\Index.cshtml"
                                     Write(StatusToCssAlertClass(service.Status));
 
             
@@ -168,7 +168,7 @@ WriteLiteral("\">");
 
 
             
-            #line 64 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+            #line 64 "..\..\Views\Status\Index.cshtml"
                                                                             Write(StatusToText(service.Status));
 
             
@@ -178,7 +178,7 @@ WriteLiteral("</td>\r\n                        <td>");
 
 
             
-            #line 65 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+            #line 65 "..\..\Views\Status\Index.cshtml"
                        Write(Html.DisplayFor(model => service.Notification));
 
             
@@ -188,7 +188,7 @@ WriteLiteral("</td>\r\n                    </tr>\r\n");
 
 
             
-            #line 67 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+            #line 67 "..\..\Views\Status\Index.cshtml"
                 }
 
             
@@ -230,7 +230,7 @@ WriteLiteral(@"            </tbody>
 
 
             
-            #line 100 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+            #line 100 "..\..\Views\Status\Index.cshtml"
                  foreach (var machine in Model.Machines)
                 {
 
@@ -241,7 +241,7 @@ WriteLiteral("                    <tr>\r\n                        <td>");
 
 
             
-            #line 103 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+            #line 103 "..\..\Views\Status\Index.cshtml"
                        Write(Html.ActionLink(machine.Name, "Index", "MachineStatus", new { area = "ops", machine = machine.Name }, new { }));
 
             
@@ -251,7 +251,7 @@ WriteLiteral("</td>\r\n                        <td class=\"alert ");
 
 
             
-            #line 104 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+            #line 104 "..\..\Views\Status\Index.cshtml"
                                     Write(StatusToCssAlertClass(machine.Status));
 
             
@@ -261,7 +261,7 @@ WriteLiteral("\">");
 
 
             
-            #line 104 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+            #line 104 "..\..\Views\Status\Index.cshtml"
                                                                             Write(StatusToText(machine.Status));
 
             
@@ -271,7 +271,7 @@ WriteLiteral("</td>\r\n                        <td>");
 
 
             
-            #line 105 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+            #line 105 "..\..\Views\Status\Index.cshtml"
                        Write(Html.DisplayFor(model => machine.CpuPercentage));
 
             
@@ -282,7 +282,7 @@ WriteLiteral(" &#37;</td>\r\n                        <td>CPU history ...</td>\r\
 
 
             
-            #line 107 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+            #line 107 "..\..\Views\Status\Index.cshtml"
                        Write(Html.DisplayFor(model => machine.MemoryInUseInGb));
 
             
@@ -292,7 +292,7 @@ WriteLiteral(" Gb</td>\r\n                        <td>");
 
 
             
-            #line 108 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+            #line 108 "..\..\Views\Status\Index.cshtml"
                        Write(Html.DisplayFor(model => machine.MemoryTotalInGb));
 
             
@@ -302,7 +302,7 @@ WriteLiteral(" Gb</td>\r\n                        <td>");
 
 
             
-            #line 109 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+            #line 109 "..\..\Views\Status\Index.cshtml"
                        Write(Html.DisplayFor(model => machine.MemoryInUsePercentage));
 
             
@@ -313,7 +313,7 @@ WriteLiteral(" &#37;</td>\r\n                        <td>disks ....</td>\r\n    
 
 
             
-            #line 111 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+            #line 111 "..\..\Views\Status\Index.cshtml"
                        Write(Html.DisplayFor(model => machine.Notification));
 
             
@@ -323,7 +323,7 @@ WriteLiteral("</td>\r\n                    </tr>\r\n");
 
 
             
-            #line 113 "..\..\Areas\Ops\Views\Status\Index.cshtml"
+            #line 113 "..\..\Views\Status\Index.cshtml"
                 }
 
             

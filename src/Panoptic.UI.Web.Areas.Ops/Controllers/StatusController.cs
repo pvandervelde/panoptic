@@ -7,12 +7,14 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Panoptic.UI.Web.Areas.Ops.Models;
+using Panoptic.UI.Web.Common.Controllers;
 
 namespace Panoptic.UI.Web.Areas.Ops.Controllers
 {
     /// <summary>
     /// Provides the status pages for the different services in the available environments.
     /// </summary>
+    [ExportController(typeof(StatusController))]
     public class StatusController : Controller
     {
         /// <summary>

@@ -28,17 +28,17 @@ namespace ASP
     using System.Web.WebPages;
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    [System.Web.WebPages.PageVirtualPathAttribute("~/Areas/Ops/Views/_ViewStart.cshtml")]
-    public partial class _Areas_Ops_Views__ViewStart_cshtml : System.Web.Mvc.ViewStartPage
+    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/_ViewStart.cshtml")]
+    public partial class _Views__ViewStart_cshtml : System.Web.Mvc.ViewStartPage
     {
-        public _Areas_Ops_Views__ViewStart_cshtml()
+        public _Views__ViewStart_cshtml()
         {
         }
         public override void Execute()
         {
 
             
-            #line 1 "..\..\Areas\Ops\Views\_ViewStart.cshtml"
+            #line 1 "..\..\Views\_ViewStart.cshtml"
   
     // Change the Layout path below to blend the look and feel of the help page with your existing web pages.
     Layout = "~/Views/Shared/_Layout.cshtml";

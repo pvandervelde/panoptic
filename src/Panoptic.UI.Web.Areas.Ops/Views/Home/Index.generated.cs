@@ -27,18 +27,18 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     
-    #line 1 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+    #line 1 "..\..\Views\Home\Index.cshtml"
     using Panoptic.UI.Web.Areas.Ops.Models;
     
     #line default
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    [System.Web.WebPages.PageVirtualPathAttribute("~/Areas/Ops/Views/Home/Index.cshtml")]
-    public partial class _Areas_Ops_Views_Home_Index_cshtml : System.Web.Mvc.WebViewPage<Panoptic.UI.Web.Areas.Ops.Models.OpsModel>
+    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Home/Index.cshtml")]
+    public partial class _Views_Home_Index_cshtml : System.Web.Mvc.WebViewPage<Panoptic.UI.Web.Areas.Ops.Models.OpsModel>
     {
         
-        #line 8 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+        #line 8 "..\..\Views\Home\Index.cshtml"
 
     internal string StatusToText(ServiceStatus status)
     {
@@ -73,7 +73,7 @@ namespace ASP
         #line default
         #line hidden
 
-        public _Areas_Ops_Views_Home_Index_cshtml()
+        public _Views_Home_Index_cshtml()
         {
         }
         public override void Execute()
@@ -84,7 +84,7 @@ WriteLiteral("\r\n");
 
 
             
-            #line 4 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 4 "..\..\Views\Home\Index.cshtml"
   
     ViewBag.Title = Model.Name;
 
@@ -99,7 +99,7 @@ WriteLiteral("\r\n\r\n<div class=\"jumbotron\">\r\n    <h1>");
 
 
             
-            #line 41 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 41 "..\..\Views\Home\Index.cshtml"
    Write(Html.DisplayFor(model => model.Name));
 
             
@@ -109,7 +109,7 @@ WriteLiteral("</h1>\r\n    <p class=\"lead\">");
 
 
             
-            #line 42 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 42 "..\..\Views\Home\Index.cshtml"
                Write(Html.DisplayFor(model => model.Description));
 
             
@@ -121,7 +121,7 @@ WriteLiteral("</p>\r\n</div>\r\n<div class=\"row\">\r\n    <div class=\"col-md-4
 
 
             
-            #line 51 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 51 "..\..\Views\Home\Index.cshtml"
          foreach (var environment in Model.EnvironmentStatus)
         {
 
@@ -132,7 +132,7 @@ WriteLiteral("            <h3>");
 
 
             
-            #line 53 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 53 "..\..\Views\Home\Index.cshtml"
            Write(Html.DisplayFor(model => environment.Name));
 
             
@@ -154,7 +154,7 @@ WriteLiteral(@"            <table class=""table table-striped"">
 
 
             
-            #line 62 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 62 "..\..\Views\Home\Index.cshtml"
                      foreach (var service in environment.Services)
                     {
 
@@ -165,7 +165,7 @@ WriteLiteral("                        <tr>\r\n                            <td>")
 
 
             
-            #line 65 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 65 "..\..\Views\Home\Index.cshtml"
                            Write(Html.DisplayFor(model => service.Name));
 
             
@@ -175,7 +175,7 @@ WriteLiteral("</td>\r\n                            <td class=\"alert ");
 
 
             
-            #line 66 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 66 "..\..\Views\Home\Index.cshtml"
                                         Write(StatusToCssAlertClass(service.Status));
 
             
@@ -185,7 +185,7 @@ WriteLiteral("\">");
 
 
             
-            #line 66 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 66 "..\..\Views\Home\Index.cshtml"
                                                                                 Write(StatusToText(service.Status));
 
             
@@ -195,7 +195,7 @@ WriteLiteral("</td>\r\n                        </tr>\r\n");
 
 
             
-            #line 68 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 68 "..\..\Views\Home\Index.cshtml"
                     }
 
             
@@ -205,7 +205,7 @@ WriteLiteral("                </tbody>\r\n            </table>\r\n");
 
 
             
-            #line 71 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 71 "..\..\Views\Home\Index.cshtml"
 
 
             
@@ -215,7 +215,7 @@ WriteLiteral("            <p>");
 
 
             
-            #line 72 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 72 "..\..\Views\Home\Index.cshtml"
           Write(Html.ActionLink("More information \u00bb", "Index", "Status", new { area = "ops", environment = environment.Name }, new { @class = "btn btn-default" }));
 
             
@@ -229,7 +229,7 @@ WriteLiteral("            <br />\r\n");
 
 
             
-            #line 74 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 74 "..\..\Views\Home\Index.cshtml"
         }
 
             
@@ -240,7 +240,7 @@ WriteLiteral("    </div>\r\n    <div class=\"col-md-4\">\r\n        <h2>Outstand
 
 
             
-            #line 80 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 80 "..\..\Views\Home\Index.cshtml"
              foreach (var issueSet in Model.Issues)
             {
 
@@ -252,7 +252,7 @@ WriteLiteral("                <a class=\"btn btn-lg btn-primary\" href=\"\">\r\n
 
 
             
-            #line 83 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 83 "..\..\Views\Home\Index.cshtml"
                      Write(issueSet.Name);
 
             
@@ -262,7 +262,7 @@ WriteLiteral("</span>\r\n                    <h1>");
 
 
             
-            #line 84 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 84 "..\..\Views\Home\Index.cshtml"
                    Write(issueSet.Count);
 
             
@@ -272,7 +272,7 @@ WriteLiteral("</h1>\r\n                </a>\r\n");
 
 
             
-            #line 86 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 86 "..\..\Views\Home\Index.cshtml"
             }
 
             
@@ -283,7 +283,7 @@ WriteLiteral("        </div>\r\n    </div>\r\n    <div class=\"col-md-4\">\r\n  
 
 
             
-            #line 92 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 92 "..\..\Views\Home\Index.cshtml"
          foreach (var newsItem in Model.NewsItems)
         {
 
@@ -295,7 +295,7 @@ WriteLiteral("            <div class=\"panel panel-primary\">\r\n               
 
 
             
-            #line 96 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 96 "..\..\Views\Home\Index.cshtml"
                                        Write(newsItem.Date.ToString("yyyy-MM-dd"));
 
             
@@ -305,7 +305,7 @@ WriteLiteral(": ");
 
 
             
-            #line 96 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 96 "..\..\Views\Home\Index.cshtml"
                                                                               Write(newsItem.Summary);
 
             
@@ -316,7 +316,7 @@ WriteLiteral("</h3>\r\n                </div>\r\n                <div class=\"pa
 
 
             
-            #line 99 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 99 "..\..\Views\Home\Index.cshtml"
                Write(newsItem.Description);
 
             
@@ -326,7 +326,7 @@ WriteLiteral("\r\n                </div>\r\n            </div>\r\n");
 
 
             
-            #line 102 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 102 "..\..\Views\Home\Index.cshtml"
         }
 
             
@@ -357,7 +357,7 @@ WriteLiteral(@"
 
 
             
-            #line 124 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 124 "..\..\Views\Home\Index.cshtml"
                  foreach (var release in Model.Releases)
                 {
 
@@ -368,7 +368,7 @@ WriteLiteral("                    <tr>\r\n                        <td>");
 
 
             
-            #line 127 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 127 "..\..\Views\Home\Index.cshtml"
                        Write(release.Name);
 
             
@@ -378,7 +378,7 @@ WriteLiteral("</td>\r\n                        <td>");
 
 
             
-            #line 128 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 128 "..\..\Views\Home\Index.cshtml"
                        Write(release.Version.ToString(3));
 
             
@@ -388,7 +388,7 @@ WriteLiteral("</td>\r\n                        <td>");
 
 
             
-            #line 129 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 129 "..\..\Views\Home\Index.cshtml"
                        Write(release.Date.ToString("yyyy-MM-dd"));
 
             
@@ -399,7 +399,7 @@ WriteLiteral("</td>\r\n                        <td>10</td>\r\n                  
 
 
             
-            #line 133 "..\..\Areas\Ops\Views\Home\Index.cshtml"
+            #line 133 "..\..\Views\Home\Index.cshtml"
                 }
 
             

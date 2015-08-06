@@ -5,12 +5,12 @@
 //-----------------------------------------------------------------------
 
 
-namespace Panoptic.UI.Web.Common.Verbs
+namespace Panoptic.UI.Web.Common.Areas
 {
     /// <summary>
     /// Defines metadata associated with an action verb.
     /// </summary>
-    public interface IActionVerbMetadata
+    public interface IAreaDescriptionMetadata
     {
         /// <summary>
         /// Gets the category for the verb.

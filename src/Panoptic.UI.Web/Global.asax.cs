@@ -10,23 +10,25 @@ using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Panoptic.UI.Web.Common.Areas;
 using Panoptic.UI.Web.Common.Routes;
-using Panoptic.UI.Web.Common.Verbs;
 using Panoptic.UI.Web.Composition;
 using Panoptic.UI.Web.Configuration;
+using Panoptic.UI.Web.Nuclei.Fusion;
 
 namespace Panoptic.UI.Web
 {
     /// <summary>
     /// The entry point of the web application.
     /// </summary>
-    public class WebApiApplication : HttpApplication
+    public class PanopticApplication : HttpApplication
     {
-        private static IEnumerable<Lazy<IActionVerb, IActionVerbMetadata>> s_ActionVerbs;
+        private static IEnumerable<Lazy<IAreaDescription, IAreaDescriptionMetadata>> s_ActionVerbs;
 
         /// <summary>
         /// Gets the <see cref="Composer" /> used to compose parts.
@@ -38,14 +40,15 @@ namespace Panoptic.UI.Web
         }
 
         /// <summary>
-        /// Gets the available verbs for the given category.
+        /// Gets the available descriptions for the given category.
         /// </summary>
-        /// <param name="category">The category of verbs to get.</param>
-        /// <returns>An enumerable of verbs.</returns>
-        public static IEnumerable<IActionVerb> GetVerbsForCategory(string category)
+        /// <param name="category">The category of descriptions to get.</param>
+        /// <returns>A collection containing the requested descriptions.</returns>
+        public static IEnumerable<IAreaDescription> GetDescriptionsForCategory(string category)
         {
             {
                 Lokad.Enforce.Argument(() => category);
+                Lokad.Enforce.Argument(() => category, Lokad.Rules.StringIs.NotEmpty);
             }
 
             return s_ActionVerbs
@@ -77,6 +80,32 @@ namespace Panoptic.UI.Web
             RegisterRoutes();
         }
 
+        private IEnumerable<string> AssemblySearchPaths()
+        {
+            var list = new List<string>();
+            var config = CompositionConfigurationSection.GetInstance();
+            if (config != null && config.Catalogs != null)
+            {
+                config.Catalogs
+                    .Cast<CatalogConfigurationElement>()
+                    .ForEach(c =>
+                    {
+                        if (!string.IsNullOrEmpty(c.Path))
+                        {
+                            string path = c.Path;
+                            if (path.StartsWith("~") || path.StartsWith("/"))
+                            {
+                                path = MapPath(path);
+                            }
+
+                            list.Add(path);
+                        }
+                    });
+            }
+
+            return list;
+        }
+
         /// <summary>
         /// Creates a <see cref="Composer" /> used to compose parts.
         /// </summary>
@@ -84,6 +113,8 @@ namespace Panoptic.UI.Web
         private Composer CreateComposer()
         {
             var composer = new Composer();
+
+            composer.AddCatalog(new AssemblyCatalog(Assembly.GetExecutingAssembly()));
 
             GetDirectoryCatalogs()
                 .ForEach(composer.AddCatalog);
@@ -107,7 +138,7 @@ namespace Panoptic.UI.Web
 
             Composer.Compose(this);
 
-            s_ActionVerbs = Composer.ResolveAll<IActionVerb, IActionVerbMetadata>();
+            s_ActionVerbs = Composer.ResolveAll<IAreaDescription, IAreaDescriptionMetadata>();
         }
 
         /// <summary>
@@ -127,41 +158,13 @@ namespace Panoptic.UI.Web
         private List<DirectoryCatalog> GetDirectoryCatalogs()
         {
             var list = new List<DirectoryCatalog>();
-            string applicationPath = MapPath("~/");
 
-            foreach (var catalog in GetDirectoryCatalogs(MapPath("~/bin")))
+            foreach (var path in AssemblySearchPaths())
             {
-                list.Add(catalog);
-            }
-
-            foreach (var catalog in GetDirectoryCatalogs(MapPath("~/Areas")))
-            {
-                list.Add(catalog);
-                RegisterPath(catalog.FullPath);
-            }
-
-            var config = CompositionConfigurationSection.GetInstance();
-            if (config != null && config.Catalogs != null)
-            {
-                config.Catalogs
-                    .Cast<CatalogConfigurationElement>()
-                    .ForEach(c =>
-                    {
-                        if (!string.IsNullOrEmpty(c.Path))
-                        {
-                            string path = c.Path;
-                            if (path.StartsWith("~") || path.StartsWith("/"))
-                            {
-                                path = MapPath(path);
-                            }
-
-                            foreach (var catalog in GetDirectoryCatalogs(path))
-                            {
-                                list.Add(catalog);
-                                RegisterPath(catalog.FullPath);
-                            }
-                        }
-                    });
+                foreach (var catalog in GetDirectoryCatalogs(path))
+                {
+                    list.Add(catalog);
+                }
             }
 
             return list;
@@ -215,15 +218,16 @@ namespace Panoptic.UI.Web
         /// </summary>
         private void PreCompose()
         {
-        }
-
-        /// <summary>
-        /// Registers the specified path for probing.
-        /// </summary>
-        /// <param name="path">The probable path.</param>
-        private void RegisterPath(string path)
-        {
-            AppDomain.CurrentDomain.AppendPrivatePath(path);
+            var domain = AppDomain.CurrentDomain;
+            {
+                var helper = new FusionHelper(
+                    () => AssemblySearchPaths().SelectMany(
+                        dir => Directory.GetFiles(
+                            dir,
+                            "*.dll",
+                            SearchOption.AllDirectories)));
+                domain.AssemblyResolve += helper.LocateAssemblyOnAssemblyLoadFailure;
+            }
         }
 
         /// <summary>

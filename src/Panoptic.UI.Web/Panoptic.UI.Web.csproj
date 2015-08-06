@@ -169,9 +169,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DefaultRouteRegistrar.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="Areas\Services\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Services\Models\ServicesModel.cs" />
-    <Compile Include="Areas\Services\ServicesAreaRegistration.cs" />
     <Compile Include="Composition\Composer.cs" />
     <Compile Include="Composition\ConcurrentCache.cs" />
     <Compile Include="Composition\DynamicInstantiationExportProvider.cs" />
@@ -187,6 +184,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Composition\ImportControllerFactory.cs" />
+    <Compile Include="Nuclei\Fusion\AssemblyNameElements.cs" />
+    <Compile Include="Nuclei\Fusion\FusionHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.BuildInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.Company.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -208,10 +207,6 @@
     <Content Include="nbuildkit.readme.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Areas\Services\Views\web.config" />
-    <Content Include="Areas\Services\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Services\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Services\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

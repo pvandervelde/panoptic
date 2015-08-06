@@ -14,7 +14,23 @@ namespace Panoptic.UI.Web.Common.Controllers
         /// <summary>
         /// Gets the name of the controller.
         /// </summary>
-        string Name
+        string ControllerName
+        {
+            get;
+        }
+
+        /// <summary>
+        /// Gets the type name of the controller type.
+        /// </summary>
+        string TypeName
+        {
+            get;
+        }
+
+        /// <summary>
+        /// Gets the namespace of the controller type.
+        /// </summary>
+        string TypeNamespace
         {
             get;
         }

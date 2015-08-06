@@ -6,16 +6,16 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Panoptic.UI.Web.Areas.Ops.Models;
+using Panoptic.UI.Web.Common.Controllers;
 
 namespace Panoptic.UI.Web.Areas.Ops.Controllers
 {
     /// <summary>
     /// Provides the status page for a specific machine.
     /// </summary>
+    [ExportController(typeof(MachineStatusController))]
     public class MachineStatusController : Controller
     {
         /// <summary>

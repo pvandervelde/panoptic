@@ -38,7 +38,18 @@ namespace Panoptic.UI.Web.Composition
         public override IController CreateController(System.Web.Routing.RequestContext requestContext, string controllerName)
         {
             var factory = ControllerFactories
-                .Where(f => f.Metadata.Name.Equals(controllerName, StringComparison.InvariantCultureIgnoreCase))
+                .Where(
+                    f =>
+                    {
+                        string[] namespaces = null;
+                        if (requestContext.RouteData.DataTokens.ContainsKey("Namespaces"))
+                        {
+                            namespaces = (string[])requestContext.RouteData.DataTokens["Namespaces"];
+                        }
+
+                        return f.Metadata.ControllerName.Equals(controllerName, StringComparison.InvariantCultureIgnoreCase)
+                            && ((namespaces != null) && namespaces.Contains(f.Metadata.TypeNamespace));
+                    })
                 .FirstOrDefault();
 
             if (factory != null)
