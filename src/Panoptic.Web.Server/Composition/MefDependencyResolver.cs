@@ -13,11 +13,19 @@ namespace Panoptic.Web.Server.Composition
     {
         private readonly CompositionContainer _container;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MefDependencyResolver"/> class.
+        /// </summary>
+        /// <param name="container">The composition container for the application.</param>
         public MefDependencyResolver(CompositionContainer container)
         {
             _container = container;
         }
 
+        /// <summary>
+        /// Starts a resolution scope.
+        /// </summary>
+        /// <returns>The dependency scope.</returns>
         public IDependencyScope BeginScope()
         {
             return this;
@@ -56,6 +64,10 @@ namespace Panoptic.Web.Server.Composition
             return exports;
         }
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, 
+        /// or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
         }

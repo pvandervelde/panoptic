@@ -4,8 +4,14 @@ using System.Web.Mvc;
 
 namespace Panoptic.Web.Server
 {
+    /// <summary>
+    /// Defines the entry point for the Web API application.
+    /// </summary>
     public class WebApiApplication : HttpApplication
     {
+        /// <summary>
+        /// The entry point for the web application.
+        /// </summary>
         protected void Application_Start()
         {
             MefConfig.RegisterMef();

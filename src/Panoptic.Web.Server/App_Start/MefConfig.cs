@@ -5,8 +5,14 @@ using Panoptic.Web.Server.Composition;
 
 namespace Panoptic.Web.Server
 {
+    /// <summary>
+    /// Configures the MEF part of the web site.
+    /// </summary>
     public static class MefConfig
     {
+        /// <summary>
+        /// Registers the MEF section of the web site.
+        /// </summary>
         public static void RegisterMef()
         {
             var asmCatalog = new AssemblyCatalog(Assembly.GetExecutingAssembly());
