@@ -76,8 +76,21 @@ namespace Panoptic.UI.Web
             // Initialises the application.
             Initialize();
 
+            // Register all areas.
+            RegisterAreas();
+
             // Register MVC routes.
             RegisterRoutes();
+        }
+
+        /// <summary>
+        /// Gets or sets the collection that contains the area registration instances.
+        /// </summary>
+        [ImportMany]
+        public IEnumerable<AreaRegistration> AreaRegistrars
+        {
+            get;
+            set;
         }
 
         private IEnumerable<string> AssemblySearchPaths()
@@ -115,6 +128,9 @@ namespace Panoptic.UI.Web
             var composer = new Composer();
 
             composer.AddCatalog(new AssemblyCatalog(Assembly.GetExecutingAssembly()));
+
+            var otherPath = @"C:\Users\Petrik\Documents\software\panoptic\src\src\Panoptic.UI.Web\bin\Panoptic.Plugins.UI.Ops.dll";
+            composer.AddCatalog(new AssemblyCatalog(otherPath));
 
             GetDirectoryCatalogs()
                 .ForEach(composer.AddCatalog);
@@ -163,7 +179,7 @@ namespace Panoptic.UI.Web
             {
                 foreach (var catalog in GetDirectoryCatalogs(path))
                 {
-                    list.Add(catalog);
+                    // list.Add(catalog);
                 }
             }
 
@@ -183,17 +199,16 @@ namespace Panoptic.UI.Web
             }
 
             List<DirectoryCatalog> list = new List<DirectoryCatalog>();
-            list.Add(new DirectoryCatalog(path));
 
-            list.AddRange(
-                Directory.GetDirectories(path).Select(directory => new DirectoryCatalog(directory)));
+            // list.Add(new DirectoryCatalog(path));
 
+            // list.AddRange(
+            // Directory.GetDirectories(path).Select(directory => new DirectoryCatalog(directory)));
             return list;
         }
 
         private void Initialize()
         {
-            AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
@@ -227,6 +242,23 @@ namespace Panoptic.UI.Web
                             "*.dll",
                             SearchOption.AllDirectories)));
                 domain.AssemblyResolve += helper.LocateAssemblyOnAssemblyLoadFailure;
+            }
+        }
+
+        private void RegisterAreas()
+        {
+            if ((AreaRegistrars == null) || (AreaRegistrars.Count() == 0))
+            {
+                return;
+            }
+
+            // Stolen from the dissassembled code of the AreaRegistration class
+            foreach (var registrar in AreaRegistrars)
+            {
+                var context = new AreaRegistrationContext(registrar.AreaName, RouteTable.Routes, null);
+                var ns = registrar.GetType().Namespace;
+                context.Namespaces.Add(ns + ".*");
+                registrar.RegisterArea(context);
             }
         }
 

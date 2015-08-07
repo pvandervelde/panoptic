@@ -4,19 +4,26 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Panoptic.UI.Web.Common.Areas
+namespace Panoptic.Plugins.UI.Ops.Areas.Ops.Models
 {
     /// <summary>
-    /// Defines metadata associated with an action verb.
+    /// Defines the status for a service.
     /// </summary>
-    public interface IAreaDescriptionMetadata
+    public enum ServiceStatus
     {
         /// <summary>
-        /// Gets the category for the verb.
+        /// The service status is OK.
         /// </summary>
-        string Category
-        {
-            get;
-        }
+        Ok,
+
+        /// <summary>
+        /// The service status is warning.
+        /// </summary>
+        Warning,
+
+        /// <summary>
+        /// The service status is error.
+        /// </summary>
+        Error
     }
 }

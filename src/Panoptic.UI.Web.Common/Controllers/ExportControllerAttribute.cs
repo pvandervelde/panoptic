@@ -18,7 +18,7 @@ namespace Panoptic.UI.Web.Common.Controllers
     public class ExportControllerAttribute : ExportAttribute, IControllerMetadata
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="ExportControllerAttribute"/> class.
+        /// Initializes a new instance of the <see cref="ExportControllerAttribute"/> class.
         /// </summary>
         /// <param name="controllerType">The type of the controller.</param>
         public ExportControllerAttribute(Type controllerType) : base(typeof(IController))
@@ -26,7 +26,7 @@ namespace Panoptic.UI.Web.Common.Controllers
             {
                 Lokad.Enforce.Argument(() => controllerType);
             }
-            
+
             ControllerName = controllerType.Name.Substring(
                 0,
                 controllerType.Name.IndexOf("Controller"));

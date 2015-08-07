@@ -4,19 +4,29 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Panoptic.UI.Web.Common.Areas
+namespace Panoptic.Plugins.UI.Ops.Areas.Ops.Models
 {
     /// <summary>
-    /// Defines metadata associated with an action verb.
+    /// Stores information about a set of issues.
     /// </summary>
-    public interface IAreaDescriptionMetadata
+    public class IssueSetModel
     {
         /// <summary>
-        /// Gets the category for the verb.
+        /// Gets or sets the number of issues
         /// </summary>
-        string Category
+        public int Count
         {
             get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the name of the issue set.
+        /// </summary>
+        public string Name
+        {
+            get;
+            set;
         }
     }
 }
