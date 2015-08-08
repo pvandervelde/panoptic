@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Panoptic.UI.Web.Common.Areas;
+using Panoptic.Web.Server.Common.Areas;
+using Panoptic.Web.Server.Common.Controllers;
 
 namespace Panoptic.Web.Server.Controllers
 {
     /// <summary>
     /// The entry point controller for the application.
     /// </summary>
+    [ExportController(typeof(HomeController))]
+    [PartCreationPolicy(CreationPolicy.NonShared)]
     public class HomeController : ApiController
     { 
         [ImportMany]
-        internal IEnumerable<Lazy<IAreaDescription, IAreaDescriptionMetadata>> AreaDescriptions
+        internal IEnumerable<IAreaDescription> AreaDescriptions
         {
             get;
             set;
@@ -31,11 +34,11 @@ namespace Panoptic.Web.Server.Controllers
             {
                 var descr = new
                     {
-                        Name = description.Value.Name,
-                        Description = description.Value.Description,
-                        Version = description.Value.Version,
-                        Controller = description.Value.Controller,
-                        Action = description.Value.Action,
+                        Name = description.Name,
+                        Description = description.Description,
+                        Version = description.Version,
+                        Controller = description.Controller,
+                        Action = description.Action,
                     };
 
                 list.Add(descr);
@@ -43,8 +46,8 @@ namespace Panoptic.Web.Server.Controllers
 
             var result = new
             {
-                Product = "",
-                Description = "",
+                Product = "Panoptic",
+                Description = "Stuff",
                 Areas = list.ToArray(),
             };
             

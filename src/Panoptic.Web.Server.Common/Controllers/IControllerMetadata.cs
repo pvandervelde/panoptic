@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Panoptic.UI.Web.Common.Controllers
+namespace Panoptic.Web.Server.Common.Controllers
 {
     /// <summary>
     /// Defines the contract for providing metadata for a controller.

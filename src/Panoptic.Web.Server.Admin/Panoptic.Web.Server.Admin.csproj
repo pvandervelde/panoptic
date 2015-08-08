@@ -9,12 +9,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7863C21B-E456-456F-B45E-0C930930C882}</ProjectGuid>
+    <ProjectGuid>{6330BD39-7E5F-4537-9F4D-01E7981FF82F}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Panoptic.Web.Server</RootNamespace>
-    <AssemblyName>Panoptic.Web.Server</AssemblyName>
+    <RootNamespace>Panoptic.Web.Server.Admin</RootNamespace>
+    <AssemblyName>Panoptic.Web.Server.Admin</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -46,10 +46,6 @@
   <Import Project="../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/common.props" Condition=" Exists('../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/common.props') " />
   <Import Project="../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/common.net.props" Condition=" Exists('../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/common.net.props') " />
   <Import Project="../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/csharp.props" Condition=" Exists('../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/csharp.props') " />
-  <PropertyGroup>
-    <!-- Override the outdir because web projects aren't able to have their bin paths redirected (due to IIS) -->
-    <OutDir Condition=" '$(Configuration)' == 'Debug' ">bin\</OutDir>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac, Version=2.2.4.900, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Autofac.2.2.4.900\lib\NET40\Autofac.dll</HintPath>
@@ -169,31 +165,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\MefConfig.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Composition\MefAssemblyResolver.cs" />
-    <Compile Include="Composition\MefControllerFactory.cs" />
-    <Compile Include="Composition\MefDependencyResolver.cs" />
-    <Compile Include="Configuration\CatalogConfigurationElement.cs" />
-    <Compile Include="Configuration\CatalogConfigurationElementCollection.cs" />
-    <Compile Include="Configuration\CompositionConfigurationSection.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Formatters\BrowserJsonFormatter.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Nuclei\Fusion\AssemblyNameElements.cs" />
-    <Compile Include="Nuclei\Fusion\FusionHelper.cs" />
+    <Compile Include="AdminAreaDescription.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="favicon.ico" />
-    <Content Include="Global.asax" />
     <Content Include="nbuildkit.csharp.readme.txt" />
     <Content Include="nbuildkit.readme.txt" />
     <Content Include="Web.config" />
@@ -205,13 +184,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Panoptic.Web.Server.Common\Panoptic.Web.Server.Common.csproj">
       <Project>{769e88ed-157d-4473-81c6-7206313825af}</Project>
       <Name>Panoptic.Web.Server.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -229,9 +208,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>58177</DevelopmentServerPort>
+          <DevelopmentServerPort>2165</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:58177/</IISUrl>
+          <IISUrl>http://localhost:2165/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -255,6 +234,12 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
+  -->
   <Target Name="AfterBuild">
-  </Target> -->
+	<ItemGroup>
+      <OpsFiles Include="$(OutDir)\$(AssemblyName).*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(OpsFiles)" 
+	      DestinationFolder="$(MSBuildProjectDirectory)\..\Panoptic.Web.Server\bin\plugins\$(AssemblyName)" />
+  </Target>
 </Project>

@@ -8,7 +8,7 @@ using System;
 using System.ComponentModel.Composition;
 using System.Web.Mvc;
 
-namespace Panoptic.UI.Web.Common.Controllers
+namespace Panoptic.Web.Server.Common.Controllers
 {
     /// <summary>
     /// Exports a controller.
@@ -21,7 +21,7 @@ namespace Panoptic.UI.Web.Common.Controllers
         /// Initializes a new instance of the <see cref="ExportControllerAttribute"/> class.
         /// </summary>
         /// <param name="controllerType">The type of the controller.</param>
-        public ExportControllerAttribute(Type controllerType) : base(typeof(IController))
+        public ExportControllerAttribute(Type controllerType) : base(controllerType)
         {
             {
                 Lokad.Enforce.Argument(() => controllerType);

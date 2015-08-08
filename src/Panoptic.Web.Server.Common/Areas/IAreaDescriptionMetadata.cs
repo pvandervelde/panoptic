@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Panoptic.UI.Web.Common.Areas
+namespace Panoptic.Web.Server.Common.Areas
 {
     /// <summary>
     /// Defines metadata associated with an action verb.

@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Panoptic.UI.Web.Common.Areas
+namespace Panoptic.Web.Server.Common.Areas
 {
     /// <summary>
     /// Describes an area of capabilities.
