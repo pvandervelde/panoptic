@@ -1,66 +1,59 @@
 ﻿<!DOCTYPE html>
-<html lang="en" ng-app>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
-    <!-- Bootstrap -->
-    <link href="Content/bootstrap.min.css" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<html lang="en" ng-app="panoptic">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Bootstrap 101 Template</title>
+        <!-- Bootstrap -->
+        <link href="Content/bootstrap.min.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="Scripts/bootstrap.min.js"></script>
-    <script src="Scripts/angular.min.js"></script>
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!--
-                    @Html.ActionLink("Panoptic", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                -->
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <!--
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    @foreach (var description in PanopticApplication.GetDescriptionsForCategory(AreaCategories.Description))
-                    {
-                    <li>@Html.ActionLink(description.Name, description.Action, description.Controller, new { area = description.Id }, null)</li>
-                    }
-                    -->
-                </ul>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="Scripts/bootstrap.min.js"></script>
+        <script src="Scripts/angular.min.js"></script>
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavBarController">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div ng-repeat="area in areas">
+                        <a class="navbar-brand" href="{{ area.url }}">{{ area.name }}</a>
+                    </div>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" ng-repeat="area in areas">
+                        <li>
+                            <a href="{{ area.url }}">{{ area.name }}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        <div class="jumbotron">
-            <h1>@Html.DisplayFor(model => model.Name)</h1>
-            <p class="lead">@Html.DisplayFor(model => model.Description)</p>
+        <div class="container body-content">
+            <div class="jumbotron">
+                <h1>Stuff</h1>
+                <p class="lead">This is a long description of the current area</p>
+            </div>
+            <div ng-view>
+            </div>
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - P. van der Velde</p>
+            </footer>
         </div>
-        <div>
-            <!-- body content -->
-        </div>
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - P. van der Velde</p>
-        </footer>
-    </div>
-
-    
-</body>
+    </body>
 </html>
