@@ -1,5 +1,7 @@
+///<reference path="typings/angularjs/angular.d.ts" /> 
+///<reference path="typings/angularjs/angular-route.d.ts" />
 // Create the app and set up the routes
-var app = angular.module('panoptic', ['panoptic.filters', 'panoptic.services', 'panoptic.directives', 'panoptic.controllers'])
+var app = ang.module('panoptic', ['panoptic.filters', 'panoptic.services', 'panoptic.directives', 'panoptic.controllers'])
     .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
         $locationProvider.html5Mode(true);
         $routeProvider
@@ -15,3 +17,4 @@ var app = angular.module('panoptic', ['panoptic.filters', 'panoptic.services', '
             redirectTo: '/'
         });
     }]);
+//# sourceMappingURL=panoptic.js.map
