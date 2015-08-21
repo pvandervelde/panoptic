@@ -198,3 +198,7 @@ AssemblyInfo.BuildInformation.cs
 AssemblyInfo.Company.cs
 AssemblyInfo.VersionNumber.cs
 AssemblyInfo.InternalsVisibleTo.cs
+src/Panoptic.Web.Client/Scripts/panoptic.js.map
+src/Panoptic.Web.Client/Scripts/panoptic.js
+src/Panoptic.Web.Client/Scripts/controllers/*.map
+src/Panoptic.Web.Client/Scripts/controllers/*.js
