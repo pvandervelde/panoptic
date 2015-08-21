@@ -4,7 +4,7 @@
 declare var ang;
 
 // Create the app and set up the routes
-var app = ang.module('panoptic', ['panoptic.filters', 'panoptic.services', 'panoptic.directives', 'panoptic.controllers'])
+var app = angular.module('panoptic', ['ngRoute'])
     .config([<any> '$locationProvider', '$routeProvider', function ($locationProvider: any, $routeProvider: any) {
         $locationProvider.html5Mode(true);
         $routeProvider
