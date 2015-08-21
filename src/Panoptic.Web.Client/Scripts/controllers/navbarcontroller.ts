@@ -4,12 +4,8 @@
 app.controller('NavBarController', [<any> '$scope', function ($scope) {
     $scope.areas = [
         {
-            name: 'Home',
-            url: '~/home'
-        },
-        {
             name: 'Admin',
-            url: '~/admin'
+            url: '/admin'
         }
     ];
 }]);
