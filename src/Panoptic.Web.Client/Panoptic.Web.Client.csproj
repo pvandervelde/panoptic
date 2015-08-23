@@ -115,6 +115,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\controllers\homecontroller.ts" />
     <TypeScriptCompile Include="Scripts\controllers\navbarcontroller.ts" />
     <TypeScriptCompile Include="Scripts\panoptic.ts" />
     <TypeScriptCompile Include="Scripts\typings\angular-ui-bootstrap\angular-ui-bootstrap.d.ts" />
