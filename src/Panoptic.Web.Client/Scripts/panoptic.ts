@@ -1,8 +1,6 @@
 ﻿///<reference path="typings/angularjs/angular.d.ts" /> 
 ///<reference path="typings/angularjs/angular-route.d.ts" />
 
-declare var ang;
-
 // Create the app and set up the routes
 var app = angular.module('panoptic', ['ngRoute'])
     .config([<any> '$locationProvider', '$routeProvider', function ($locationProvider: any, $routeProvider: any) {
