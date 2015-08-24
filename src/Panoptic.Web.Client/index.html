@@ -30,11 +30,12 @@
         <script src="Scripts/panoptic.js"></script>
 
         <!-- controllers -->
-        <script src="Scripts/controllers/navbarcontroller.js"></script>
+        <script src="Scripts/controllers/pagenavbarcontroller.js"></script>
+        <script src="Scripts/controllers/pagefootercontroller.js"></script>
         <script src="Scripts/controllers/homecontroller.js"></script>
     </head>
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavBarController">
+        <div class="navbar navbar-inverse navbar-fixed-top" ng-controller="PageNavBarController">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -61,8 +62,8 @@
             <div ng-view>
             </div>
             <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - P. van der Velde</p>
+            <footer ng-controller="PageFooterController">
+                <p>&copy; {{ date | date:'yyyy-MM-dd' }} - P. van der Velde</p>
             </footer>
         </div>
     </body>
