@@ -202,3 +202,5 @@ src/Panoptic.Web.Client/Scripts/panoptic.js.map
 src/Panoptic.Web.Client/Scripts/panoptic.js
 src/Panoptic.Web.Client/Scripts/controllers/*.map
 src/Panoptic.Web.Client/Scripts/controllers/*.js
+src/Panoptic.Web.Client/directives/*.js
+src/Panoptic.Web.Client/directives/*.js.map
