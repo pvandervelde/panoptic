@@ -32,8 +32,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panoptic.Web.Server.Admin",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Unit.Panoptic.Web.Server.Admin", "Test.Unit.Panoptic.Web.Server.Admin\Test.Unit.Panoptic.Web.Server.Admin.csproj", "{009A4A63-0F8B-4D08-A215-14C8F6ED0354}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panoptic.Web.Client", "Panoptic.Web.Client\Panoptic.Web.Client.csproj", "{206F6B9B-18CA-48BA-BAED-802944D83CC1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,10 +58,6 @@ Global
 		{009A4A63-0F8B-4D08-A215-14C8F6ED0354}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{009A4A63-0F8B-4D08-A215-14C8F6ED0354}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{009A4A63-0F8B-4D08-A215-14C8F6ED0354}.Release|Any CPU.Build.0 = Release|Any CPU
-		{206F6B9B-18CA-48BA-BAED-802944D83CC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{206F6B9B-18CA-48BA-BAED-802944D83CC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{206F6B9B-18CA-48BA-BAED-802944D83CC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{206F6B9B-18CA-48BA-BAED-802944D83CC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

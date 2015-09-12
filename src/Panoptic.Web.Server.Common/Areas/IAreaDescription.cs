@@ -12,17 +12,27 @@ namespace Panoptic.Web.Server.Common.Areas
     public interface IAreaDescription
     {
         /// <summary>
-        /// Gets the action that is the entry action.
+        /// Gets the name of the angular controller that will be used to display
+        /// the area information.
         /// </summary>
-        string Action
+        string AngularController
         {
             get;
         }
 
         /// <summary>
-        /// Gets the controller that provides the entry point.
+        /// Gets the path to the html template that will be used by the angular controller
+        /// to display the area information.
         /// </summary>
-        string Controller
+        string AngularTemplateUri
+        {
+            get;
+        }
+
+        /// <summary>
+        /// Gets the relative path to the area.
+        /// </summary>
+        string AreaPath
         {
             get;
         }
@@ -31,14 +41,6 @@ namespace Panoptic.Web.Server.Common.Areas
         /// Gets the description.
         /// </summary>
         string Description
-        {
-            get;
-        }
-
-        /// <summary>
-        /// Gets the version.
-        /// </summary>
-        string Version
         {
             get;
         }

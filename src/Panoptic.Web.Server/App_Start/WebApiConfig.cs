@@ -1,5 +1,6 @@
 ﻿using System.Net.Http.Headers;
 using System.Web.Http;
+using Panoptic.Web.Server.Common.Initialization;
 using Panoptic.Web.Server.Formatters;
 
 namespace Panoptic.Web.Server
@@ -7,13 +8,13 @@ namespace Panoptic.Web.Server
     /// <summary>
     /// Provides the configuration of the Web API part of the website.
     /// </summary>
-    public static class WebApiConfig
+    public sealed class WebApiConfig : IWebApiConfig
     {
         /// <summary>
         /// Registers the web API methods.
         /// </summary>
         /// <param name="config">The configuration.</param>
-        public static void Register(HttpConfiguration config)
+        public void Register(HttpConfiguration config)
         {
             // Web API configuration and services
 

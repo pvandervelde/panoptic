@@ -12,24 +12,13 @@ namespace Panoptic.Web.Server.Admin
     public class AdminAreaDescription : IAreaDescription
     {
         /// <summary>
-        /// Gets the action that is the entry action.
+        /// Gets the relative path to the area.
         /// </summary>
-        public string Action
+        public string AreaPath
         {
             get
             {
-                return nameof(AdminController.Get);
-            }
-        }
-
-        /// <summary>
-        /// Gets the controller that provides the entry point.
-        /// </summary>
-        public string Controller
-        {
-            get
-            {
-                return typeof(AdminController).ControllerName();
+                return "admin";
             }
         }
 
@@ -41,17 +30,6 @@ namespace Panoptic.Web.Server.Admin
             get
             {
                 return "Provides access to the administration part of the site.";
-            }
-        }
-
-        /// <summary>
-        /// Gets the version.
-        /// </summary>
-        public string Version
-        {
-            get
-            {
-                return "v1";
             }
         }
 

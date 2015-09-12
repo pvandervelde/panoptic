@@ -1,7 +1,7 @@
 ﻿<data-area-header></data-area-header>
 <div class="row">
-    <div class="col-md-4" ng-repeat="">
-        <div ng-repeat="">
+    <div class="col-md-4" ng-repeat="rows in availableAreaDescriptions">
+        <div ng-repeat="item in rows">
             <h2>{{ name }}</h2>
             <p>{{ description }}</p>
             <p><a href="{{ url }}" class="btn btn-default">Learn more \u00bb</a></p>

@@ -15,7 +15,7 @@ namespace Panoptic.Web.Server.Composition
     /// </summary>
     public class MefControllerFactory : DefaultControllerFactory
     {
-        private readonly CompositionContainer compositionContainer;
+        private readonly CompositionContainer m_CompositionContainer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MefControllerFactory"/> class.
@@ -23,7 +23,7 @@ namespace Panoptic.Web.Server.Composition
         /// <param name="compositionContainer">The composition container.</param>
         public MefControllerFactory(CompositionContainer compositionContainer)
         {
-            this.compositionContainer = compositionContainer;
+            this.m_CompositionContainer = compositionContainer;
         }
 
         /// <summary>
@@ -35,10 +35,13 @@ namespace Panoptic.Web.Server.Composition
         /// <returns>The controller instance.</returns>
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
         {
-            var export = compositionContainer.GetExports(controllerType, null, null).SingleOrDefault();
+            Lazy<object, object> export = null;
+            if (controllerType != null)
+            {
+                export = m_CompositionContainer.GetExports(controllerType, null, null).SingleOrDefault();
+            }
 
             IController result;
-
             if (null != export)
             {
                 result = export.Value as IController;
@@ -46,7 +49,7 @@ namespace Panoptic.Web.Server.Composition
             else
             {
                 result = base.GetControllerInstance(requestContext, controllerType);
-                compositionContainer.ComposeParts(result);
+                m_CompositionContainer.ComposeParts(result);
             }
 
             return result;

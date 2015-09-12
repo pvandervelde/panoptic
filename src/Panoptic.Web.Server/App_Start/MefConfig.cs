@@ -41,7 +41,8 @@ namespace Panoptic.Web.Server
         /// Registers the MEF section of the web site.
         /// </summary>
         /// <param name="assemblySearchPaths">The collection of assembly search paths.</param>
-        public static void RegisterMef(IEnumerable<string> assemblySearchPaths)
+        /// <returns>The composition container that will be used to resolve all dependencies.</returns>
+        public static CompositionContainer RegisterMef(IEnumerable<string> assemblySearchPaths)
         {
             var aggregate = new AggregateCatalog();
             var asmCatalog = new AssemblyCatalog(Assembly.GetExecutingAssembly());
@@ -66,6 +67,8 @@ namespace Panoptic.Web.Server
             GlobalConfiguration.Configuration.Services.Replace(
                 typeof(IAssembliesResolver), 
                 new MefAssemblyResolver(assemblySearchPaths));
+
+            return container;
         }
     }
 }
