@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Headers;
+﻿using System.ComponentModel.Composition;
+using System.Net.Http.Headers;
 using System.Web.Http;
 using Panoptic.Web.Server.Common.Initialization;
 using Panoptic.Web.Server.Formatters;
@@ -8,6 +9,7 @@ namespace Panoptic.Web.Server
     /// <summary>
     /// Provides the configuration of the Web API part of the website.
     /// </summary>
+    [Export(typeof(IWebApiConfig))]
     public sealed class WebApiConfig : IWebApiConfig
     {
         /// <summary>

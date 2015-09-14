@@ -23,24 +23,24 @@ module panoptic.shared.controllers
         {
             super();
             $scope.navigate = function (path: string)
-                {
-                    $location.path(path);
-                };
+            {
+                $location.path(path);
+            };
 
-            $scope.areas = new Array<panoptic.shared.modules.IAreaInformation>();
             areaService.getAreas()
                 .success(function (data)
+                {
+                    $scope.areas = new Array<panoptic.shared.modules.IAreaInformation>();
+                    angular.forEach(data, function (area: panoptic.shared.modules.IAreaInformation)
                     {
-                        angular.forEach(data, function (area: panoptic.shared.modules.IAreaInformation)
-                            {
-                                $scope.areas.push(area);
-                            });
-                        $scope.$apply();
-                    })
-                .error(function ()
-                    {
-                        alert('error');
+                        $scope.areas.push(area);
                     });
+                    $scope.$apply();
+                })
+                .error(function ()
+                {
+                    alert('error');
+                });
         }
     }
 
@@ -48,13 +48,13 @@ module panoptic.shared.controllers
         [
             'panoptic.shared.services'
         ])
-        .controller('navbarController', ['$location', '$scope', 'panoptic.shared.services.AreaService',
+        .controller('NavbarController', ['$location', '$scope', 'panoptic.shared.services.AreaService',
             function (
                 $location: ng.ILocationService,
                 $scope: INavbarScope,
                 areaService: panoptic.shared.services.IAreaService)
             {
-                    return new NavbarController($location, $scope, areaService);
+                return new NavbarController($location, $scope, areaService);
             }]);
 }
 

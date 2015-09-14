@@ -208,3 +208,5 @@ src/Panoptic.Web.Client/Scripts/directives/*.js
 src/Panoptic.Web.Client/Scripts/directives/*.js.map
 src/Panoptic.Web.Server/Client/**/*.js
 src/Panoptic.Web.Server/Client/**/*.js.map
+src/Panoptic.Web.Server.Admin/Client/**/*.js
+src/Panoptic.Web.Server.Admin/Client/**/*.js.map

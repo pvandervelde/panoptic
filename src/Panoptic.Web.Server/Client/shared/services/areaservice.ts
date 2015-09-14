@@ -20,17 +20,17 @@ module panoptic.shared.services
 
             this.getAreas = function ()
             {
-                return $http.get(globals.webApiBaseUrl + '/api/v1/areas');
+                return $http.get(globals.webApiBaseUrl + 'area');
             };
         }
     }
 
     angular.module('panoptic.shared.services', [])
-        .factory('panoptic.shared.services.AreaService', function ()
+        .factory('areaService', function ()
         {
-            var injector = angular.injector(['ng', 'app.globalsModule']);
-            var $http: ng.IHttpService = injector.get('$http');
-            var globals: panoptic.core.modules.IGlobalVariables = injector.get('globalsService');
+            var injector = angular.injector(['ng', 'panoptic.globals']);
+            var $http: ng.IHttpService = <ng.IHttpService>injector.get('$http');
+            var globals: panoptic.core.modules.IGlobalVariables = <panoptic.core.modules.IGlobalVariables>injector.get('globalsService');
             return new AreaService($http, globals);
         });
 }

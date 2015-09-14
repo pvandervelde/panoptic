@@ -12,6 +12,30 @@ namespace Panoptic.Web.Server.Admin
     public class AdminAreaDescription : IAreaDescription
     {
         /// <summary>
+        /// Gets the name of the angular controller that will be used to display
+        /// the area information.
+        /// </summary>
+        public string AngularController
+        {
+            get
+            {
+                return "AdminController";
+            }
+        }
+
+        /// <summary>
+        /// Gets the path to the html template that will be used by the angular controller
+        /// to display the area information.
+        /// </summary>
+        public string AngularTemplateUri
+        {
+            get
+            {
+                return "";
+            }
+        }
+
+        /// <summary>
         /// Gets the relative path to the area.
         /// </summary>
         public string AreaPath

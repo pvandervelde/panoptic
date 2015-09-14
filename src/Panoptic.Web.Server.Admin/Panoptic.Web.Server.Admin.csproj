@@ -218,7 +218,7 @@
     <Content Include="Scripts\angular-route.min.js.map" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\controllers\admincontroller.ts" />
+    <TypeScriptCompile Include="Client\admin\controllers\admincontroller.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />

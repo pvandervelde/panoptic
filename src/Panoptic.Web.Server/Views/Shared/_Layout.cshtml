@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Panoptic.Web.Server.Controllers
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -23,7 +24,8 @@
             From: http://dotnetspeak.com/2013/07/injecting-global-variables-into-angular-through-asp-net-mvc-master-page
         -->
         <script type="text/javascript">
-            angular.module('globalsModule', []).factory('globalVars', function() {
+            angular.module('panoptic.globals', []).factory('globalsService', function ()
+            {
                 var globals = {};
                 globals.baseUrl = '@(Url.Content("~/"))';
                 globals.webApiBaseUrl = '@(Url.Content("~/api/v1/"))';
@@ -33,7 +35,7 @@
         </script>
     </head>
     <body ng-app="panoptic">
-        <div class="navbar navbar-inverse navbar-fixed-top" ng-controller="PageNavBarController">
+        <div class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavBarController">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -44,8 +46,8 @@
                     <a class="navbar-brand" href="/">Home</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav" ng-repeat="area in areas">
-                        <li>
+                    <ul class="nav navbar-nav">
+                        <li ng-repeat="area in areas">
                             <a href="{{ area.url }}">{{ area.name }}</a>
                         </li>
                     </ul>

@@ -3,6 +3,7 @@
 ///<reference path="../Scripts/typings/restangular/restangular.d.ts" />
 
 ///<reference path="core/modules/globals.ts" />
+///<reference path="shared/directives/areaheader.ts" />
 ///<reference path="shared/modules/areas.ts" />
 ///<reference path="shared/services/areaservice.ts" />
 ///<reference path="home/controllers/homecontroller.ts" />
@@ -21,13 +22,13 @@ module panoptic
         [
             'ngRoute',
             'restangular',
-            'panoptic.core.controllers',
-            'panoptic.core.modules',
+            'panoptic.globals',
             'panoptic.shared.controllers',
+            'panoptic.shared.directives',
             'panoptic.shared.services',
             'panoptic.home.controllers'
         ])
-        .config(['$locationProvider', '$routeProvider', '$windowProvider', 'RestangularProvider', 'globalsServiceProvider', 'app.services.areaServiceProvider',
+        .config(['$locationProvider', '$routeProvider', '$windowProvider', 'RestangularProvider', 'globalsServiceProvider', 'areaServiceProvider',
             function (
                 $locationProvider: ng.ILocationProvider,
                 $routeProvider: angular.route.IRouteProvider,
