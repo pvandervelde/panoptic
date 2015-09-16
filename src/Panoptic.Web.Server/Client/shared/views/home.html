@@ -2,9 +2,9 @@
 <div class="row">
     <div class="col-md-4" ng-repeat="rows in areas">
         <div ng-repeat="item in rows">
-            <h2>{{ Name }}</h2>
-            <p>{{ Description }}</p>
-            <p><a data-no-click="" data-ng-click="navigate(area.Path)" data-ng-href="#" class="btn btn-default">Learn more \u00bb</a></p>
+            <h2>{{ item.Name }}</h2>
+            <p>{{ item.Description }}</p>
+            <p><a data-no-click="" data-ng-click="navigate(item.Path)" data-ng-href="#" class="btn btn-default">Learn more \u00bb</a></p>
             <br />
             <br />
         </div>
