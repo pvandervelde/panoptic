@@ -1,10 +1,10 @@
 ﻿<data-area-header></data-area-header>
 <div class="row">
-    <div class="col-md-4" ng-repeat="rows in availableAreaDescriptions">
+    <div class="col-md-4" ng-repeat="rows in areas">
         <div ng-repeat="item in rows">
-            <h2>{{ name }}</h2>
-            <p>{{ description }}</p>
-            <p><a href="{{ url }}" class="btn btn-default">Learn more \u00bb</a></p>
+            <h2>{{ Name }}</h2>
+            <p>{{ Description }}</p>
+            <p><a data-no-click="" data-ng-click="navigate(area.Path)" data-ng-href="#" class="btn btn-default">Learn more \u00bb</a></p>
             <br />
             <br />
         </div>
