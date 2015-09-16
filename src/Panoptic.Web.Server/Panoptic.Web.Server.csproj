@@ -260,7 +260,9 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Client\core\controllers\basecontroller.ts" />
+    <TypeScriptCompile Include="Client\core\core.ts" />
     <TypeScriptCompile Include="Client\home\controllers\homecontroller.ts" />
+    <TypeScriptCompile Include="Client\home\home.ts" />
     <TypeScriptCompile Include="Client\shared\controllers\pagefootercontroller.ts" />
     <TypeScriptCompile Include="Client\shared\controllers\navbarcontroller.ts" />
     <TypeScriptCompile Include="Client\shared\directives\areaheader.ts" />
@@ -268,6 +270,7 @@
     <TypeScriptCompile Include="Client\core\modules\globals.ts" />
     <TypeScriptCompile Include="Client\panoptic.ts" />
     <TypeScriptCompile Include="Client\shared\services\areaservice.ts" />
+    <TypeScriptCompile Include="Client\shared\shared.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />

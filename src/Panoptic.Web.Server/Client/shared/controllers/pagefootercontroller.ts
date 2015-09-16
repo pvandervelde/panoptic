@@ -1,7 +1,7 @@
 ﻿///<reference path="../../../Scripts/typings/angularjs/angular.d.ts" /> 
 ///<reference path="../../../Scripts/typings/angularjs/angular-route.d.ts" />
 
-module panoptic.shared.controllers
+module panoptic.shared
 {
     interface IPageFooterScope extends ng.IScope
     {
@@ -9,7 +9,7 @@ module panoptic.shared.controllers
         date: Date;
     }
 
-    class PageFooterController extends panoptic.core.controllers.BaseController
+    class PageFooterController extends panoptic.core.BaseController
     {
         constructor(
             private $location: ng.ILocationService,
@@ -25,8 +25,7 @@ module panoptic.shared.controllers
         }
     }
 
-    angular.module('panoptic.shared.controllers',
-        [])
+    angular.module('panoptic.shared')
         .controller('PageFooterController', ['$location', '$scope',
             function (
                 $location: ng.ILocationService,

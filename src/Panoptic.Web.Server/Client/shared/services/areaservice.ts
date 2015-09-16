@@ -1,6 +1,6 @@
 ﻿///<reference path="../../core/modules/globals.ts" />
 
-module panoptic.shared.services
+module panoptic.shared
 {
     export interface IAreaServiceProvider extends ng.IServiceProvider
     {
@@ -9,13 +9,13 @@ module panoptic.shared.services
 
     export interface IAreaService
     {
-        getAreas: () => ng.IHttpPromise<Array<panoptic.shared.modules.IAreaInformation>>;
+        getAreas: () => ng.IHttpPromise<Array<panoptic.shared.IAreaInformation>>;
     }
 
     class AreaService implements IAreaService
     {
-        getAreas: () => ng.IHttpPromise<Array<panoptic.shared.modules.IAreaInformation>>;
-        constructor(private $http: ng.IHttpService, private globals: panoptic.core.modules.IGlobalVariables)
+        getAreas: () => ng.IHttpPromise<Array<panoptic.shared.IAreaInformation>>;
+        constructor(private $http: ng.IHttpService, private globals: panoptic.core.IGlobalVariables)
         {
 
             this.getAreas = function ()
@@ -25,12 +25,12 @@ module panoptic.shared.services
         }
     }
 
-    angular.module('panoptic.shared.services', [])
+    angular.module('panoptic.shared')
         .factory('areaService', function ()
         {
             var injector = angular.injector(['ng', 'panoptic.globals']);
             var $http: ng.IHttpService = <ng.IHttpService>injector.get('$http');
-            var globals: panoptic.core.modules.IGlobalVariables = <panoptic.core.modules.IGlobalVariables>injector.get('globalsService');
+            var globals: panoptic.core.IGlobalVariables = <panoptic.core.IGlobalVariables>injector.get('globalsService');
             return new AreaService($http, globals);
         });
 }

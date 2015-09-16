@@ -1,4 +1,4 @@
-﻿module panoptic.shared.modules
+﻿module panoptic.shared
 {
     export interface IAreaInformation
     {

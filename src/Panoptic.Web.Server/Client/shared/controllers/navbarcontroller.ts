@@ -6,20 +6,20 @@
 
 ///<reference path="../modules/areas.ts" />
 
-module panoptic.shared.controllers
+module panoptic.shared
 {
     interface INavbarScope extends ng.IScope
     {
         navigate: (path: string) => void;
-        areas: Array<panoptic.shared.modules.IAreaInformation>;
+        areas: Array<panoptic.shared.IAreaInformation>;
     }
 
-    class NavbarController extends panoptic.core.controllers.BaseController
+    class NavbarController extends panoptic.core.BaseController
     {
         constructor(
             private $location: ng.ILocationService,
             private $scope: INavbarScope,
-            private areaService: panoptic.shared.services.IAreaService)
+            private areaService: panoptic.shared.IAreaService)
         {
             super();
             $scope.navigate = function (path: string)
@@ -30,8 +30,8 @@ module panoptic.shared.controllers
             areaService.getAreas()
                 .success(function (data)
                 {
-                    $scope.areas = new Array<panoptic.shared.modules.IAreaInformation>();
-                    angular.forEach(data, function (area: panoptic.shared.modules.IAreaInformation)
+                    $scope.areas = new Array<panoptic.shared.IAreaInformation>();
+                    angular.forEach(data, function (area: panoptic.shared.IAreaInformation)
                     {
                         $scope.areas.push(area);
                     });
@@ -44,15 +44,12 @@ module panoptic.shared.controllers
         }
     }
 
-    angular.module('panoptic.shared.controllers',
-        [
-            'panoptic.shared.services'
-        ])
-        .controller('NavbarController', ['$location', '$scope', 'panoptic.shared.services.AreaService',
+    angular.module('panoptic.shared')
+        .controller('NavbarController', ['$location', '$scope', 'areaService',
             function (
                 $location: ng.ILocationService,
                 $scope: INavbarScope,
-                areaService: panoptic.shared.services.IAreaService)
+                areaService: panoptic.shared.IAreaService)
             {
                 return new NavbarController($location, $scope, areaService);
             }]);

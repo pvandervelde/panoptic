@@ -38,7 +38,10 @@ namespace Panoptic.Web.Server
                     "~/Scripts/restangular.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/panoptic")
-                .IncludeDirectory("~/Client", "*.js", true));
+                .IncludeDirectory("~/Client/core", "*.js", true)
+                .IncludeDirectory("~/Client/shared", "*.js", true)
+                .IncludeDirectory("~/Client/home", "*.js", true)
+                .Include("~/Client/panoptic.js"));
 
             bundles.Add(new StyleBundle("~/Content/css")
                 .Include("~/Content/bootstrap.css"));

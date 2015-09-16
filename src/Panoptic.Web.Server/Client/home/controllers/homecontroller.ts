@@ -5,22 +5,22 @@
 ///<reference path="../../shared/modules/areas.ts" />
 ///<reference path="../../shared/services/areaservice.ts" />
 
-module panoptic.controllers
+module panoptic.home
 {
     interface IHomeScope extends ng.IScope
     {
         navigate: (path: string) => void;
-        areas: Array<Array<panoptic.shared.modules.IAreaInformation>>;
+        areas: Array<Array<panoptic.shared.IAreaInformation>>;
         areaName: string;
         areaDescription: string;
     }
 
-    class HomeController extends panoptic.core.controllers.BaseController
+    class HomeController extends panoptic.core.BaseController
     {
         constructor(
             private $location: ng.ILocationService,
             private $scope: IHomeScope,
-            private areaService: panoptic.shared.services.IAreaService)
+            private areaService: panoptic.shared.IAreaService)
         {
             super();
 
@@ -42,12 +42,12 @@ module panoptic.controllers
             $scope.areaName = 'Home';
             $scope.areaDescription = 'some long text thing that just goes on for ever and ever and ever';
 
-            $scope.areas = new Array<Array<panoptic.shared.modules.IAreaInformation>>();
+            $scope.areas = new Array<Array<panoptic.shared.IAreaInformation>>();
             areaService.getAreas()
                 .success(function (data)
                 {
                     var newArr = [];
-                    angular.forEach(data, function (area: panoptic.shared.modules.IAreaInformation)
+                    angular.forEach(data, function (area: panoptic.shared.IAreaInformation)
                     {
                         newArr.push(area);
                     });
@@ -62,15 +62,12 @@ module panoptic.controllers
         }
     }
 
-    angular.module('panoptic.home.controllers',
-        [
-            'panoptic.shared.services'
-        ])
-        .controller('HomeController', ['$location', '$scope', 'panoptic.shared.services.AreaService',
+    angular.module('panoptic.home')
+        .controller('HomeController', ['$location', '$scope', 'areaService',
             function (
                 $location: ng.ILocationService,
                 $scope: IHomeScope,
-                areaService: panoptic.shared.services.IAreaService)
+                areaService: panoptic.shared.IAreaService)
             {
                 return new HomeController($location, $scope, areaService);
             }]);

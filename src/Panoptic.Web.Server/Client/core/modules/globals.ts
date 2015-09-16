@@ -1,4 +1,4 @@
-﻿module panoptic.core.modules
+﻿module panoptic.core
 {
     export interface IGlobalsProvider extends ng.IServiceProvider
     {

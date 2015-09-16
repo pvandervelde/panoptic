@@ -1,4 +1,4 @@
-﻿module panoptic.core.controllers 
+﻿module panoptic.core 
 {
     export class BaseController
     {

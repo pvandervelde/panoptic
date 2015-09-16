@@ -12,7 +12,7 @@ module panoptic
 {
     class appUtils
     {
-        static createViewUrl(fragmnt: string, globals: panoptic.core.modules.IGlobalVariables)
+        static createViewUrl(fragmnt: string, globals: panoptic.core.IGlobalVariables)
         {
             return globals.baseUrl + fragmnt;
         }
@@ -23,10 +23,9 @@ module panoptic
             'ngRoute',
             'restangular',
             'panoptic.globals',
-            'panoptic.shared.controllers',
-            'panoptic.shared.directives',
-            'panoptic.shared.services',
-            'panoptic.home.controllers'
+            'panoptic.core',
+            'panoptic.shared',
+            'panoptic.home'
         ])
         .config(['$locationProvider', '$routeProvider', '$windowProvider', 'RestangularProvider', 'globalsServiceProvider', 'areaServiceProvider',
             function (
@@ -34,18 +33,27 @@ module panoptic
                 $routeProvider: angular.route.IRouteProvider,
                 $window: ng.IWindowService,
                 RestangularProvider : restangular.IProvider,
-                globalsServiceProvider: panoptic.core.modules.IGlobalsProvider,
-                areaServiceProvider: panoptic.shared.services.IAreaServiceProvider)
+                globalsServiceProvider: panoptic.core.IGlobalsProvider,
+                areaServiceProvider: panoptic.shared.IAreaServiceProvider)
             {
                 $locationProvider.html5Mode(true);
 
                 RestangularProvider.setBaseUrl('/api/v1');
 
-                var globals: panoptic.core.modules.IGlobalVariables = globalsServiceProvider.$get();
-                var areaService: panoptic.shared.services.IAreaService = areaServiceProvider.$get();
+                $routeProvider
+                    .when('/', {
+                        controller: 'HomeController',
+                        templateUrl: 'Client/shared/views/home.html'
+                    })
+                    .otherwise({
+                        redirectTo: '/'
+                    });
+
+                var globals: panoptic.core.IGlobalVariables = globalsServiceProvider.$get();
+                var areaService: panoptic.shared.IAreaService = areaServiceProvider.$get();
                 areaService.getAreas()
                     .success(function (data) {
-                    angular.forEach(data, function (area: panoptic.shared.modules.IAreaInformation)
+                    angular.forEach(data, function (area: panoptic.shared.IAreaInformation)
                     {
                         $routeProvider.when(
                             area.path,
@@ -53,10 +61,6 @@ module panoptic
                                 controller: area.controller,
                                 templateUrl: appUtils.createViewUrl(area.templateUri, globals)
                             });
-                        });
-                    $routeProvider.otherwise(
-                        {
-                            redirectTo: '/'
                         });
                     })
                     .error(function (error)
