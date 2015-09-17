@@ -8,7 +8,12 @@ module panoptic.shared
             function ()
             {
                 return {
-                    templateUrl: 'Client/shared/directives/areaHeader.html'
+                    restrict: 'EA',
+                    scope: {
+                        name: "=",
+                        description: "=",
+                    },
+                    templateUrl: 'Client/shared/directives/AreaHeader.html'
                 };
             });
 }

@@ -48,7 +48,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li ng-repeat="area in areas">
-                            <a data-no-click="" data-ng-click="navigate(area.Path)" data-ng-href="#">{{ area.Name }}</a>
+                            <a data-no-click="" data-ng-click="navigate(area.Path)" data-ng-href="/{{ area.Path }}">{{ area.Name }}</a>
                         </li>
                     </ul>
                 </div>
