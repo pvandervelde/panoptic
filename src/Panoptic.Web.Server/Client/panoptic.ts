@@ -32,7 +32,7 @@ module panoptic
                 $locationProvider: ng.ILocationProvider,
                 $routeProvider: angular.route.IRouteProvider,
                 $window: ng.IWindowService,
-                RestangularProvider : restangular.IProvider,
+                RestangularProvider: restangular.IProvider,
                 globalsServiceProvider: panoptic.core.IGlobalsProvider,
                 areaServiceProvider: panoptic.shared.IAreaServiceProvider)
             {
@@ -43,7 +43,7 @@ module panoptic
                 $routeProvider
                     .when('/', {
                         controller: 'HomeController',
-                        templateUrl: 'Client/shared/views/home.html'
+                        templateUrl: 'Client/home/views/home.html'
                     })
                     .otherwise({
                         redirectTo: '/'
@@ -52,15 +52,16 @@ module panoptic
                 var globals: panoptic.core.IGlobalVariables = globalsServiceProvider.$get();
                 var areaService: panoptic.shared.IAreaService = areaServiceProvider.$get();
                 areaService.getAreas()
-                    .success(function (data) {
-                    angular.forEach(data, function (area: panoptic.shared.IAreaInformation)
+                    .success(function (data)
                     {
-                        $routeProvider.when(
-                            area.path,
-                            {
-                                controller: area.controller,
-                                templateUrl: appUtils.createViewUrl(area.templateUri, globals)
-                            });
+                        angular.forEach(data, function (area: panoptic.shared.IAreaInformation)
+                        {
+                            $routeProvider.when(
+                                area.path,
+                                {
+                                    controller: area.controller,
+                                    templateUrl: appUtils.createViewUrl(area.templateUri, globals)
+                                });
                         });
                     })
                     .error(function (error)

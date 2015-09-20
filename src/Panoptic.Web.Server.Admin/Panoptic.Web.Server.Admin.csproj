@@ -48,6 +48,9 @@
   <Import Project="../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/common.props" Condition=" Exists('../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/common.props') " />
   <Import Project="../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/common.net.props" Condition=" Exists('../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/common.net.props') " />
   <Import Project="../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/csharp.props" Condition=" Exists('../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/csharp.props') " />
+  <PropertyGroup>
+	<OutDir>$(DirBuildBinPlatformConfig)\..\plugins\$(AssemblyName)\bin</OutDir>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac, Version=2.2.4.900, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Autofac.2.2.4.900\lib\NET40\Autofac.dll</HintPath>
@@ -251,16 +254,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2165</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:2165/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
@@ -282,8 +276,10 @@
   -->
   <Target Name="AfterBuild">
     <ItemGroup>
-      <OpsFiles Include="$(OutDir)\$(AssemblyName).*" />
+      <ContentFiles Include="$(MSBuildProjectDirectory)\content\**\*.*" />
+      <ClientFiles Include="$(MSBuildProjectDirectory)\client\**\*.js" />
     </ItemGroup>
-    <Copy SourceFiles="@(OpsFiles)" DestinationFolder="$(MSBuildProjectDirectory)\..\Panoptic.Web.Server\bin\plugins\$(AssemblyName)" />
+	<Copy SourceFiles="@(ContentFiles)" DestinationFiles="@(ContentFiles->'$(OutDir)\..\content\%(RecursiveDir)%(Filename)%(Extension)')"/>
+    <Copy SourceFiles="@(ClientFiles)" DestinationFiles="@(ClientFiles->'$(OutDir)\..\client\%(RecursiveDir)%(Filename)%(Extension)')"/>
   </Target>
 </Project>

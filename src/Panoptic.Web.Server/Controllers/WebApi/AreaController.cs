@@ -5,13 +5,14 @@ using System.Web.Http.Description;
 using Panoptic.Web.Server.Common.Areas;
 using Panoptic.Web.Server.Common.Controllers;
 
-namespace Panoptic.Web.Server.Controllers
+namespace Panoptic.Web.Server.Controllers.WebApi
 {
     /// <summary>
-    /// The entry point controller for the application.
+    /// The controller that provides information about the different areas for the application.
     /// </summary>
     [ExportController(typeof(AreaController))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
+    [RoutePrefix("api/v1/home/area")]
     public class AreaController : ApiController
     { 
         [ImportMany]
@@ -22,11 +23,13 @@ namespace Panoptic.Web.Server.Controllers
         }
 
         /// <summary>
-        /// /api/v1/area
+        /// Provides a way to get all known areas.
         /// </summary>
         /// <returns>An HTTP action result containing the list of all areas for the application.</returns>
-        [ResponseType(typeof(string))]
-        public IHttpActionResult Get()
+        [ResponseType(typeof(IHttpActionResult))]
+        [Route("")]
+        [HttpGet]
+        public IHttpActionResult Areas()
         {
             var list = new List<object>();
             foreach (var description in AreaDescriptions)

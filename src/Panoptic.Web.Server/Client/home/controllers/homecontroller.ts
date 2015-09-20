@@ -20,6 +20,7 @@ module panoptic.home
         constructor(
             private $location: ng.ILocationService,
             private $scope: IHomeScope,
+            private descriptionService: panoptic.home.IHomeDescriptionService,
             private areaService: panoptic.shared.IAreaService)
         {
             super();
@@ -27,9 +28,18 @@ module panoptic.home
             function divideIntoColumns(arr: any[], size: number)
             {
                 var newArr = [];
+                for (var i = 0; i < size; i++)
+                {
+                    var column = [];
+                    newArr.push(column);
+                }
+
                 for (var i = 0; i < arr.length; i += size)
                 {
-                    newArr.push(arr.slice(i, i + size));
+                    for (var j = 0; j < size; j++)
+                    {
+                        newArr[j].push(arr[i + j]);
+                    }
                 }
                 return newArr;
             }
@@ -39,8 +49,17 @@ module panoptic.home
                 $location.path(path);
             };
 
-            $scope.areaName = 'Home';
-            $scope.areaDescription = 'some long text thing that just goes on for ever and ever and ever';
+            descriptionService.getDescription()
+                .success(function (data)
+                {
+                    $scope.areaName = data.Name;
+                    $scope.areaDescription = data.Description;
+                    $scope.$apply();
+                })
+                .error(function (data)
+                {
+                    alert('failed to get the name and description for the home area.');
+                });
 
             $scope.areas = new Array<Array<panoptic.shared.IAreaInformation>>();
             areaService.getAreas()
@@ -63,12 +82,13 @@ module panoptic.home
     }
 
     angular.module('panoptic.home')
-        .controller('HomeController', ['$location', '$scope', 'areaService',
+        .controller('HomeController', ['$location', '$scope', 'homeDescriptionService', 'areaService',
             function (
                 $location: ng.ILocationService,
                 $scope: IHomeScope,
+                descriptionService: panoptic.home.IHomeDescriptionService,
                 areaService: panoptic.shared.IAreaService)
             {
-                return new HomeController($location, $scope, areaService);
+                return new HomeController($location, $scope, descriptionService, areaService);
             }]);
 }

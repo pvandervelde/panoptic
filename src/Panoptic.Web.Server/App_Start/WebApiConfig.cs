@@ -23,11 +23,13 @@ namespace Panoptic.Web.Server
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+            /*
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
+                name: "HomeApi",
                 routeTemplate: "api/{version}/{controller}/{id}",
                 defaults: new { version = "v1", id = RouteParameter.Optional }
             );
+            */
 
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
             config.Formatters.Add(new BrowserJsonFormatter());

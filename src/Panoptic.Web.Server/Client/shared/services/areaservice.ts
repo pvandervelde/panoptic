@@ -20,7 +20,7 @@ module panoptic.shared
 
             this.getAreas = function ()
             {
-                return $http.get(globals.webApiBaseUrl + 'area');
+                return $http.get(globals.webApiBaseUrl + 'home/area');
             };
         }
     }

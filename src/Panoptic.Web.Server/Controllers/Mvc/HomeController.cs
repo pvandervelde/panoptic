@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using Panoptic.Web.Server.Common.Controllers;
 
-namespace Panoptic.Web.Server.Controllers
+namespace Panoptic.Web.Server.Controllers.Mvc
 {
     /// <summary>
     /// Defines the entry point controller.

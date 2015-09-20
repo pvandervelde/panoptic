@@ -6,10 +6,10 @@ using Panoptic.Web.Server.Common.Controllers;
 namespace Panoptic.Web.Server.Admin
 {
     /// <summary>
-    /// The area description for the admin controller.
+    /// The area description for the admin area.
     /// </summary>
     [Export(typeof(IAreaDescription))]
-    public class AdminAreaDescription : IAreaDescription
+    public sealed class AdminAreaDescription : IAreaDescription
     {
         /// <summary>
         /// Gets the name of the angular controller that will be used to display

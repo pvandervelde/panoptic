@@ -48,10 +48,6 @@
   <Import Project="../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/common.props" Condition=" Exists('../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/common.props') " />
   <Import Project="../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/common.net.props" Condition=" Exists('../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/common.net.props') " />
   <Import Project="../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/csharp.props" Condition=" Exists('../../packages/nBuildKit.MsBuild.Projects.CSharp.0.5.6/build/csharp.props') " />
-  <PropertyGroup>
-    <!-- Override the outdir because web projects aren't able to have their bin paths redirected (due to IIS) -->
-    <OutDir Condition=" '$(Configuration)' == 'Debug' ">bin\</OutDir>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac, Version=2.2.4.900, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Autofac.2.2.4.900\lib\NET40\Autofac.dll</HintPath>
@@ -173,7 +169,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Client\home\modules\" />
-    <Folder Include="Client\home\services\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -188,8 +183,9 @@
     <Compile Include="Configuration\CatalogConfigurationElement.cs" />
     <Compile Include="Configuration\CatalogConfigurationElementCollection.cs" />
     <Compile Include="Configuration\CompositionConfigurationSection.cs" />
-    <Compile Include="Controllers\AreaController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\WebApi\AreaController.cs" />
+    <Compile Include="Controllers\Mvc\HomeController.cs" />
+    <Compile Include="Controllers\WebApi\DescriptionController.cs" />
     <Compile Include="Formatters\BrowserJsonFormatter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -214,6 +210,9 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Client\shared\directives\AreaHeader.html" />
+    <None Include="Properties\PublishProfiles\FilePublish-Debug.pubxml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -227,7 +226,7 @@
     <Content Include="Scripts\restangular.js" />
     <Content Include="Scripts\restangular.min.js" />
     <Content Include="Client\shared\views\admin.html" />
-    <Content Include="Client\shared\views\home.html" />
+    <Content Include="Client\home\views\home.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -263,6 +262,8 @@
     <TypeScriptCompile Include="Client\core\core.ts" />
     <TypeScriptCompile Include="Client\home\controllers\homecontroller.ts" />
     <TypeScriptCompile Include="Client\home\home.ts" />
+    <TypeScriptCompile Include="Client\shared\modules\areadescription.ts" />
+    <TypeScriptCompile Include="Client\home\services\homedescriptionservice.ts" />
     <TypeScriptCompile Include="Client\shared\controllers\pagefootercontroller.ts" />
     <TypeScriptCompile Include="Client\shared\controllers\navbarcontroller.ts" />
     <TypeScriptCompile Include="Client\shared\directives\areaheader.ts" />
@@ -299,6 +300,20 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Any CPU'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>UMD</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
@@ -309,16 +324,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>58177</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:58177/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
@@ -336,7 +342,22 @@
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
   </Target> -->
+    <Target Name="AfterBuild">
+    <ItemGroup>
+      <ContentFiles Include="$(MSBuildProjectDirectory)\content\**\*.*" />
+      <ClientFiles Include="$(MSBuildProjectDirectory)\client\**\*.js" />
+	  <FontFiles Include="$(MSBuildProjectDirectory)\fonts\**\*.*" />
+	  <ScripFiles Include="$(MSBuildProjectDirectory)\scripts\**\*.*"
+                  Exclude="$(MSBuildProjectDirectory)\scripts\**\*.d.ts"/>
+	  <ViewFiles Include="$(MSBuildProjectDirectory)\views\**\*.*" />
+	  <ConfigFiles Include="$(MSBuildProjectDirectory)\*.asax;$(MSBuildProjectDirectory)\web.config" />
+    </ItemGroup>
+	<Copy SourceFiles="@(ContentFiles)" DestinationFiles="@(ContentFiles->'$(OutDir)\..\content\%(RecursiveDir)%(Filename)%(Extension)')"/>
+	<Copy SourceFiles="@(ClientFiles)" DestinationFiles="@(ClientFiles->'$(OutDir)\..\client\%(RecursiveDir)%(Filename)%(Extension)')"/>
+	<Copy SourceFiles="@(FontFiles)" DestinationFiles="@(FontFiles->'$(OutDir)\..\fonts\%(RecursiveDir)%(Filename)%(Extension)')"/>
+	<Copy SourceFiles="@(ScripFiles)" DestinationFiles="@(ScripFiles->'$(OutDir)\..\Scripts\%(RecursiveDir)%(Filename)%(Extension)')"/>
+	<Copy SourceFiles="@(ViewFiles)" DestinationFiles="@(ViewFiles->'$(OutDir)\..\Views\%(RecursiveDir)%(Filename)%(Extension)')"/>
+	<Copy SourceFiles="@(ConfigFiles)" DestinationFiles="@(ConfigFiles->'$(OutDir)\..\%(Filename)%(Extension)')"/>
+  </Target>
 </Project>
