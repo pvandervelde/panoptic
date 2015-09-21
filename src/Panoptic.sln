@@ -22,23 +22,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "project", "project", "{76F3
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panoptic.Web.Server", "Panoptic.Web.Server\Panoptic.Web.Server.csproj", "{7863C21B-E456-456F-B45E-0C930930C882}"
-	ProjectSection(ProjectDependencies) = postProject
-		{6330BD39-7E5F-4537-9F4D-01E7981FF82F} = {6330BD39-7E5F-4537-9F4D-01E7981FF82F}
-		{993E2FC1-7020-408F-B280-D93883448366} = {993E2FC1-7020-408F-B280-D93883448366}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Unit.Panoptic.Web.Server", "Test.Unit.Panoptic.Web.Server\Test.Unit.Panoptic.Web.Server.csproj", "{35F2821E-6C29-496A-8C0C-9B90C5221773}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panoptic.Web.Server.Common", "Panoptic.Web.Server.Common\Panoptic.Web.Server.Common.csproj", "{769E88ED-157D-4473-81C6-7206313825AF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panoptic.Web.Server.Admin", "Panoptic.Web.Server.Admin\Panoptic.Web.Server.Admin.csproj", "{6330BD39-7E5F-4537-9F4D-01E7981FF82F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Unit.Panoptic.Web.Server.Admin", "Test.Unit.Panoptic.Web.Server.Admin\Test.Unit.Panoptic.Web.Server.Admin.csproj", "{009A4A63-0F8B-4D08-A215-14C8F6ED0354}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panoptic.Web.Server.Ops", "Panoptic.Web.Server.Ops\Panoptic.Web.Server.Ops.csproj", "{993E2FC1-7020-408F-B280-D93883448366}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Unit.Panoptic.Web.Server.Ops", "Test.Unit.Panoptic.Web.Server.Ops\Test.Unit.Panoptic.Web.Server.Ops.csproj", "{167652AE-A272-455C-B7C8-8470CBDDDACF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panoptic.Web.Server", "Panoptic.Web.Server\Panoptic.Web.Server.csproj", "{6081A833-F361-453C-83BC-21FB23F3A98A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6330BD39-7E5F-4537-9F4D-01E7981FF82F} = {6330BD39-7E5F-4537-9F4D-01E7981FF82F}
+		{993E2FC1-7020-408F-B280-D93883448366} = {993E2FC1-7020-408F-B280-D93883448366}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,14 +40,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7863C21B-E456-456F-B45E-0C930930C882}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7863C21B-E456-456F-B45E-0C930930C882}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7863C21B-E456-456F-B45E-0C930930C882}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7863C21B-E456-456F-B45E-0C930930C882}.Release|Any CPU.Build.0 = Release|Any CPU
-		{35F2821E-6C29-496A-8C0C-9B90C5221773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{35F2821E-6C29-496A-8C0C-9B90C5221773}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{35F2821E-6C29-496A-8C0C-9B90C5221773}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{35F2821E-6C29-496A-8C0C-9B90C5221773}.Release|Any CPU.Build.0 = Release|Any CPU
 		{769E88ED-157D-4473-81C6-7206313825AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{769E88ED-157D-4473-81C6-7206313825AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{769E88ED-157D-4473-81C6-7206313825AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -62,18 +48,14 @@ Global
 		{6330BD39-7E5F-4537-9F4D-01E7981FF82F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6330BD39-7E5F-4537-9F4D-01E7981FF82F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6330BD39-7E5F-4537-9F4D-01E7981FF82F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{009A4A63-0F8B-4D08-A215-14C8F6ED0354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{009A4A63-0F8B-4D08-A215-14C8F6ED0354}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{009A4A63-0F8B-4D08-A215-14C8F6ED0354}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{009A4A63-0F8B-4D08-A215-14C8F6ED0354}.Release|Any CPU.Build.0 = Release|Any CPU
 		{993E2FC1-7020-408F-B280-D93883448366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{993E2FC1-7020-408F-B280-D93883448366}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{993E2FC1-7020-408F-B280-D93883448366}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{993E2FC1-7020-408F-B280-D93883448366}.Release|Any CPU.Build.0 = Release|Any CPU
-		{167652AE-A272-455C-B7C8-8470CBDDDACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{167652AE-A272-455C-B7C8-8470CBDDDACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{167652AE-A272-455C-B7C8-8470CBDDDACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{167652AE-A272-455C-B7C8-8470CBDDDACF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6081A833-F361-453C-83BC-21FB23F3A98A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6081A833-F361-453C-83BC-21FB23F3A98A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6081A833-F361-453C-83BC-21FB23F3A98A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6081A833-F361-453C-83BC-21FB23F3A98A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
