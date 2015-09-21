@@ -170,6 +170,8 @@
     <Compile Include="App_Start\MefConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\AdminAreaDescription.cs" />
+    <Compile Include="Areas\OpsAreaDescription.cs" />
     <Compile Include="Composition\MefAssemblyResolver.cs" />
     <Compile Include="Composition\MefControllerFactory.cs" />
     <Compile Include="Composition\MefDependencyResolver.cs" />
@@ -177,8 +179,8 @@
     <Compile Include="Configuration\CatalogConfigurationElementCollection.cs" />
     <Compile Include="Configuration\CompositionConfigurationSection.cs" />
     <Compile Include="Controllers\Mvc\HomeController.cs" />
-    <Compile Include="Controllers\WebApi\AreaController.cs" />
-    <Compile Include="Controllers\WebApi\DescriptionController.cs" />
+    <Compile Include="Controllers\WebApi\Home\AreaController.cs" />
+    <Compile Include="Controllers\WebApi\Home\DescriptionController.cs" />
     <Compile Include="Formatters\BrowserJsonFormatter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

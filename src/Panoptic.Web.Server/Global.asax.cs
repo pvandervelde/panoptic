@@ -66,6 +66,7 @@ namespace Panoptic.Web.Server
         private IEnumerable<string> AssemblySearchPaths()
         {
             var list = new List<string>();
+            /*
             var config = CompositionConfigurationSection.GetInstance();
             if (config != null && config.Catalogs != null)
             {
@@ -85,6 +86,7 @@ namespace Panoptic.Web.Server
                         }
                     });
             }
+            */
 
             return list;
         }
