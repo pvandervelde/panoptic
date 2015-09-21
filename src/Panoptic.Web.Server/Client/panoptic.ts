@@ -43,7 +43,7 @@ module panoptic
                 $routeProvider
                     .when('/', {
                         controller: 'HomeController',
-                        templateUrl: 'Client/home/views/home.html'
+                        templateUrl: 'client/home/views/home.html'
                     })
                     .otherwise({
                         redirectTo: '/'

@@ -168,7 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Client\home\modules\" />
+    <Folder Include="client\home\modules\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -209,10 +209,7 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Client\shared\directives\AreaHeader.html" />
-    <None Include="Properties\PublishProfiles\FilePublish-Debug.pubxml">
-      <SubType>Designer</SubType>
-    </None>
+    <Content Include="client\shared\directives\AreaHeader.html" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -225,8 +222,8 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\restangular.js" />
     <Content Include="Scripts\restangular.min.js" />
-    <Content Include="Client\shared\views\admin.html" />
-    <Content Include="Client\home\views\home.html" />
+    <Content Include="client\shared\views\admin.html" />
+    <Content Include="client\home\views\home.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -258,20 +255,20 @@
     <Content Include="Scripts\angular-route.min.js.map" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Client\core\controllers\basecontroller.ts" />
-    <TypeScriptCompile Include="Client\core\core.ts" />
-    <TypeScriptCompile Include="Client\home\controllers\homecontroller.ts" />
-    <TypeScriptCompile Include="Client\home\home.ts" />
-    <TypeScriptCompile Include="Client\shared\modules\areadescription.ts" />
-    <TypeScriptCompile Include="Client\home\services\homedescriptionservice.ts" />
-    <TypeScriptCompile Include="Client\shared\controllers\pagefootercontroller.ts" />
-    <TypeScriptCompile Include="Client\shared\controllers\navbarcontroller.ts" />
-    <TypeScriptCompile Include="Client\shared\directives\areaheader.ts" />
-    <TypeScriptCompile Include="Client\shared\modules\areas.ts" />
-    <TypeScriptCompile Include="Client\core\modules\globals.ts" />
-    <TypeScriptCompile Include="Client\panoptic.ts" />
-    <TypeScriptCompile Include="Client\shared\services\areaservice.ts" />
-    <TypeScriptCompile Include="Client\shared\shared.ts" />
+    <TypeScriptCompile Include="client\core\controllers\basecontroller.ts" />
+    <TypeScriptCompile Include="client\core\core.ts" />
+    <TypeScriptCompile Include="client\home\controllers\homecontroller.ts" />
+    <TypeScriptCompile Include="client\home\home.ts" />
+    <TypeScriptCompile Include="client\shared\modules\areadescription.ts" />
+    <TypeScriptCompile Include="client\home\services\homedescriptionservice.ts" />
+    <TypeScriptCompile Include="client\shared\controllers\pagefootercontroller.ts" />
+    <TypeScriptCompile Include="client\shared\controllers\navbarcontroller.ts" />
+    <TypeScriptCompile Include="client\shared\directives\areaheader.ts" />
+    <TypeScriptCompile Include="client\shared\modules\areas.ts" />
+    <TypeScriptCompile Include="client\core\modules\globals.ts" />
+    <TypeScriptCompile Include="client\panoptic.ts" />
+    <TypeScriptCompile Include="client\shared\services\areaservice.ts" />
+    <TypeScriptCompile Include="client\shared\shared.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />
@@ -343,21 +340,20 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target> -->
-    <Target Name="AfterBuild">
+  <Target Name="AfterBuild">
     <ItemGroup>
       <ContentFiles Include="$(MSBuildProjectDirectory)\content\**\*.*" />
-      <ClientFiles Include="$(MSBuildProjectDirectory)\client\**\*.js" />
-	  <FontFiles Include="$(MSBuildProjectDirectory)\fonts\**\*.*" />
-	  <ScripFiles Include="$(MSBuildProjectDirectory)\scripts\**\*.*"
-                  Exclude="$(MSBuildProjectDirectory)\scripts\**\*.d.ts"/>
-	  <ViewFiles Include="$(MSBuildProjectDirectory)\views\**\*.*" />
-	  <ConfigFiles Include="$(MSBuildProjectDirectory)\*.asax;$(MSBuildProjectDirectory)\web.config" />
+      <ClientFiles Include="$(MSBuildProjectDirectory)\client\**\*.*" Exclude="$(MSBuildProjectDirectory)\client\**\*.ts" />
+      <FontFiles Include="$(MSBuildProjectDirectory)\fonts\**\*.*" />
+      <ScripFiles Include="$(MSBuildProjectDirectory)\scripts\**\*.*" Exclude="$(MSBuildProjectDirectory)\scripts\**\*.d.ts" />
+      <ViewFiles Include="$(MSBuildProjectDirectory)\views\**\*.*" />
+      <ConfigFiles Include="$(MSBuildProjectDirectory)\*.asax;$(MSBuildProjectDirectory)\*.asax.cs;$(MSBuildProjectDirectory)\web.config" />
     </ItemGroup>
-	<Copy SourceFiles="@(ContentFiles)" DestinationFiles="@(ContentFiles->'$(OutDir)\..\content\%(RecursiveDir)%(Filename)%(Extension)')"/>
-	<Copy SourceFiles="@(ClientFiles)" DestinationFiles="@(ClientFiles->'$(OutDir)\..\client\%(RecursiveDir)%(Filename)%(Extension)')"/>
-	<Copy SourceFiles="@(FontFiles)" DestinationFiles="@(FontFiles->'$(OutDir)\..\fonts\%(RecursiveDir)%(Filename)%(Extension)')"/>
-	<Copy SourceFiles="@(ScripFiles)" DestinationFiles="@(ScripFiles->'$(OutDir)\..\Scripts\%(RecursiveDir)%(Filename)%(Extension)')"/>
-	<Copy SourceFiles="@(ViewFiles)" DestinationFiles="@(ViewFiles->'$(OutDir)\..\Views\%(RecursiveDir)%(Filename)%(Extension)')"/>
-	<Copy SourceFiles="@(ConfigFiles)" DestinationFiles="@(ConfigFiles->'$(OutDir)\..\%(Filename)%(Extension)')"/>
+    <Copy SourceFiles="@(ContentFiles)" DestinationFiles="@(ContentFiles->'$(OutDir)\..\content\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(ClientFiles)" DestinationFiles="@(ClientFiles->'$(OutDir)\..\client\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(FontFiles)" DestinationFiles="@(FontFiles->'$(OutDir)\..\fonts\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(ScripFiles)" DestinationFiles="@(ScripFiles->'$(OutDir)\..\scripts\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(ViewFiles)" DestinationFiles="@(ViewFiles->'$(OutDir)\..\views\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(ConfigFiles)" DestinationFiles="@(ConfigFiles->'$(OutDir)\..\%(Filename)%(Extension)')" />
   </Target>
 </Project>

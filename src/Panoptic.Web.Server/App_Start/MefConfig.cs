@@ -33,7 +33,7 @@ namespace Panoptic.Web.Server
             list.Add(new DirectoryCatalog(path));
 
             list.AddRange(
-                Directory.GetDirectories(path).Select(directory => new DirectoryCatalog(directory)));
+                Directory.GetDirectories(path, "*", SearchOption.AllDirectories).Select(directory => new DirectoryCatalog(directory)));
             return list;
         }
 

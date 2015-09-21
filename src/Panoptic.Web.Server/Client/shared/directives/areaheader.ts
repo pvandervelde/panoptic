@@ -13,7 +13,7 @@ module panoptic.shared
                         name: "=",
                         description: "=",
                     },
-                    templateUrl: 'Client/shared/directives/AreaHeader.html'
+                    templateUrl: 'client/shared/directives/AreaHeader.html'
                 };
             });
 }
