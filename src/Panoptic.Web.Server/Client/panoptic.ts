@@ -25,7 +25,8 @@ module panoptic
             'panoptic.globals',
             'panoptic.core',
             'panoptic.shared',
-            'panoptic.home'
+            'panoptic.home',
+            'panoptic.ops'
         ])
         .config(['$locationProvider', '$routeProvider', '$windowProvider', 'RestangularProvider', 'globalsServiceProvider', 'areaServiceProvider',
             function (

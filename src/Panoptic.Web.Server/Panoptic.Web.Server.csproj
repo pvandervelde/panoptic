@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="client\home\modules\" />
     <Folder Include="Models\" />
   </ItemGroup>
@@ -171,8 +172,9 @@
     <Compile Include="App_Start\MefConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\AdminAreaDescription.cs" />
-    <Compile Include="Areas\OpsAreaDescription.cs" />
+    <Compile Include="Areas\Admin\AdminAreaDescription.cs" />
+    <Compile Include="Areas\Ops\Controllers\DescriptionController.cs" />
+    <Compile Include="Areas\Ops\OpsAreaDescription.cs" />
     <Compile Include="Composition\MefAssemblyResolver.cs" />
     <Compile Include="Composition\MefControllerFactory.cs" />
     <Compile Include="Composition\MefDependencyResolver.cs" />
@@ -191,7 +193,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="client\home\services\homeareaservice.js" />
     <Content Include="client\home\views\home.html" />
     <Content Include="client\ops\views\ops.html" />
     <Content Include="client\shared\directives\AreaHeader.html" />

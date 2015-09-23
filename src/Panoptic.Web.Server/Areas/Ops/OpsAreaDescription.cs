@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.Composition;
 using Panoptic.Web.Server.Common.Areas;
 
-namespace Panoptic.Web.Server.Areas
+namespace Panoptic.Web.Server.Areas.Ops
 {
     /// <summary>
     /// The area description for the ops area.
