@@ -29,7 +29,7 @@ namespace Panoptic.Web.Server.Areas
         {
             get
             {
-                return "";
+                return "ops/views/ops.html";
             }
         }
 

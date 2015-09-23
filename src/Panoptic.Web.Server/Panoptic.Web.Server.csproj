@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="client\home\modules\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -190,25 +191,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="client\core\controllers\basecontroller.js" />
-    <Content Include="client\core\core.js" />
-    <Content Include="client\core\modules\globals.js" />
-    <Content Include="client\home\controllers\homecontroller.js" />
-    <Content Include="client\home\home.js" />
-    <Content Include="client\home\modules\homearea.js" />
-    <Content Include="client\home\services\areaservice.js" />
     <Content Include="client\home\services\homeareaservice.js" />
-    <Content Include="client\home\services\homedescriptionservice.js" />
     <Content Include="client\home\views\home.html" />
-    <Content Include="client\panoptic.js" />
-    <Content Include="client\shared\controllers\navbarcontroller.js" />
-    <Content Include="client\shared\controllers\pagefootercontroller.js" />
+    <Content Include="client\ops\views\ops.html" />
     <Content Include="client\shared\directives\AreaHeader.html" />
-    <Content Include="client\shared\directives\areaheader.js" />
-    <Content Include="client\shared\modules\areadescription.js" />
-    <Content Include="client\shared\modules\areas.js" />
-    <Content Include="client\shared\services\areaservice.js" />
-    <Content Include="client\shared\shared.js" />
     <Content Include="client\shared\views\admin.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -242,20 +228,6 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="client\core\controllers\basecontroller.js.map" />
-    <Content Include="client\core\core.js.map" />
-    <Content Include="client\core\modules\globals.js.map" />
-    <Content Include="client\home\controllers\homecontroller.js.map" />
-    <Content Include="client\home\home.js.map" />
-    <Content Include="client\home\services\homedescriptionservice.js.map" />
-    <Content Include="client\panoptic.js.map" />
-    <Content Include="client\shared\controllers\navbarcontroller.js.map" />
-    <Content Include="client\shared\controllers\pagefootercontroller.js.map" />
-    <Content Include="client\shared\directives\areaheader.js.map" />
-    <Content Include="client\shared\modules\areadescription.js.map" />
-    <Content Include="client\shared\modules\areas.js.map" />
-    <Content Include="client\shared\services\areaservice.js.map" />
-    <Content Include="client\shared\shared.js.map" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />
@@ -1042,6 +1014,13 @@
     <TypeScriptCompile Include="client\home\controllers\homecontroller.ts" />
     <TypeScriptCompile Include="client\home\home.ts" />
     <TypeScriptCompile Include="client\home\services\homedescriptionservice.ts" />
+    <TypeScriptCompile Include="client\ops\controllers\opscontroller.ts" />
+    <TypeScriptCompile Include="client\ops\modules\environmentinformation.ts" />
+    <TypeScriptCompile Include="client\ops\modules\workiteminformation.ts" />
+    <TypeScriptCompile Include="client\ops\ops.ts" />
+    <TypeScriptCompile Include="client\ops\services\environmentservice.ts" />
+    <TypeScriptCompile Include="client\ops\services\opsdescriptionservice.ts" />
+    <TypeScriptCompile Include="client\ops\services\workitemservice.ts" />
     <TypeScriptCompile Include="client\panoptic.ts" />
     <TypeScriptCompile Include="client\shared\controllers\navbarcontroller.ts" />
     <TypeScriptCompile Include="client\shared\controllers\pagefootercontroller.ts" />

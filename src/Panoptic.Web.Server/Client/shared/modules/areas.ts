@@ -2,10 +2,10 @@
 {
     export interface IAreaInformation
     {
-        name: string;
-        description: string;
-        path: string;
-        controller: string;
-        templateUri: string;
+        Name: string;
+        Description: string;
+        Path: string;
+        Controller: string;
+        TemplateUri: string;
     }
 }

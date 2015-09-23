@@ -14,7 +14,7 @@ module panoptic
     {
         static createViewUrl(fragmnt: string, globals: panoptic.core.IGlobalVariables)
         {
-            return globals.baseUrl + fragmnt;
+            return globals.baseUrl + 'Client/' + fragmnt;
         }
     }
 
@@ -57,10 +57,10 @@ module panoptic
                         angular.forEach(data, function (area: panoptic.shared.IAreaInformation)
                         {
                             $routeProvider.when(
-                                area.path,
+                                '/' + area.Path,
                                 {
-                                    controller: area.controller,
-                                    templateUrl: appUtils.createViewUrl(area.templateUri, globals)
+                                    controller: area.Controller,
+                                    templateUrl: appUtils.createViewUrl(area.TemplateUri, globals)
                                 });
                         });
                     })
@@ -69,4 +69,21 @@ module panoptic
                         $window.alert('Could not get the menu');
                     });
             }]);
+
+    app.run([
+        '$rootScope',
+        function ($rootScope)
+        {
+            // see what's going on when the route tries to change
+            $rootScope.$on('$routeChangeStart', function (event, next, current)
+            {
+                // next is an object that is the route that we are starting to go to
+                // current is an object that is the route where we are currently
+                var currentPath = current.originalPath;
+                var nextPath = next.originalPath;
+
+                console.log('Starting to leave %s to go to %s', currentPath, nextPath);
+            });
+        }
+    ]);
 }
