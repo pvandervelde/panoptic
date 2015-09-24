@@ -29,7 +29,7 @@ namespace Panoptic.Web.Server
             var container = MefConfig.RegisterMef(AssemblySearchPaths());
             container.ComposeParts(this);
 
-            AreaRegistration.RegisterAllAreas();
+            //AreaRegistration.RegisterAllAreas();
             if (WebApiConfig != null)
             {
                 foreach (var apiConfig in WebApiConfig)

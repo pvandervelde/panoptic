@@ -70,7 +70,7 @@ module panoptic.ops
         }
     }
 
-    angular.module('panoptic.home')
+    angular.module('panoptic.ops')
         .controller('OpsController', ['$location', '$scope', 'opsDescriptionService', 'environmentService', 'workitemService',
             function (
                 $location: ng.ILocationService,

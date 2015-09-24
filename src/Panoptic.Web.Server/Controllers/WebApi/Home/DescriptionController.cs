@@ -19,7 +19,8 @@ namespace Panoptic.Web.Server.Controllers.WebApi.Home
         /// <returns>An HTTP action result containing the name and description for the home area.</returns>
         [ResponseType(typeof(IHttpActionResult))]
         [Route("")]
-        public IHttpActionResult Get()
+        [HttpGet]
+        public IHttpActionResult Description()
         {
             var descr = new
             {
