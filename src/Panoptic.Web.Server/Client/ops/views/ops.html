@@ -6,7 +6,7 @@
             The status of the different services.
         </p>
 
-        <div ng-repeat="environment in Environments">
+        <div ng-repeat="environment in environments">
             <h3>{{ environment.Name }}</h3>
             <table class="table table-striped">
                 <thead>
@@ -18,7 +18,7 @@
                 <tbody>
                     <tr ng-repeat="service in environment.Services">
                         <td>{{ service.Name }}</td>
-                        <td class="alert @StatusToCssAlertClass(service.Status)">@StatusToText(service.Status)</td>
+                        <td><data-service-state service="service"></data-service-state></td>
                     </tr>
                 </tbody>
             </table>

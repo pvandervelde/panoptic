@@ -8,10 +8,10 @@ namespace Panoptic.Web.Server.Areas.Ops.Controllers
     /// <summary>
     /// The controller that provides information about ops area for the application.
     /// </summary>
-    [ExportController(typeof(DescriptionController))]
+    [ExportController(typeof(OpsDescriptionController))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
     [RoutePrefix("api/v1/ops/description")]
-    public class DescriptionController : ApiController
+    public class OpsDescriptionController : ApiController
     {
         /// <summary>
         /// Returns the name and description for the ops area.

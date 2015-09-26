@@ -173,7 +173,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaDescription.cs" />
-    <Compile Include="Areas\Ops\Controllers\DescriptionController.cs" />
+    <Compile Include="Areas\Ops\Controllers\OpsDescriptionController.cs" />
+    <Compile Include="Areas\Ops\Controllers\OpsEnvironmentController.cs" />
     <Compile Include="Areas\Ops\OpsAreaDescription.cs" />
     <Compile Include="Composition\MefAssemblyResolver.cs" />
     <Compile Include="Composition\MefControllerFactory.cs" />
@@ -181,9 +182,9 @@
     <Compile Include="Configuration\CatalogConfigurationElement.cs" />
     <Compile Include="Configuration\CatalogConfigurationElementCollection.cs" />
     <Compile Include="Configuration\CompositionConfigurationSection.cs" />
-    <Compile Include="Controllers\Mvc\HomeController.cs" />
-    <Compile Include="Controllers\WebApi\Home\AreaController.cs" />
-    <Compile Include="Controllers\WebApi\Home\DescriptionController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Areas\Home\Controllers\AreaController.cs" />
+    <Compile Include="Areas\Home\Controllers\HomeDescriptionController.cs" />
     <Compile Include="Formatters\BrowserJsonFormatter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -194,6 +195,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="client\home\views\home.html" />
+    <Content Include="client\ops\directives\ServiceState.html" />
     <Content Include="client\ops\views\ops.html" />
     <Content Include="client\shared\directives\AreaHeader.html" />
     <Content Include="client\shared\views\admin.html" />
@@ -1016,6 +1018,7 @@
     <TypeScriptCompile Include="client\home\home.ts" />
     <TypeScriptCompile Include="client\home\services\homedescriptionservice.ts" />
     <TypeScriptCompile Include="client\ops\controllers\opscontroller.ts" />
+    <TypeScriptCompile Include="client\ops\directives\servicestate.ts" />
     <TypeScriptCompile Include="client\ops\modules\environmentinformation.ts" />
     <TypeScriptCompile Include="client\ops\modules\workiteminformation.ts" />
     <TypeScriptCompile Include="client\ops\ops.ts" />

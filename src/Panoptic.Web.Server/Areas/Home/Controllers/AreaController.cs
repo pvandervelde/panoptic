@@ -5,7 +5,7 @@ using System.Web.Http.Description;
 using Panoptic.Web.Server.Common.Areas;
 using Panoptic.Web.Server.Common.Controllers;
 
-namespace Panoptic.Web.Server.Controllers.WebApi.Home
+namespace Panoptic.Web.Server.Areas.Home.Controllers
 {
     /// <summary>
     /// The controller that provides information about the different areas for the application.
