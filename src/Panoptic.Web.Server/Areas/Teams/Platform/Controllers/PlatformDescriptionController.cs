@@ -3,20 +3,20 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Panoptic.Web.Server.Common.Controllers;
 
-namespace Panoptic.Web.Server.Areas.Ops.Controllers
+namespace Panoptic.Web.Server.Areas.Teams.Platform.Controllers
 {
     /// <summary>
-    /// The controller that provides information about ops area for the application.
+    /// The controller that provides information about the platform team.
     /// </summary>
-    [ExportController(typeof(OpsDescriptionController))]
+    [ExportController(typeof(PlatformDescriptionController))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    [RoutePrefix("api/v1/ops/description")]
-    public class OpsDescriptionController : ApiController
+    [RoutePrefix("api/v1/teams/platform/description")]
+    public class PlatformDescriptionController : ApiController
     {
         /// <summary>
-        /// Returns the name and description for the ops area.
+        /// Returns the name and description for the platform team.
         /// </summary>
-        /// <returns>An HTTP action result containing the name and description for the ops area.</returns>
+        /// <returns>An HTTP action result containing the name and description for the platform team.</returns>
         [ResponseType(typeof(IHttpActionResult))]
         [Route("")]
         public IHttpActionResult Get()

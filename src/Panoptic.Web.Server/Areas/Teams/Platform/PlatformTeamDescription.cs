@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.Composition;
-using Panoptic.Web.Server.Common.Areas;
+using Panoptic.Web.Server.Common.Teams;
 
-namespace Panoptic.Web.Server.Areas.Ops
+namespace Panoptic.Web.Server.Areas.Teams.Platform
 {
     /// <summary>
     /// The area description for the ops area.
     /// </summary>
-    [Export(typeof(IAreaDescription))]
-    public class OpsAreaDescription : IAreaDescription
+    [Export(typeof(ITeamDescription))]
+    public class PlatformTeamDescription : ITeamDescription
     {
         /// <summary>
         /// Gets the name of the angular controller that will be used to display
@@ -17,7 +17,7 @@ namespace Panoptic.Web.Server.Areas.Ops
         {
             get
             {
-                return "OpsController";
+                return "PlatformTeamController";
             }
         }
 
@@ -29,7 +29,7 @@ namespace Panoptic.Web.Server.Areas.Ops
         {
             get
             {
-                return "ops/views/ops.html";
+                return "teams/platform/views/platformteam.html";
             }
         }
 
@@ -40,7 +40,7 @@ namespace Panoptic.Web.Server.Areas.Ops
         {
             get
             {
-                return "ops";
+                return "platformteam";
             }
         }
 
@@ -62,7 +62,7 @@ namespace Panoptic.Web.Server.Areas.Ops
         {
             get
             {
-                return "Ops";
+                return "Platform team";
             }
         }
     }

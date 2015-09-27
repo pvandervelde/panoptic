@@ -173,9 +173,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaDescription.cs" />
-    <Compile Include="Areas\Ops\Controllers\OpsDescriptionController.cs" />
-    <Compile Include="Areas\Ops\Controllers\OpsEnvironmentController.cs" />
-    <Compile Include="Areas\Ops\OpsAreaDescription.cs" />
+    <Compile Include="Areas\Home\Controllers\TeamController.cs" />
+    <Compile Include="Areas\Teams\Platform\Controllers\PlatformDescriptionController.cs" />
+    <Compile Include="Areas\Teams\Platform\Controllers\PlatformEnvironmentController.cs" />
+    <Compile Include="Areas\Teams\Platform\PlatformTeamDescription.cs" />
     <Compile Include="Composition\MefAssemblyResolver.cs" />
     <Compile Include="Composition\MefControllerFactory.cs" />
     <Compile Include="Composition\MefDependencyResolver.cs" />
@@ -195,8 +196,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="client\home\views\home.html" />
-    <Content Include="client\ops\directives\ServiceState.html" />
-    <Content Include="client\ops\views\ops.html" />
+    <Content Include="client\teams\platform\directives\ServiceState.html" />
+    <Content Include="client\teams\platform\views\ops.html" />
     <Content Include="client\shared\directives\AreaHeader.html" />
     <Content Include="client\shared\views\admin.html" />
     <Content Include="Content\bootstrap.css" />
@@ -1017,14 +1018,14 @@
     <TypeScriptCompile Include="client\home\controllers\homecontroller.ts" />
     <TypeScriptCompile Include="client\home\home.ts" />
     <TypeScriptCompile Include="client\home\services\homedescriptionservice.ts" />
-    <TypeScriptCompile Include="client\ops\controllers\opscontroller.ts" />
-    <TypeScriptCompile Include="client\ops\directives\servicestate.ts" />
-    <TypeScriptCompile Include="client\ops\modules\environmentinformation.ts" />
-    <TypeScriptCompile Include="client\ops\modules\workiteminformation.ts" />
-    <TypeScriptCompile Include="client\ops\ops.ts" />
-    <TypeScriptCompile Include="client\ops\services\environmentservice.ts" />
-    <TypeScriptCompile Include="client\ops\services\opsdescriptionservice.ts" />
-    <TypeScriptCompile Include="client\ops\services\workitemservice.ts" />
+    <TypeScriptCompile Include="client\teams\platform\controllers\opscontroller.ts" />
+    <TypeScriptCompile Include="client\teams\platform\directives\servicestate.ts" />
+    <TypeScriptCompile Include="client\teams\platform\modules\environmentinformation.ts" />
+    <TypeScriptCompile Include="client\teams\platform\modules\workiteminformation.ts" />
+    <TypeScriptCompile Include="client\teams\platform\ops.ts" />
+    <TypeScriptCompile Include="client\teams\platform\services\environmentservice.ts" />
+    <TypeScriptCompile Include="client\teams\platform\services\opsdescriptionservice.ts" />
+    <TypeScriptCompile Include="client\teams\platform\services\workitemservice.ts" />
     <TypeScriptCompile Include="client\panoptic.ts" />
     <TypeScriptCompile Include="client\shared\controllers\navbarcontroller.ts" />
     <TypeScriptCompile Include="client\shared\controllers\pagefootercontroller.ts" />

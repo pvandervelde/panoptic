@@ -41,7 +41,7 @@ namespace Panoptic.Web.Server
                 .IncludeDirectory("~/Client/core", "*.js", true)
                 .IncludeDirectory("~/Client/shared", "*.js", true)
                 .IncludeDirectory("~/Client/home", "*.js", true)
-                .IncludeDirectory("~/Client/ops", "*.js", true)
+                .IncludeDirectory("~/Client/teams", "*.js", true)
                 .Include("~/Client/panoptic.js"));
 
             bundles.Add(new StyleBundle("~/Content/css")

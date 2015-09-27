@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Panoptic.Web.Server.Common.Controllers;
 
-namespace Panoptic.Web.Server.Areas.Ops.Controllers
+namespace Panoptic.Web.Server.Areas.Teams.Platform.Controllers
 {
     /// <summary>
-    /// The controller that provides information about ops environments for the application.
+    /// The controller that provides information about the platform team environments for the application.
     /// </summary>
-    [ExportController(typeof(OpsEnvironmentController))]
+    [ExportController(typeof(PlatformEnvironmentController))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    [RoutePrefix("api/v1/ops/environment")]
-    public class OpsEnvironmentController : ApiController
+    [RoutePrefix("api/v1/teams/platform/environment")]
+    public class PlatformEnvironmentController : ApiController
     {
         /// <summary>
         /// Returns information about the different environments.
