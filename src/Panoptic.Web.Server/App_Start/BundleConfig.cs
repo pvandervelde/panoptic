@@ -45,7 +45,8 @@ namespace Panoptic.Web.Server
                 .Include("~/Client/panoptic.js"));
 
             bundles.Add(new StyleBundle("~/Content/css")
-                .Include("~/Content/bootstrap.css"));
+                .Include("~/Content/bootstrap.css")
+                .Include("~/Content/site.css"));
         }
     }
 }
