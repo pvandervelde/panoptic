@@ -2,15 +2,12 @@
 ///<reference path="../../../Scripts/typings/angularjs/angular-route.d.ts" />
 ///<reference path="../../../Scripts/typings/restangular/restangular.d.ts" />
 
-///<reference path="../../shared/modules/areas.ts" />
-///<reference path="../../shared/services/areaservice.ts" />
-
 module panoptic.home
 {
     interface IHomeScope extends ng.IScope
     {
         navigate: (path: string) => void;
-        areas: Array<Array<panoptic.shared.IAreaInformation>>;
+        teams: Array<Array<panoptic.home.ITeamInformation>>;
         areaName: string;
         areaDescription: string;
     }
@@ -21,7 +18,7 @@ module panoptic.home
             private $location: ng.ILocationService,
             private $scope: IHomeScope,
             private descriptionService: panoptic.home.IHomeDescriptionService,
-            private areaService: panoptic.shared.IAreaService)
+            private teamService: panoptic.home.ITeamService)
         {
             super();
 
@@ -61,17 +58,17 @@ module panoptic.home
                     alert('failed to get the name and description for the home area.');
                 });
 
-            $scope.areas = new Array<Array<panoptic.shared.IAreaInformation>>();
-            areaService.getAreas()
+            $scope.teams = new Array<Array<panoptic.home.ITeamInformation>>();
+            teamService.getTeams()
                 .success(function (data)
                 {
                     var newArr = [];
-                    angular.forEach(data, function (area: panoptic.shared.IAreaInformation)
+                    angular.forEach(data, function (team: panoptic.home.ITeamInformation)
                     {
-                        newArr.push(area);
+                        newArr.push(team);
                     });
 
-                    $scope.areas = divideIntoColumns(newArr, 3)
+                    $scope.teams = divideIntoColumns(newArr, 3)
                     $scope.$apply();
                 })
                 .error(function ()
@@ -82,13 +79,13 @@ module panoptic.home
     }
 
     angular.module('panoptic.home')
-        .controller('HomeController', ['$location', '$scope', 'homeDescriptionService', 'areaService',
+        .controller('HomeController', ['$location', '$scope', 'homeDescriptionService', 'teamService',
             function (
                 $location: ng.ILocationService,
                 $scope: IHomeScope,
                 descriptionService: panoptic.home.IHomeDescriptionService,
-                areaService: panoptic.shared.IAreaService)
+                teamService: panoptic.home.ITeamService)
             {
-                return new HomeController($location, $scope, descriptionService, areaService);
+                return new HomeController($location, $scope, descriptionService, teamService);
             }]);
 }

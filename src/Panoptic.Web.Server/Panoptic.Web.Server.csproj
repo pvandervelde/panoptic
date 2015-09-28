@@ -163,7 +163,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Controllers\" />
-    <Folder Include="client\home\modules\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -197,7 +196,7 @@
   <ItemGroup>
     <Content Include="client\home\views\home.html" />
     <Content Include="client\teams\platform\directives\ServiceState.html" />
-    <Content Include="client\teams\platform\views\ops.html" />
+    <Content Include="client\teams\platform\views\platformteam.html" />
     <Content Include="client\shared\directives\AreaHeader.html" />
     <Content Include="client\shared\views\admin.html" />
     <Content Include="Content\bootstrap.css" />
@@ -1017,8 +1016,10 @@
     <TypeScriptCompile Include="client\core\modules\globals.ts" />
     <TypeScriptCompile Include="client\home\controllers\homecontroller.ts" />
     <TypeScriptCompile Include="client\home\home.ts" />
+    <TypeScriptCompile Include="client\home\modules\teams.ts" />
     <TypeScriptCompile Include="client\home\services\homedescriptionservice.ts" />
-    <TypeScriptCompile Include="client\teams\platform\controllers\opscontroller.ts" />
+    <TypeScriptCompile Include="client\home\services\teamservice.ts" />
+    <TypeScriptCompile Include="client\teams\platform\controllers\platformteamcontroller.ts" />
     <TypeScriptCompile Include="client\teams\platform\directives\servicestate.ts" />
     <TypeScriptCompile Include="client\teams\platform\modules\environmentinformation.ts" />
     <TypeScriptCompile Include="client\teams\platform\modules\workiteminformation.ts" />

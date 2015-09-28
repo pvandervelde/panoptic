@@ -26,16 +26,24 @@ module panoptic
             'panoptic.core',
             'panoptic.shared',
             'panoptic.home',
-            'panoptic.ops'
+            'panoptic.teams.platform'
         ])
-        .config(['$locationProvider', '$routeProvider', '$windowProvider', 'RestangularProvider', 'globalsServiceProvider', 'areaServiceProvider',
+        .config([
+            '$locationProvider',
+            '$routeProvider',
+            '$windowProvider',
+            'RestangularProvider',
+            'globalsServiceProvider',
+            'areaServiceProvider',
+            'teamServiceProvider',
             function (
                 $locationProvider: ng.ILocationProvider,
                 $routeProvider: angular.route.IRouteProvider,
                 $window: ng.IWindowService,
                 RestangularProvider: restangular.IProvider,
                 globalsServiceProvider: panoptic.core.IGlobalsProvider,
-                areaServiceProvider: panoptic.shared.IAreaServiceProvider)
+                areaServiceProvider: panoptic.shared.IAreaServiceProvider,
+                teamServiceProvider: panoptic.home.ITeamServiceProvider)
             {
                 $locationProvider.html5Mode(true);
 
@@ -67,7 +75,25 @@ module panoptic
                     })
                     .error(function (error)
                     {
-                        $window.alert('Could not get the menu');
+                        $window.alert('Could not get the areas');
+                    });
+                var teamService: panoptic.home.ITeamService = teamServiceProvider.$get();
+                teamService.getTeams()
+                    .success(function (data)
+                    {
+                        angular.forEach(data, function (team: panoptic.home.ITeamInformation)
+                        {
+                            $routeProvider.when(
+                                '/' + team.Path,
+                                {
+                                    controller: team.Controller,
+                                    templateUrl: appUtils.createViewUrl(team.TemplateUri, globals)
+                                });
+                        });
+                    })
+                    .error(function (error)
+                    {
+                        $window.alert('Could not get the teams');
                     });
             }]);
 

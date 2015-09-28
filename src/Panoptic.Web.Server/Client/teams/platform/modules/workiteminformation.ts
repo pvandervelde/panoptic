@@ -1,4 +1,4 @@
-﻿module panoptic.ops
+﻿module panoptic.teams.platform
 {
     export interface IWorkItemInformation
     {

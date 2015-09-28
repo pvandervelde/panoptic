@@ -1,6 +1,6 @@
-﻿///<reference path="../../core/modules/globals.ts" />
+﻿///<reference path="../../../core/modules/globals.ts" />
 
-module panoptic.ops
+module panoptic.teams.platform
 {
     export interface IWorkItemServiceProvider extends ng.IServiceProvider
     {
@@ -9,23 +9,23 @@ module panoptic.ops
 
     export interface IWorkItemService
     {
-        getWorkItems: () => ng.IHttpPromise<Array<panoptic.ops.IWorkItemInformation>>;
+        getWorkItems: () => ng.IHttpPromise<Array<panoptic.teams.platform.IWorkItemInformation>>;
     }
 
     class WorkItemService implements IWorkItemService
     {
-        getWorkItems: () => ng.IHttpPromise<Array<panoptic.ops.IWorkItemInformation>>;
+        getWorkItems: () => ng.IHttpPromise<Array<panoptic.teams.platform.IWorkItemInformation>>;
         constructor(private $http: ng.IHttpService, private globals: panoptic.core.IGlobalVariables)
         {
 
             this.getWorkItems = function ()
             {
-                return $http.get(globals.webApiBaseUrl + 'ops/work');
+                return $http.get(globals.webApiBaseUrl + 'teams/platform/work');
             };
         }
     }
 
-    angular.module('panoptic.ops')
+    angular.module('panoptic.teams.platform')
         .factory('workitemService', function ()
         {
             var injector = angular.injector(['ng', 'panoptic.globals']);

@@ -1,6 +1,6 @@
-﻿///<reference path="../../core/modules/globals.ts" />
+﻿///<reference path="../../../core/modules/globals.ts" />
 
-module panoptic.ops
+module panoptic.teams.platform
 {
     export interface IOpsDescriptionServiceProvider extends ng.IServiceProvider
     {
@@ -20,12 +20,12 @@ module panoptic.ops
 
             this.getDescription = function ()
             {
-                return $http.get(globals.webApiBaseUrl + 'ops/description');
+                return $http.get(globals.webApiBaseUrl + 'teams/platform/description');
             };
         }
     }
 
-    angular.module('panoptic.ops')
+    angular.module('panoptic.teams.platform')
         .factory('opsDescriptionService', function ()
         {
             var injector = angular.injector(['ng', 'panoptic.globals']);

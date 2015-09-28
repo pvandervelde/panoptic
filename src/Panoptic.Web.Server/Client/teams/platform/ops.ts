@@ -1,11 +1,11 @@
-﻿///<reference path="../../Scripts/typings/angularjs/angular.d.ts" /> 
-///<reference path="../../Scripts/typings/angularjs/angular-route.d.ts" />
+﻿///<reference path="../../../Scripts/typings/angularjs/angular.d.ts" /> 
+///<reference path="../../../Scripts/typings/angularjs/angular-route.d.ts" />
 
-module panoptic.ops
+module panoptic.teams.platform
 {
     // Define the module separately
     angular.module(
-        'panoptic.ops',
+        'panoptic.teams.platform',
         [
             'panoptic.shared'
         ]);

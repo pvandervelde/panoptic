@@ -1,9 +1,9 @@
-﻿///<reference path="../../../Scripts/typings/angularjs/angular.d.ts" /> 
-///<reference path="../../../Scripts/typings/angularjs/angular-route.d.ts" />
+﻿///<reference path="../../../../Scripts/typings/angularjs/angular.d.ts" /> 
+///<reference path="../../../../Scripts/typings/angularjs/angular-route.d.ts" />
 
-module panoptic.ops
+module panoptic.teams.platform
 {
-    angular.module('panoptic.ops')
+    angular.module('panoptic.teams.platform')
         .directive('serviceState',
             function ()
             {
@@ -12,7 +12,7 @@ module panoptic.ops
                     scope: {
                         service: "="
                     },
-                    templateUrl: 'client/ops/directives/ServiceState.html'
+                    templateUrl: 'client/teams/platform/directives/ServiceState.html'
                 };
             });
 }

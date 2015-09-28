@@ -25,9 +25,8 @@ namespace Panoptic.Web.Server.Areas.Home.Controllers
             var descr = new
             {
                 Name = "Home",
-                Description = "Welcome to the platform team dashboard." +
-                    " Here you can find out more about the status of the Platform infrastructure" +
-                    " and access the different services provided by the Platform team.",
+                Description = "Welcome to the team dashboards." +
+                    " Here you can find out more about the status of the different dev teams",
             };
 
             return Ok(descr);

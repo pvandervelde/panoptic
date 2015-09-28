@@ -1,4 +1,4 @@
-﻿module panoptic.ops
+﻿module panoptic.teams.platform
 {
     export interface IServiceInformation
     {
@@ -9,6 +9,6 @@
     export interface IEnvironmentInformation
     {
         Name: string;
-        Services: Array<panoptic.ops.IServiceInformation>;
+        Services: Array<panoptic.teams.platform.IServiceInformation>;
     }
 }

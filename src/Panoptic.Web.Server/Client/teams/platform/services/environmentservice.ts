@@ -1,6 +1,6 @@
-﻿///<reference path="../../core/modules/globals.ts" />
+﻿///<reference path="../../../core/modules/globals.ts" />
 
-module panoptic.ops
+module panoptic.teams.platform
 {
     export interface IEnvironmentServiceProvider extends ng.IServiceProvider
     {
@@ -9,23 +9,23 @@ module panoptic.ops
 
     export interface IEnvironmentService
     {
-        getEnvironments: () => ng.IHttpPromise<Array<panoptic.ops.IEnvironmentInformation>>;
+        getEnvironments: () => ng.IHttpPromise<Array<panoptic.teams.platform.IEnvironmentInformation>>;
     }
 
     class EnvironmentService implements IEnvironmentService
     {
-        getEnvironments: () => ng.IHttpPromise<Array<panoptic.ops.IEnvironmentInformation>>;
+        getEnvironments: () => ng.IHttpPromise<Array<panoptic.teams.platform.IEnvironmentInformation>>;
         constructor(private $http: ng.IHttpService, private globals: panoptic.core.IGlobalVariables)
         {
 
             this.getEnvironments = function ()
             {
-                return $http.get(globals.webApiBaseUrl + 'ops/environment');
+                return $http.get(globals.webApiBaseUrl + 'teams/platform/environment');
             };
         }
     }
 
-    angular.module('panoptic.ops')
+    angular.module('panoptic.teams.platform')
         .factory('environmentService', function ()
         {
             var injector = angular.injector(['ng', 'panoptic.globals']);
