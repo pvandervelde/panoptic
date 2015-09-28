@@ -12,6 +12,7 @@ module panoptic.teams.platform
         navigate: (path: string) => void;
         environments: Array<panoptic.teams.platform.IEnvironmentInformation>;
         workitems: Array<panoptic.teams.platform.IWorkItemInformation>;
+        releases: Array<panoptic.teams.platform.IReleaseInformation>;
         areaName: string;
         areaDescription: string;
     }
@@ -21,9 +22,10 @@ module panoptic.teams.platform
         constructor(
             private $location: ng.ILocationService,
             private $scope: IPlatformTeamScope,
-            private descriptionService: panoptic.teams.platform.IOpsDescriptionService,
+            private descriptionService: panoptic.teams.platform.IPlatformTeamDescriptionService,
             private environmentService: panoptic.teams.platform.IEnvironmentService,
-            private workitemService: panoptic.teams.platform.IWorkItemService)
+            private workitemService: panoptic.teams.platform.IWorkItemService,
+            private releaseService: panoptic.teams.platform.IReleaseService)
         {
             super();
 
@@ -67,18 +69,44 @@ module panoptic.teams.platform
                 {
                     alert('no workitems');
                 });
+
+            $scope.releases = new Array<panoptic.teams.platform.IReleaseInformation>();
+            releaseService.getReleases()
+                .success(function (data)
+                {
+                    $scope.releases = data;
+                    $scope.$apply();
+                })
+                .error(function ()
+                {
+                    alert('no releases');
+                });
         }
     }
 
     angular.module('panoptic.teams.platform')
-        .controller('PlatformTeamController', ['$location', '$scope', 'opsDescriptionService', 'environmentService', 'workitemService',
-            function (
-                $location: ng.ILocationService,
-                $scope: IPlatformTeamScope,
-                descriptionService: panoptic.teams.platform.IOpsDescriptionService,
-                environmentService: panoptic.teams.platform.IEnvironmentService,
-                workitemService: panoptic.teams.platform.IWorkItemService)
-            {
-                return new PlatformTeamController($location, $scope, descriptionService, environmentService, workitemService);
-            }]);
+        .controller('PlatformTeamController',
+            [
+                '$location',
+                '$scope',
+                'opsDescriptionService',
+                'environmentService',
+                'workitemService',
+                'releaseService',
+                function (
+                    $location: ng.ILocationService,
+                    $scope: IPlatformTeamScope,
+                    descriptionService: panoptic.teams.platform.IPlatformTeamDescriptionService,
+                    environmentService: panoptic.teams.platform.IEnvironmentService,
+                    workitemService: panoptic.teams.platform.IWorkItemService,
+                    releaseService: panoptic.teams.platform.IReleaseService)
+                {
+                    return new PlatformTeamController(
+                        $location,
+                        $scope,
+                        descriptionService,
+                        environmentService,
+                        workitemService,
+                        releaseService);
+                }]);
 }

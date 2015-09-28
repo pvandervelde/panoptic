@@ -1,6 +1,6 @@
 ﻿<data-area-header name="areaName" description="areaDescription"></data-area-header>
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <h2>Service status</h2>
         <p>
             The status of the different services.
@@ -27,56 +27,16 @@
             <br />
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
         <h2>Outstanding work items</h2>
 
         <div>
-            <a class="btn btn-lg btn-primary" href="{{ workItemSet.QueryUrl }}" ng-repeat="workItemSet in WorkItems">
+            <a class="btn btn-lg btn-primary" href="{{ workItemSet.QueryUrl }}" ng-repeat="workItemSet in workitems">
                 <span>{{ workItemSet.Name }}</span>
                 <h1>{{ workItemSet.Total }}</h1>
             </a>
         </div>
         
-        <div>
-            <h2>Statistics</h2>
-            <p>
-                Interesting statistics.
-            </p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Releases</th>
-                        <th>Last release</th>
-                        <th>Commits</th>
-                        <th>Last commit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="stat in ReleaseStatistics">
-                        <td>{{ stat.Name }}</td>
-                        <td>{{ stat.ReleaseCount }}</td>
-                        <td>{{ stat.LastReleaseDate | date:'yyyy-MM-dd' }}</td>
-                        <td>{{ stat.CommitCount }}</td>
-                        <td>{{ stat.LastCommitDate | date:'yyyy-MM-dd' }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <h2>Changes</h2>
-
-        <div class="panel panel-primary" ng-repeat="news in NewsItems">
-            <div class="panel-heading">
-                <h3 class="panel-title">{{ news.Date | date:'yyyy-MM-dd' }}: {{ news.Summary }}</h3>
-            </div>
-            <div class="panel-body">
-                {{ news.Description }}
-            </div>
-        </div>
-
         <h2>Releases</h2>
         <p>
             Recent releases and deployments.
@@ -92,7 +52,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="release in Releases">
+                <tr ng-repeat="release in releases">
                     <td>{{ release.Name }}</td>
                     <td>{{ release.Version }}</td>
                     <td>{{ release.ReleaseDate | date:'yyyy-MM-dd' }}</td>

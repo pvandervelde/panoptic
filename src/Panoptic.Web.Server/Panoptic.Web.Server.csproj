@@ -175,6 +175,8 @@
     <Compile Include="Areas\Home\Controllers\TeamController.cs" />
     <Compile Include="Areas\Teams\Platform\Controllers\PlatformDescriptionController.cs" />
     <Compile Include="Areas\Teams\Platform\Controllers\PlatformEnvironmentController.cs" />
+    <Compile Include="Areas\Teams\Platform\Controllers\PlatformReleaseController.cs" />
+    <Compile Include="Areas\Teams\Platform\Controllers\PlatformWorkItemController.cs" />
     <Compile Include="Areas\Teams\Platform\PlatformTeamDescription.cs" />
     <Compile Include="Composition\MefAssemblyResolver.cs" />
     <Compile Include="Composition\MefControllerFactory.cs" />
@@ -1022,10 +1024,12 @@
     <TypeScriptCompile Include="client\teams\platform\controllers\platformteamcontroller.ts" />
     <TypeScriptCompile Include="client\teams\platform\directives\servicestate.ts" />
     <TypeScriptCompile Include="client\teams\platform\modules\environmentinformation.ts" />
+    <TypeScriptCompile Include="client\teams\platform\modules\releaseinformation.ts" />
     <TypeScriptCompile Include="client\teams\platform\modules\workiteminformation.ts" />
     <TypeScriptCompile Include="client\teams\platform\ops.ts" />
     <TypeScriptCompile Include="client\teams\platform\services\environmentservice.ts" />
     <TypeScriptCompile Include="client\teams\platform\services\opsdescriptionservice.ts" />
+    <TypeScriptCompile Include="client\teams\platform\services\releaseservice.ts" />
     <TypeScriptCompile Include="client\teams\platform\services\workitemservice.ts" />
     <TypeScriptCompile Include="client\panoptic.ts" />
     <TypeScriptCompile Include="client\shared\controllers\navbarcontroller.ts" />
