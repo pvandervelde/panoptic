@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.Composition;
+﻿using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using Panoptic.Web.Server.Common;
 using Panoptic.Web.Server.Common.Teams;
 
 namespace Panoptic.Web.Server.Areas.Teams.Platform
@@ -7,7 +9,8 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform
     /// The area description for the ops area.
     /// </summary>
     [Export(typeof(ITeamDescription))]
-    public class PlatformTeamDescription : ITeamDescription
+    [Export(typeof(IRouteDescriptionStorage))]
+    public class PlatformTeamDescription : ITeamDescription, IRouteDescriptionStorage
     {
         /// <summary>
         /// Gets the name of the angular controller that will be used to display
@@ -64,6 +67,15 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform
             {
                 return "Platform team";
             }
+        }
+
+        /// <summary>
+        /// Returns the collection containing all the route descriptions for the current storage.
+        /// </summary>
+        /// <returns>The collection of route descriptions.</returns>
+        public IEnumerable<IRouteDescription> Descriptions()
+        {
+            return new List<IRouteDescription> { this };
         }
     }
 }

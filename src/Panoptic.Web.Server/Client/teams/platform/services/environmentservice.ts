@@ -10,11 +10,13 @@ module panoptic.teams.platform
     export interface IEnvironmentService
     {
         getEnvironments: () => ng.IHttpPromise<Array<panoptic.teams.platform.IEnvironmentInformation>>;
+        getEnvironment: (id: string) => ng.IHttpPromise<panoptic.teams.platform.IEnvironmentInformation>;
     }
 
     class EnvironmentService implements IEnvironmentService
     {
         getEnvironments: () => ng.IHttpPromise<Array<panoptic.teams.platform.IEnvironmentInformation>>;
+        getEnvironment: (id: string) => ng.IHttpPromise<panoptic.teams.platform.IEnvironmentInformation>;
         constructor(private $http: ng.IHttpService, private globals: panoptic.core.IGlobalVariables)
         {
 
@@ -22,6 +24,11 @@ module panoptic.teams.platform
             {
                 return $http.get(globals.webApiBaseUrl + 'teams/platform/environment');
             };
+
+            this.getEnvironment = function (id)
+            {
+                return $http.get(globals.webApiBaseUrl + 'teams/platform/environment/' + id);
+            }
         }
     }
 

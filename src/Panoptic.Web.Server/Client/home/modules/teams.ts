@@ -1,11 +1,8 @@
 ﻿module panoptic.home
 {
-    export interface ITeamInformation
+    export interface ITeamInformation extends panoptic.shared.IRouteInformation
     {
         Name: string;
         Description: string;
-        Path: string;
-        Controller: string;
-        TemplateUri: string;
     }
 }

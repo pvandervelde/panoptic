@@ -146,6 +146,8 @@
     <Compile Include="Initialization\IFilterConfig.cs" />
     <Compile Include="Initialization\IRouteConfig.cs" />
     <Compile Include="Initialization\IWebApiConfig.cs" />
+    <Compile Include="IRouteDescription.cs" />
+    <Compile Include="IRouteDescriptionStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Teams\ITeamDescription.cs" />
   </ItemGroup>

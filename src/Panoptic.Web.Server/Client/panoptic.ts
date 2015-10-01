@@ -34,16 +34,14 @@ module panoptic
             '$windowProvider',
             'RestangularProvider',
             'globalsServiceProvider',
-            'areaServiceProvider',
-            'teamServiceProvider',
+            'routeServiceProvider',
             function (
                 $locationProvider: ng.ILocationProvider,
                 $routeProvider: angular.route.IRouteProvider,
                 $window: ng.IWindowService,
                 RestangularProvider: restangular.IProvider,
                 globalsServiceProvider: panoptic.core.IGlobalsProvider,
-                areaServiceProvider: panoptic.shared.IAreaServiceProvider,
-                teamServiceProvider: panoptic.home.ITeamServiceProvider)
+                routeServiceProvider: panoptic.shared.IRouteServiceProvider)
             {
                 $locationProvider.html5Mode(true);
 
@@ -59,11 +57,11 @@ module panoptic
                     });
 
                 var globals: panoptic.core.IGlobalVariables = globalsServiceProvider.$get();
-                var areaService: panoptic.shared.IAreaService = areaServiceProvider.$get();
-                areaService.getAreas()
+                var routeService: panoptic.shared.IRouteService = routeServiceProvider.$get();
+                routeService.getRoutes()
                     .success(function (data)
                     {
-                        angular.forEach(data, function (area: panoptic.shared.IAreaInformation)
+                        angular.forEach(data, function (area: panoptic.shared.IRouteInformation)
                         {
                             $routeProvider.when(
                                 '/' + area.Path,
@@ -75,25 +73,7 @@ module panoptic
                     })
                     .error(function (error)
                     {
-                        $window.alert('Could not get the areas');
-                    });
-                var teamService: panoptic.home.ITeamService = teamServiceProvider.$get();
-                teamService.getTeams()
-                    .success(function (data)
-                    {
-                        angular.forEach(data, function (team: panoptic.home.ITeamInformation)
-                        {
-                            $routeProvider.when(
-                                '/' + team.Path,
-                                {
-                                    controller: team.Controller,
-                                    templateUrl: appUtils.createViewUrl(team.TemplateUri, globals)
-                                });
-                        });
-                    })
-                    .error(function (error)
-                    {
-                        $window.alert('Could not get the teams');
+                        $window.alert('Could not get the routes');
                     });
             }]);
 

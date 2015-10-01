@@ -1,11 +1,8 @@
 ﻿module panoptic.shared
 {
-    export interface IAreaInformation
+    export interface IAreaInformation extends panoptic.shared.IRouteInformation
     {
         Name: string;
         Description: string;
-        Path: string;
-        Controller: string;
-        TemplateUri: string;
     }
 }

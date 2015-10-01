@@ -2,9 +2,6 @@
 ///<reference path="../../../../Scripts/typings/angularjs/angular-route.d.ts" />
 ///<reference path="../../../../Scripts/typings/restangular/restangular.d.ts" />
 
-///<reference path="../../../shared/modules/areas.ts" />
-///<reference path="../../../shared/services/areaservice.ts" />
-
 module panoptic.teams.platform
 {
     interface IPlatformTeamScope extends ng.IScope

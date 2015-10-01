@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.Composition;
+﻿using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using Panoptic.Web.Server.Common;
 using Panoptic.Web.Server.Common.Areas;
 
 namespace Panoptic.Web.Server.Areas.Admin
@@ -7,7 +9,8 @@ namespace Panoptic.Web.Server.Areas.Admin
     /// The area description for the admin area.
     /// </summary>
     [Export(typeof(IAreaDescription))]
-    public sealed class AdminAreaDescription : IAreaDescription
+    [Export(typeof(IRouteDescriptionStorage))]
+    public sealed class AdminAreaDescription : IAreaDescription, IRouteDescriptionStorage
     {
         /// <summary>
         /// Gets the name of the angular controller that will be used to display
@@ -64,6 +67,15 @@ namespace Panoptic.Web.Server.Areas.Admin
             {
                 return "Admin";
             }
+        }
+
+        /// <summary>
+        /// Returns the collection containing all the route descriptions for the current storage.
+        /// </summary>
+        /// <returns>The collection of route descriptions.</returns>
+        public IEnumerable<IRouteDescription> Descriptions()
+        {
+            return new List<IRouteDescription> { this };
         }
     }
 }

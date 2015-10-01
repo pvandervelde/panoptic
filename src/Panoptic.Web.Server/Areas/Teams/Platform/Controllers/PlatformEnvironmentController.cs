@@ -11,7 +11,7 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform.Controllers
     /// </summary>
     [ExportController(typeof(PlatformEnvironmentController))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    [RoutePrefix("api/v1/teams/platform/environment")]
+    [RoutePrefix("api/v1/teams/platform")]
     public class PlatformEnvironmentController : ApiController
     {
         /// <summary>
@@ -19,7 +19,7 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform.Controllers
         /// </summary>
         /// <returns>An HTTP action result containing the information about the different environments.</returns>
         [ResponseType(typeof(IHttpActionResult))]
-        [Route("")]
+        [Route("/environment")]
         public IHttpActionResult Get()
         {
             var list = new List<object>();
@@ -29,27 +29,32 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform.Controllers
                 new
                 {
                     Name = "Service 1",
-                    Status = "Ok"
+                    Status = "Ok",
+                    Machines = (new List<object> { }).ToArray(),
                 },
                 new
                 {
                     Name = "Service 2",
-                    Status = "Warning"
+                    Status = "Warning",
+                    Machines = (new List<object> { }).ToArray(),
                 },
                 new
                 {
                     Name = "Service 3",
-                    Status = "Error"
+                    Status = "Error",
+                    Machines = (new List<object> { }).ToArray(),
                 },
                 new
                 {
                     Name = "Service 4",
-                    Status = "Ok"
+                    Status = "Ok",
+                    Machines = (new List<object> { }).ToArray(),
                 },
                 new
                 {
                     Name = "Service 5",
-                    Status = "Ok"
+                    Status = "Ok",
+                    Machines = (new List<object> { }).ToArray(),
                 },
             };
             var productionEnvironment = new
@@ -64,27 +69,32 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform.Controllers
                 new
                 {
                     Name = "Service 1",
-                    Status = "Ok"
+                    Status = "Ok",
+                    Machines = (new List<object> { }).ToArray(),
                 },
                 new
                 {
                     Name = "Service 2",
-                    Status = "Ok"
+                    Status = "Ok",
+                    Machines = (new List<object> { }).ToArray(),
                 },
                 new
                 {
                     Name = "Service 3",
-                    Status = "Ok"
+                    Status = "Ok",
+                    Machines = (new List<object> { }).ToArray(),
                 },
                 new
                 {
                     Name = "Service 4",
-                    Status = "Ok"
+                    Status = "Ok",
+                    Machines = (new List<object> { }).ToArray(),
                 },
                 new
                 {
                     Name = "Service 5",
-                    Status = "Ok"
+                    Status = "Ok",
+                    Machines = (new List<object> { }).ToArray(),
                 },
             };
             var stagingEnvironment = new
@@ -96,6 +106,17 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform.Controllers
             list.Add(stagingEnvironment);
 
             return Ok(list.ToArray());
+        }
+
+        /// <summary>
+        /// Returns information about the different environments.
+        /// </summary>
+        /// <returns>An HTTP action result containing the information about the different environments.</returns>
+        [ResponseType(typeof(IHttpActionResult))]
+        [Route("/environment")]
+        public IHttpActionResult Get(string id)
+        {
+            // do stuff
         }
     }
 }

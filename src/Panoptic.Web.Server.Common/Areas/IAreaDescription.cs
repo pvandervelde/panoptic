@@ -9,34 +9,8 @@ namespace Panoptic.Web.Server.Common.Areas
     /// <summary>
     /// Describes an area of capabilities.
     /// </summary>
-    public interface IAreaDescription
+    public interface IAreaDescription : IRouteDescription
     {
-        /// <summary>
-        /// Gets the name of the angular controller that will be used to display
-        /// the area information.
-        /// </summary>
-        string AngularController
-        {
-            get;
-        }
-
-        /// <summary>
-        /// Gets the path to the html template that will be used by the angular controller
-        /// to display the area information.
-        /// </summary>
-        string AngularTemplateUri
-        {
-            get;
-        }
-
-        /// <summary>
-        /// Gets the relative path to the area.
-        /// </summary>
-        string AreaPath
-        {
-            get;
-        }
-
         /// <summary>
         /// Gets the description.
         /// </summary>
