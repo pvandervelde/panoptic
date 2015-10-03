@@ -7,13 +7,15 @@ module panoptic.teams.platform
     interface IPlatformTeamEnvironmentScope extends ng.IScope
     {
         navigate: (path: string) => void;
-        environment: panoptic.teams.platform.IEnvironmentInformation;
+        services: Array<panoptic.teams.platform.IServiceInformation>;
         machines: Array<panoptic.teams.platform.IMachineStatisticsInformation>;
+        areaName: string;
+        areaDescription: string;
     }
 
     interface IPlatformTeamEnvironmentRouteParams extends ng.route.IRouteParamsService
     {
-        environmentName: string;
+        id: string;
     }
 
     class PlatformTeamEnvironmentController extends panoptic.core.BaseController
@@ -32,10 +34,13 @@ module panoptic.teams.platform
                 $location.path(path);
             };
 
-            environmentService.getEnvironment($routeParams.environmentName)
+            $scope.services = new Array<panoptic.teams.platform.IServiceInformation>();
+            environmentService.getEnvironment($routeParams.id)
                 .success(function (data)
                 {
-                    $scope.environment = data;
+                    $scope.services = data.Services;
+                    $scope.areaName = data.Name;
+                    $scope.areaDescription = data.Description;
                     $scope.$apply();
                 })
                 .error(function ()
@@ -44,7 +49,7 @@ module panoptic.teams.platform
                 });
 
             $scope.machines = new Array<panoptic.teams.platform.IMachineStatisticsInformation>();
-            machineService.getMachines($routeParams.environmentName)
+            machineService.getMachines($routeParams.id)
                 .success(function (data)
                 {
                     $scope.machines = data;

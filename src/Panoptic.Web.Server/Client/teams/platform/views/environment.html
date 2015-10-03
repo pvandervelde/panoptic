@@ -1,0 +1,101 @@
+﻿<data-area-header name="areaName" description="areaDescription"></data-area-header>
+<div>
+    <div>
+        <h2>Services</h2>
+        <p>
+            The status of the different services in the environment.
+        </p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th colspan="2">Machines</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat-start="service in services" class="bg-light">
+                    <td>{{ service.Name }}</td>
+                    <td><data-service-state service="service"></data-service-state></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr ng-repeat="machineStatus in service.Machines">
+                    <td></td>
+                    <td></td>
+                    <td>{{ machineStatus.Name }}</td>
+                    <td><data-machine-state machine="machineStatus"></data-machine-state></td>
+                </tr>
+                <tr ng-repeat-end></tr>
+            </tbody>
+        </table>
+        <br />
+
+        <h2>Machines</h2>
+        <p>
+            The status of the different machines in the environment.
+        </p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th colspan="2">CPU</th>
+                    <th colspan="3">Memory</th>
+                    <th colspan="4">Disks</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Current</th>
+                    <th>History</th>
+                    <th>In use</th>
+                    <th>Total</th>
+                    <th>&#37; in use</th>
+                    <th>Name</th>
+                    <th>In use</th>
+                    <th>Total</th>
+                    <th>&#37; in use</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat-start="machineStats in machines" class="bg-light">
+                    <td>{{ machineStats.Name }}</td>
+                    <td><data-machine-state machine="machineStats"></data-machine-state></td>
+                    <td>{{ machineStats.CurrentCpu }} &#37;</td>
+                    <td>CPU history ...</td>
+                    <td>{{ machineStats.MemoryInUseInMb }} Mb</td>
+                    <td>{{ machineStats.TotalMemoryInMb }} Mb</td>
+                    <td>{{ machineStats.MemoryInUseInMb / machineStats.TotalMemoryInMb * 100.0 | number:1 }} &#37;</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr ng-repeat="storage in machineStats.Storage">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{ storage.Name }}</td>
+                    <td>{{ storage.StorageInUseInGb}} Gb</td>
+                    <td>{{ storage.TotalStorageInGb }} Gb</td>
+                    <td>{{ storage.StorageInUseInGb / storage.TotalStorageInGb * 100.0 | number:1 }} &#37;</td>
+                </tr>
+                <tr ng-repeat-end></tr>
+            </tbody>
+        </table>
+        <br />
+    </div>
+</div>

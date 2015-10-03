@@ -177,6 +177,7 @@
     <Compile Include="Areas\Home\Controllers\TeamController.cs" />
     <Compile Include="Areas\Teams\Platform\Controllers\PlatformDescriptionController.cs" />
     <Compile Include="Areas\Teams\Platform\Controllers\PlatformEnvironmentController.cs" />
+    <Compile Include="Areas\Teams\Platform\Controllers\PlatformMachineController.cs" />
     <Compile Include="Areas\Teams\Platform\Controllers\PlatformReleaseController.cs" />
     <Compile Include="Areas\Teams\Platform\Controllers\PlatformWorkItemController.cs" />
     <Compile Include="Areas\Teams\Platform\PlatformEnvironmentRouteStorage.cs" />
@@ -200,7 +201,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="client\home\views\home.html" />
+    <Content Include="client\teams\platform\directives\MachineState.html" />
     <Content Include="client\teams\platform\directives\ServiceState.html" />
+    <Content Include="client\teams\platform\views\environment.html" />
     <Content Include="client\teams\platform\views\platformteam.html" />
     <Content Include="client\shared\directives\AreaHeader.html" />
     <Content Include="Content\bootstrap.css" />
@@ -1027,6 +1030,7 @@
     <TypeScriptCompile Include="client\shared\services\routeservice.ts" />
     <TypeScriptCompile Include="client\teams\platform\controllers\platformteamcontroller.ts" />
     <TypeScriptCompile Include="client\teams\platform\controllers\platformteamenvironmentcontroller.ts" />
+    <TypeScriptCompile Include="client\teams\platform\directives\machinestate.ts" />
     <TypeScriptCompile Include="client\teams\platform\directives\servicestate.ts" />
     <TypeScriptCompile Include="client\teams\platform\modules\environmentinformation.ts" />
     <TypeScriptCompile Include="client\teams\platform\modules\machineinformation.ts" />

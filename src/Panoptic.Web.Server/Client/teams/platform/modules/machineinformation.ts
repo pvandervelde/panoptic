@@ -3,22 +3,22 @@
     export interface IStorageInformation
     {
         Name: string;
-        CurrentUse: number;
-        Size: number;
+        StorageInUseInGb: number;
+        TotalStorageInGb: number;
     }
 
     export interface IMachineStatusInformation
     {
         Name: string
-        status: string;
+        Status: string;
     }
 
     export interface IMachineStatisticsInformation extends IMachineStatusInformation
     {
         CurrentCpu: number;
         CpuHistory: Array<number>;
-        CurrentMemory: number;
-        AvailableMemory: number;
+        MemoryInUseInMb: number;
+        TotalMemoryInMb: number;
         Storage: Array<panoptic.teams.platform.IStorageInformation>
     }
 }

@@ -22,12 +22,12 @@ module panoptic.teams.platform
 
             this.getMachines = function (environment)
             {
-                return $http.get(globals.webApiBaseUrl + 'teams/platform/environment/machines/' + environment);
+                return $http.get(globals.webApiBaseUrl + 'teams/platform/machines/' + environment);
             };
 
             this.getMachine = function (id)
             {
-                return $http.get(globals.webApiBaseUrl + 'teams/platform/environment/machine/' + id);
+                return $http.get(globals.webApiBaseUrl + 'teams/platform/machine/' + id);
             }
         }
     }

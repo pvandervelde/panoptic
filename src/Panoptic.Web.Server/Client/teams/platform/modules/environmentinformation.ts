@@ -12,5 +12,6 @@
         Name: string;
         Description: string;
         Services: Array<panoptic.teams.platform.IServiceInformation>;
+        Url: string;
     }
 }
