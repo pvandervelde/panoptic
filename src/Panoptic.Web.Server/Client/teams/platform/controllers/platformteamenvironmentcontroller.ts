@@ -34,6 +34,7 @@ module panoptic.teams.platform
                 $location.path(path);
             };
 
+
             $scope.services = new Array<panoptic.teams.platform.IServiceInformation>();
             environmentService.getEnvironment($routeParams.id)
                 .success(function (data)

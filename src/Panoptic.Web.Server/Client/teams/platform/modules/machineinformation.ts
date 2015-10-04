@@ -9,14 +9,20 @@
 
     export interface IMachineStatusInformation
     {
-        Name: string
+        Name: string;
         Status: string;
+    }
+
+    export interface ICpuLoad
+    {
+        Time: Date;
+        Load: number;
     }
 
     export interface IMachineStatisticsInformation extends IMachineStatusInformation
     {
         CurrentCpu: number;
-        CpuHistory: Array<number>;
+        CpuHistory: Array<panoptic.teams.platform.ICpuLoad>;
         MemoryInUseInMb: number;
         TotalMemoryInMb: number;
         Storage: Array<panoptic.teams.platform.IStorageInformation>

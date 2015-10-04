@@ -28,13 +28,16 @@ namespace Panoptic.Web.Server
             bundles.Add(new ScriptBundle("~/bundles/bootstrap")
                 .Include(
                     "~/Scripts/bootstrap.js",
-                    "~/Scripts/respond.js"));
+                    "~/Scripts/respond.js",
+                    "~/Scripts/epoch.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular")
                 .Include(
                     "~/Scripts/lodash.js",
                     "~/Scripts/angular.js",
                     "~/Scripts/angular-route.js",
+                    "~/Scripts/d3/d3.js",
+                    "~/Scripts/ng-epoch.js",
                     "~/Scripts/restangular.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/panoptic")
@@ -46,7 +49,8 @@ namespace Panoptic.Web.Server
 
             bundles.Add(new StyleBundle("~/Content/css")
                 .Include("~/Content/bootstrap.css")
-                .Include("~/Content/site.css"));
+                .Include("~/Content/site.css")
+                .Include("~/Content/epoch.min.css"));
         }
     }
 }
