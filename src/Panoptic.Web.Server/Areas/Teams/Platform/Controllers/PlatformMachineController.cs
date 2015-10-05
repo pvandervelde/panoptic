@@ -30,7 +30,34 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform.Controllers
                     Name = "Machine1a",
                     Status = "Ok",
                     CurrentCpu = 15.0,
-                    CpuHistory = new double[] { },
+                    CpuHistory = new object[] 
+                    {
+                        new
+                        {
+                            Time = 0,
+                            Load = 15
+                        },
+                        new
+                        {
+                            Time = 10,
+                            Load = 45
+                        },
+                        new
+                        {
+                            Time = 20,
+                            Load = 75
+                        },
+                        new
+                        {
+                            Time = 30,
+                            Load = 65
+                        },
+                        new
+                        {
+                            Time = 40,
+                            Load = 35
+                        }
+                    },
                     MemoryInUseInMb = 2300,
                     TotalMemoryInMb = 8192,
                     Storage = (new List<object>
@@ -54,7 +81,34 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform.Controllers
                     Name = "Machine1b",
                     Status = "Ok",
                     CurrentCpu = 15.0,
-                    CpuHistory = new double[] { },
+                    CpuHistory = new object[]
+                    {
+                        new
+                        {
+                            Time = 0,
+                            Load = 15
+                        },
+                        new
+                        {
+                            Time = 10,
+                            Load = 45
+                        },
+                        new
+                        {
+                            Time = 20,
+                            Load = 75
+                        },
+                        new
+                        {
+                            Time = 30,
+                            Load = 65
+                        },
+                        new
+                        {
+                            Time = 40,
+                            Load = 35
+                        }
+                    },
                     MemoryInUseInMb = 2300,
                     TotalMemoryInMb = 8192,
                     Storage = (new List<object>
@@ -78,7 +132,34 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform.Controllers
                     Name = "Machine2a",
                     Status = "Ok",
                     CurrentCpu = 15.0,
-                    CpuHistory = new double[] { },
+                    CpuHistory = new object[]
+                    {
+                        new
+                        {
+                            Time = 0,
+                            Load = 15
+                        },
+                        new
+                        {
+                            Time = 10,
+                            Load = 45
+                        },
+                        new
+                        {
+                            Time = 20,
+                            Load = 75
+                        },
+                        new
+                        {
+                            Time = 30,
+                            Load = 65
+                        },
+                        new
+                        {
+                            Time = 40,
+                            Load = 35
+                        }
+                    },
                     MemoryInUseInMb = 2300,
                     TotalMemoryInMb = 8192,
                     Storage = (new List<object>
@@ -102,7 +183,34 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform.Controllers
                     Name = "Machine2b",
                     Status = "Ok",
                     CurrentCpu = 15.0,
-                    CpuHistory = new double[] { },
+                    CpuHistory = new object[]
+                    {
+                        new
+                        {
+                            Time = 0,
+                            Load = 15
+                        },
+                        new
+                        {
+                            Time = 10,
+                            Load = 45
+                        },
+                        new
+                        {
+                            Time = 20,
+                            Load = 75
+                        },
+                        new
+                        {
+                            Time = 30,
+                            Load = 65
+                        },
+                        new
+                        {
+                            Time = 40,
+                            Load = 35
+                        }
+                    },
                     MemoryInUseInMb = 2300,
                     TotalMemoryInMb = 8192,
                     Storage = (new List<object>
@@ -126,7 +234,34 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform.Controllers
                     Name = "Machine3a",
                     Status = "Ok",
                     CurrentCpu = 15.0,
-                    CpuHistory = new double[] { },
+                    CpuHistory = new object[]
+                    {
+                        new
+                        {
+                            Time = 0,
+                            Load = 15
+                        },
+                        new
+                        {
+                            Time = 10,
+                            Load = 45
+                        },
+                        new
+                        {
+                            Time = 20,
+                            Load = 75
+                        },
+                        new
+                        {
+                            Time = 30,
+                            Load = 65
+                        },
+                        new
+                        {
+                            Time = 40,
+                            Load = 35
+                        }
+                    },
                     MemoryInUseInMb = 2300,
                     TotalMemoryInMb = 8192,
                     Storage = (new List<object>

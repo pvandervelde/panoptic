@@ -8,9 +8,11 @@ module panoptic.teams.platform
     {
         navigate: (path: string) => void;
         services: Array<panoptic.teams.platform.IServiceInformation>;
-        machines: Array<panoptic.teams.platform.IMachineStatisticsInformation>;
+        machines: Array<panoptic.teams.platform.IMachineStatisticsViewInformation>;
         areaName: string;
         areaDescription: string;
+
+        cpuGraphAxes: Array<any>;
     }
 
     interface IPlatformTeamEnvironmentRouteParams extends ng.route.IRouteParamsService
@@ -34,6 +36,7 @@ module panoptic.teams.platform
                 $location.path(path);
             };
 
+            $scope.cpuGraphAxes = ['left', 'right', 'bottom'];
 
             $scope.services = new Array<panoptic.teams.platform.IServiceInformation>();
             environmentService.getEnvironment($routeParams.id)
@@ -49,11 +52,34 @@ module panoptic.teams.platform
                     alert('no environments');
                 });
 
-            $scope.machines = new Array<panoptic.teams.platform.IMachineStatisticsInformation>();
+            $scope.machines = new Array<panoptic.teams.platform.IMachineStatisticsViewInformation>();
             machineService.getMachines($routeParams.id)
                 .success(function (data)
                 {
-                    $scope.machines = data;
+                    angular.forEach(data, function (machine: panoptic.teams.platform.IMachineStatisticsInformation)
+                    {
+                        var view =
+                            {
+                                Name: machine.Name,
+                                Status: machine.Status,
+                                CurrentCpu: machine.CurrentCpu,
+                                CpuHistory: new Array<panoptic.teams.platform.ICpuLoad>(),
+                                MemoryInUseInMb: machine.MemoryInUseInMb,
+                                TotalMemoryInMb: machine.TotalMemoryInMb,
+                                Storage: machine.Storage,
+                                CpuGraph:
+                                {
+                                    label: "Cpu history",
+                                    values: new Array<panoptic.teams.platform.ICpuLoadView>()
+                                }
+                            };
+                        angular.forEach(machine.CpuHistory, function (cpuLoad: panoptic.teams.platform.ICpuLoad)
+                        {
+                            view.CpuGraph.values.push({ x: cpuLoad.Time, y: cpuLoad.Load });
+                        });
+
+                        $scope.machines.push(view);
+                    });
                     $scope.$apply();
                 })
                 .error(function ()

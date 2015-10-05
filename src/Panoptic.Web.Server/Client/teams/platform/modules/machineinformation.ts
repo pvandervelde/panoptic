@@ -15,7 +15,7 @@
 
     export interface ICpuLoad
     {
-        Time: Date;
+        Time: number;
         Load: number;
     }
 
@@ -26,5 +26,22 @@
         MemoryInUseInMb: number;
         TotalMemoryInMb: number;
         Storage: Array<panoptic.teams.platform.IStorageInformation>
+    }
+
+    export interface ICpuLoadView
+    {
+        x: any;
+        y: any;
+    }
+
+    export interface ICpuGraphView
+    {
+        label: string;
+        values: Array<ICpuLoadView>;
+    }
+
+    export interface IMachineStatisticsViewInformation extends IMachineStatisticsInformation
+    {
+        CpuGraph: ICpuGraphView;
     }
 }

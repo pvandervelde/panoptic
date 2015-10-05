@@ -21,7 +21,7 @@ module panoptic
     var app = angular.module('panoptic',
         [
             'ngRoute',
-            'n3-line-chart',
+            'ng.epoch',
             'restangular',
             'panoptic.globals',
             'panoptic.core',

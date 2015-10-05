@@ -29,6 +29,7 @@ namespace Panoptic.Web.Server
                 .Include(
                     "~/Scripts/bootstrap.js",
                     "~/Scripts/respond.js",
+                    "~/Scripts/d3/d3.js",
                     "~/Scripts/epoch.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular")
@@ -36,7 +37,6 @@ namespace Panoptic.Web.Server
                     "~/Scripts/lodash.js",
                     "~/Scripts/angular.js",
                     "~/Scripts/angular-route.js",
-                    "~/Scripts/d3/d3.js",
                     "~/Scripts/ng-epoch.js",
                     "~/Scripts/restangular.js"));
 
