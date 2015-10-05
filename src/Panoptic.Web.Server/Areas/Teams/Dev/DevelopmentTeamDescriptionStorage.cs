@@ -1,17 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Linq;
+using System.Web;
 using Panoptic.Web.Server.Common;
+using Panoptic.Web.Server.Common.Teams;
 
-namespace Panoptic.Web.Server.Areas.Teams.Platform
+namespace Panoptic.Web.Server.Areas.Teams.Dev
 {
     /// <summary>
     /// The area description for the ops area.
     /// </summary>
+    [Export(typeof(ITeamDescriptionStorage))]
     [Export(typeof(IRouteDescriptionStorage))]
-    public class PlatformEnvironmentRouteStorage : IRouteDescriptionStorage
+    public class DevelopmentTeamDescriptionStorage : ITeamDescriptionStorage, IRouteDescriptionStorage
     {
-        private sealed class PlatformEvironmentRouteDescription : IRouteDescription
+        private sealed class DevelopmentTeamDescription : ITeamDescription
         {
+            private readonly string m_TeamName;
+
+            public DevelopmentTeamDescription(string teamName)
+            {
+                m_TeamName = teamName;
+            }
+
             /// <summary>
             /// Gets the name of the angular controller that will be used to display
             /// the area information.
@@ -20,7 +32,7 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform
             {
                 get
                 {
-                    return "PlatformTeamEnvironmentController";
+                    return "DevelopmentTeamController";
                 }
             }
 
@@ -32,7 +44,7 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform
             {
                 get
                 {
-                    return "teams/platform/views/environment.html";
+                    return "teams/development/views/developmentteam.html";
                 }
             }
 
@@ -43,7 +55,7 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform
             {
                 get
                 {
-                    return "platformteam/environment/:id";
+                    return "developmentteam/:id";
                 }
             }
 
@@ -54,7 +66,7 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform
             {
                 get
                 {
-                    return "Provides an overview of the state of the current environment.";
+                    return string.Format("Provides an overview of the status of the builds for the {0} team.", m_TeamName);
                 }
             }
 
@@ -65,9 +77,23 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform
             {
                 get
                 {
-                    return "Environment";
+                    return string.Format("{0} team", m_TeamName);
                 }
             }
+        }
+
+        /// <summary>
+        /// Returns the collection containing all the team descriptions for the current storage.
+        /// </summary>
+        /// <returns>The collection of team descriptions.</returns>
+        public IEnumerable<ITeamDescription> Teams()
+        {
+            return new List<ITeamDescription>
+            {
+                new DevelopmentTeamDescription("A"),
+                new DevelopmentTeamDescription("B"),
+                new DevelopmentTeamDescription("C")
+            };
         }
 
         /// <summary>
@@ -76,7 +102,7 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform
         /// <returns>The collection of route descriptions.</returns>
         public IEnumerable<IRouteDescription> Routes()
         {
-            return new List<IRouteDescription> { new PlatformEvironmentRouteDescription() };
+            return new List<IRouteDescription> { };
         }
     }
 }

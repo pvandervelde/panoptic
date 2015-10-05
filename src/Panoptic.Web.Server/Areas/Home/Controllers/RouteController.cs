@@ -38,7 +38,7 @@ namespace Panoptic.Web.Server.Areas.Home.Controllers
             var list = new List<object>();
             foreach (var storage in RouteDescriptions)
             {
-                foreach (var description in storage.Descriptions())
+                foreach (var description in storage.Routes())
                 {
                     var descr = new
                     {

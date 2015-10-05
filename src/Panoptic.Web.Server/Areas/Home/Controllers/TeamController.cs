@@ -16,7 +16,7 @@ namespace Panoptic.Web.Server.Areas.Home.Controllers
     public class TeamController : ApiController
     {
         [ImportMany]
-        internal IEnumerable<ITeamDescription> TeamDescriptions
+        internal IEnumerable<ITeamDescriptionStorage> TeamDescriptions
         {
             get;
             set;
@@ -32,18 +32,21 @@ namespace Panoptic.Web.Server.Areas.Home.Controllers
         public IHttpActionResult Teams()
         {
             var list = new List<object>();
-            foreach (var description in TeamDescriptions)
+            foreach (var storage in TeamDescriptions)
             {
-                var descr = new
+                foreach (var description in storage.Teams())
                 {
-                    Name = description.Name,
-                    Description = description.Description,
-                    Path = description.AreaPath,
-                    Controller = description.AngularController,
-                    TemplateUri = description.AngularTemplateUri,
-                };
+                    var descr = new
+                    {
+                        Name = description.Name,
+                        Description = description.Description,
+                        Path = description.AreaPath,
+                        Controller = description.AngularController,
+                        TemplateUri = description.AngularTemplateUri,
+                    };
 
-                list.Add(descr);
+                    list.Add(descr);
+                }
             }
 
             return Ok(list.ToArray());

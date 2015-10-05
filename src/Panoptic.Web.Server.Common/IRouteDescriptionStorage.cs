@@ -11,6 +11,6 @@ namespace Panoptic.Web.Server.Common
         /// Returns the collection containing all the route descriptions for the current storage.
         /// </summary>
         /// <returns>The collection of route descriptions.</returns>
-        IEnumerable<IRouteDescription> Descriptions();
+        IEnumerable<IRouteDescription> Routes();
     }
 }

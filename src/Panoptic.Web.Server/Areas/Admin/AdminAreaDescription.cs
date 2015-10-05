@@ -73,7 +73,7 @@ namespace Panoptic.Web.Server.Areas.Admin
         /// Returns the collection containing all the route descriptions for the current storage.
         /// </summary>
         /// <returns>The collection of route descriptions.</returns>
-        public IEnumerable<IRouteDescription> Descriptions()
+        public IEnumerable<IRouteDescription> Routes()
         {
             return new List<IRouteDescription> { this };
         }

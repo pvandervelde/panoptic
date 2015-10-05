@@ -8,9 +8,9 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform
     /// <summary>
     /// The area description for the ops area.
     /// </summary>
-    [Export(typeof(ITeamDescription))]
+    [Export(typeof(ITeamDescriptionStorage))]
     [Export(typeof(IRouteDescriptionStorage))]
-    public class PlatformTeamDescription : ITeamDescription, IRouteDescriptionStorage
+    public class PlatformTeamDescription : ITeamDescription, ITeamDescriptionStorage, IRouteDescriptionStorage
     {
         /// <summary>
         /// Gets the name of the angular controller that will be used to display
@@ -70,10 +70,19 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform
         }
 
         /// <summary>
+        /// Returns the collection containing all the team descriptions for the current storage.
+        /// </summary>
+        /// <returns>The collection of team descriptions.</returns>
+        public IEnumerable<ITeamDescription> Teams()
+        {
+            return new List<ITeamDescription> { this };
+        }
+
+        /// <summary>
         /// Returns the collection containing all the route descriptions for the current storage.
         /// </summary>
         /// <returns>The collection of route descriptions.</returns>
-        public IEnumerable<IRouteDescription> Descriptions()
+        public IEnumerable<IRouteDescription> Routes()
         {
             return new List<IRouteDescription> { this };
         }

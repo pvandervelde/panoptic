@@ -175,6 +175,7 @@
     <Compile Include="Areas\Admin\AdminAreaDescription.cs" />
     <Compile Include="Areas\Home\Controllers\RouteController.cs" />
     <Compile Include="Areas\Home\Controllers\TeamController.cs" />
+    <Compile Include="Areas\Teams\Dev\DevelopmentTeamDescriptionStorage.cs" />
     <Compile Include="Areas\Teams\Platform\Controllers\PlatformDescriptionController.cs" />
     <Compile Include="Areas\Teams\Platform\Controllers\PlatformEnvironmentController.cs" />
     <Compile Include="Areas\Teams\Platform\Controllers\PlatformMachineController.cs" />
