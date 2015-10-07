@@ -40,9 +40,7 @@ namespace Panoptic.Web.Server.Areas.Home.Controllers
                     {
                         Name = description.Name,
                         Description = description.Description,
-                        Path = description.AreaPath,
-                        Controller = description.AngularController,
-                        TemplateUri = description.AngularTemplateUri,
+                        RelativeUrl = description.IndexRelativeUrl,
                     };
 
                     list.Add(descr);

@@ -5,7 +5,7 @@
             <div ng-if="item != null">
                 <h2>{{ item.Name }}</h2>
                 <p>{{ item.Description }}</p>
-                <p><a data-no-click="" data-ng-click="navigate(item.Path)" data-ng-href="/{{ item.Path }}" class="btn btn-default">Learn more &#187;</a></p>
+                <p><a data-no-click="" data-ng-click="navigate(item.RelativeUrl)" data-ng-href="/{{ item.RelativeUrl }}" class="btn btn-default">Learn more &#187;</a></p>
                 <br />
                 <br />
             </div>

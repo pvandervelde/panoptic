@@ -5,12 +5,12 @@ using Panoptic.Web.Server.Common;
 namespace Panoptic.Web.Server.Areas.Teams.Platform
 {
     /// <summary>
-    /// The route description for the platform team environment pages.
+    /// Route description for the platform team pages
     /// </summary>
     [Export(typeof(IRouteDescriptionStorage))]
-    public class PlatformEnvironmentRouteStorage : IRouteDescriptionStorage
+    public sealed class PlatformTeamRouteDescriptionStorage : IRouteDescriptionStorage
     {
-        private sealed class PlatformEvironmentRouteDescription : IRouteDescription
+        private sealed class PlatformTeamRouteDescription : IRouteDescription
         {
             /// <summary>
             /// Gets the name of the angular controller that will be used to display
@@ -20,7 +20,7 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform
             {
                 get
                 {
-                    return "PlatformTeamEnvironmentController";
+                    return "PlatformTeamController";
                 }
             }
 
@@ -32,7 +32,7 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform
             {
                 get
                 {
-                    return "teams/platform/views/environment.html";
+                    return "teams/platform/views/platformteam.html";
                 }
             }
 
@@ -43,7 +43,7 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform
             {
                 get
                 {
-                    return "platformteam/environment/:id";
+                    return "platformteam";
                 }
             }
         }
@@ -54,7 +54,7 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform
         /// <returns>The collection of route descriptions.</returns>
         public IEnumerable<IRouteDescription> Routes()
         {
-            return new List<IRouteDescription> { new PlatformEvironmentRouteDescription() };
+            return new List<IRouteDescription> { new PlatformTeamRouteDescription() };
         }
     }
 }

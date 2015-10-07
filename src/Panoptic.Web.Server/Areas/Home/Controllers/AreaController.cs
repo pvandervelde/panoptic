@@ -38,7 +38,7 @@ namespace Panoptic.Web.Server.Areas.Home.Controllers
                     {
                         Name = description.Name,
                         Description = description.Description,
-                        Path = description.AreaPath,
+                        Path = description.AngularRouteTemplate,
                         Controller = description.AngularController,
                         TemplateUri = description.AngularTemplateUri,
                     };

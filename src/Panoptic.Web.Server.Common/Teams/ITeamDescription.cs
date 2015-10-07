@@ -3,7 +3,7 @@
     /// <summary>
     /// Describes a team.
     /// </summary>
-    public interface ITeamDescription : IRouteDescription
+    public interface ITeamDescription
     {
         /// <summary>
         /// Gets the description.
@@ -17,6 +17,14 @@
         /// Gets the name.
         /// </summary>
         string Name
+        {
+            get;
+        }
+
+        /// <summary>
+        /// Gets the relative URL to the team index page.
+        /// </summary>
+        string IndexRelativeUrl
         {
             get;
         }

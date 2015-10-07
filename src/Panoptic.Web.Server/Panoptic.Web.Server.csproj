@@ -176,13 +176,15 @@
     <Compile Include="Areas\Home\Controllers\RouteController.cs" />
     <Compile Include="Areas\Home\Controllers\TeamController.cs" />
     <Compile Include="Areas\Teams\Dev\DevelopmentTeamDescriptionStorage.cs" />
+    <Compile Include="Areas\Teams\Dev\DevelopmentTeamRouteDescriptionStorage.cs" />
     <Compile Include="Areas\Teams\Platform\Controllers\PlatformDescriptionController.cs" />
     <Compile Include="Areas\Teams\Platform\Controllers\PlatformEnvironmentController.cs" />
     <Compile Include="Areas\Teams\Platform\Controllers\PlatformMachineController.cs" />
     <Compile Include="Areas\Teams\Platform\Controllers\PlatformReleaseController.cs" />
     <Compile Include="Areas\Teams\Platform\Controllers\PlatformWorkItemController.cs" />
     <Compile Include="Areas\Teams\Platform\PlatformEnvironmentRouteStorage.cs" />
-    <Compile Include="Areas\Teams\Platform\PlatformTeamDescription.cs" />
+    <Compile Include="Areas\Teams\Platform\PlatformTeamDescriptionStorage.cs" />
+    <Compile Include="Areas\Teams\Platform\PlatformTeamRouteDescriptionStorage.cs" />
     <Compile Include="Composition\MefAssemblyResolver.cs" />
     <Compile Include="Composition\MefControllerFactory.cs" />
     <Compile Include="Composition\MefDependencyResolver.cs" />

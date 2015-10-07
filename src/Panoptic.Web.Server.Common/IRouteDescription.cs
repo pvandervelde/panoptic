@@ -24,9 +24,9 @@
         }
 
         /// <summary>
-        /// Gets the relative path to the area.
+        /// Gets the angular route template for the route.
         /// </summary>
-        string AreaPath
+        string AngularRouteTemplate
         {
             get;
         }

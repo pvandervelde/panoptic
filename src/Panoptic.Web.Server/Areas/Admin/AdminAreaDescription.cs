@@ -8,8 +8,8 @@ namespace Panoptic.Web.Server.Areas.Admin
     /// <summary>
     /// The area description for the admin area.
     /// </summary>
-    [Export(typeof(IAreaDescription))]
-    [Export(typeof(IRouteDescriptionStorage))]
+    // [Export(typeof(IAreaDescription))]
+    // [Export(typeof(IRouteDescriptionStorage))]
     public sealed class AdminAreaDescription : IAreaDescription, IRouteDescriptionStorage
     {
         /// <summary>
@@ -39,7 +39,7 @@ namespace Panoptic.Web.Server.Areas.Admin
         /// <summary>
         /// Gets the relative path to the area.
         /// </summary>
-        public string AreaPath
+        public string AngularRouteTemplate
         {
             get
             {

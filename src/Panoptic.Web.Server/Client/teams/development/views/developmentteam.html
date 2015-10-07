@@ -1,0 +1,27 @@
+﻿<data-area-header name="areaName" description="areaDescription"></data-area-header>
+<div class="row">
+    <div class="col-md-6">
+        <h2>Build status</h2>
+        <p>
+            The status of the different Builds.
+        </p>
+
+    </div>
+    <div class="col-md-6">
+        <h2>Outstanding work items</h2>
+
+        <div>
+            <a class="btn btn-lg btn-primary" href="{{ workItemSet.QueryUrl }}" ng-repeat="workItemSet in workitems">
+                <span>{{ workItemSet.Name }}</span>
+                <h1>{{ workItemSet.Total }}</h1>
+            </a>
+        </div>
+
+        <h2>Burn down</h2>
+        <p>
+            The burn down for the current sprint
+        </p>
+
+
+    </div>
+</div>

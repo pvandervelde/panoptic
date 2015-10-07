@@ -1,16 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Linq;
+using System.Web;
 using Panoptic.Web.Server.Common;
 
-namespace Panoptic.Web.Server.Areas.Teams.Platform
+namespace Panoptic.Web.Server.Areas.Teams.Dev
 {
-    /// <summary>
-    /// The route description for the platform team environment pages.
-    /// </summary>
     [Export(typeof(IRouteDescriptionStorage))]
-    public class PlatformEnvironmentRouteStorage : IRouteDescriptionStorage
+    public sealed class DevelopmentTeamRouteDescriptionStorage : IRouteDescriptionStorage
     {
-        private sealed class PlatformEvironmentRouteDescription : IRouteDescription
+        private sealed class DevelopmentTeamRouteDescription : IRouteDescription
         {
             /// <summary>
             /// Gets the name of the angular controller that will be used to display
@@ -20,7 +20,7 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform
             {
                 get
                 {
-                    return "PlatformTeamEnvironmentController";
+                    return "DevelopmentTeamController";
                 }
             }
 
@@ -32,7 +32,7 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform
             {
                 get
                 {
-                    return "teams/platform/views/environment.html";
+                    return "teams/development/views/developmentteam.html";
                 }
             }
 
@@ -43,10 +43,11 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform
             {
                 get
                 {
-                    return "platformteam/environment/:id";
+                    return "developmentteam/:id";
                 }
             }
         }
+
 
         /// <summary>
         /// Returns the collection containing all the route descriptions for the current storage.
@@ -54,7 +55,10 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform
         /// <returns>The collection of route descriptions.</returns>
         public IEnumerable<IRouteDescription> Routes()
         {
-            return new List<IRouteDescription> { new PlatformEvironmentRouteDescription() };
+            return new List<IRouteDescription>
+            {
+                new DevelopmentTeamRouteDescription()
+            };
         }
     }
 }

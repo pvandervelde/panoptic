@@ -1,24 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using Panoptic.Web.Server.Common;
 using Panoptic.Web.Server.Common.Teams;
 
-namespace Panoptic.Web.Server.Areas.Teams.Dev
+namespace Panoptic.Web.Server.Areas.Teams.Platform
 {
     /// <summary>
-    /// The area description for the ops area.
+    /// The area description for the platform team area.
     /// </summary>
     [Export(typeof(ITeamDescriptionStorage))]
-    public class DevelopmentTeamDescriptionStorage : ITeamDescriptionStorage
+    public class PlatformTeamDescriptionStorage : ITeamDescriptionStorage
     {
-        private sealed class DevelopmentTeamDescription : ITeamDescription
+        private sealed class PlatformTeamDescription : ITeamDescription
         {
-            private readonly string m_TeamName;
-
-            public DevelopmentTeamDescription(string teamName)
-            {
-                m_TeamName = teamName;
-            }
-
             /// <summary>
             /// Gets the description.
             /// </summary>
@@ -26,7 +20,7 @@ namespace Panoptic.Web.Server.Areas.Teams.Dev
             {
                 get
                 {
-                    return string.Format("Provides an overview of the status of the builds for the {0} team.", m_TeamName);
+                    return "Provides an overview of the status of the infrastructure and the work being done by the Platform team.";
                 }
             }
 
@@ -37,7 +31,7 @@ namespace Panoptic.Web.Server.Areas.Teams.Dev
             {
                 get
                 {
-                    return string.Format("{0} team", m_TeamName);
+                    return "Platform team";
                 }
             }
 
@@ -48,7 +42,7 @@ namespace Panoptic.Web.Server.Areas.Teams.Dev
             {
                 get
                 {
-                    return string.Format("developmentteam/{0}", m_TeamName);
+                    return "platformteam";
                 }
             }
         }
@@ -59,14 +53,7 @@ namespace Panoptic.Web.Server.Areas.Teams.Dev
         /// <returns>The collection of team descriptions.</returns>
         public IEnumerable<ITeamDescription> Teams()
         {
-            return new List<ITeamDescription>
-            {
-                new DevelopmentTeamDescription("A"),
-                new DevelopmentTeamDescription("B"),
-                new DevelopmentTeamDescription("C")
-            };
+            return new List<ITeamDescription> { new PlatformTeamDescription() };
         }
-
-        
     }
 }
