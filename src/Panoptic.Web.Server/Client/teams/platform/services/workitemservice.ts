@@ -9,12 +9,12 @@ module panoptic.teams.platform
 
     export interface IWorkItemService
     {
-        getWorkItems: () => ng.IHttpPromise<Array<panoptic.teams.platform.IWorkItemInformation>>;
+        getWorkItems: () => ng.IHttpPromise<Array<panoptic.teams.shared.IWorkItemInformation>>;
     }
 
     class WorkItemService implements IWorkItemService
     {
-        getWorkItems: () => ng.IHttpPromise<Array<panoptic.teams.platform.IWorkItemInformation>>;
+        getWorkItems: () => ng.IHttpPromise<Array<panoptic.teams.shared.IWorkItemInformation>>;
         constructor(private $http: ng.IHttpService, private globals: panoptic.core.IGlobalVariables)
         {
 

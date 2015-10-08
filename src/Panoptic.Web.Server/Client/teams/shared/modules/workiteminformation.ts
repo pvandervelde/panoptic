@@ -1,4 +1,4 @@
-﻿module panoptic.teams.platform
+﻿module panoptic.teams.shared
 {
     export interface IWorkItemInformation
     {

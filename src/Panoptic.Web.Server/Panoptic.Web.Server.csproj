@@ -164,6 +164,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="client\shared\views\" />
+    <Folder Include="client\teams\shared\directives\" />
+    <Folder Include="client\teams\shared\services\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +206,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="client\home\views\home.html" />
+    <Content Include="client\teams\development\directives\BuildState.html" />
+    <Content Include="client\teams\development\views\developmentteam.html" />
     <Content Include="client\teams\platform\directives\MachineState.html" />
     <Content Include="client\teams\platform\directives\ServiceState.html" />
     <Content Include="client\teams\platform\views\environment.html" />
@@ -1039,6 +1043,9 @@
     <TypeScriptCompile Include="client\home\services\teamservice.ts" />
     <TypeScriptCompile Include="client\shared\modules\routes.ts" />
     <TypeScriptCompile Include="client\shared\services\routeservice.ts" />
+    <TypeScriptCompile Include="client\teams\development\controllers\developmentteamcontroller.ts" />
+    <TypeScriptCompile Include="client\teams\development\developmentteam.ts" />
+    <TypeScriptCompile Include="client\teams\development\directives\buildstate.ts" />
     <TypeScriptCompile Include="client\teams\platform\controllers\platformteamcontroller.ts" />
     <TypeScriptCompile Include="client\teams\platform\controllers\platformteamenvironmentcontroller.ts" />
     <TypeScriptCompile Include="client\teams\platform\directives\machinestate.ts" />
@@ -1046,8 +1053,8 @@
     <TypeScriptCompile Include="client\teams\platform\modules\environmentinformation.ts" />
     <TypeScriptCompile Include="client\teams\platform\modules\machineinformation.ts" />
     <TypeScriptCompile Include="client\teams\platform\modules\releaseinformation.ts" />
-    <TypeScriptCompile Include="client\teams\platform\modules\workiteminformation.ts" />
-    <TypeScriptCompile Include="client\teams\platform\ops.ts" />
+    <TypeScriptCompile Include="client\teams\shared\modules\workiteminformation.ts" />
+    <TypeScriptCompile Include="client\teams\platform\platformteam.ts" />
     <TypeScriptCompile Include="client\teams\platform\services\environmentservice.ts" />
     <TypeScriptCompile Include="client\teams\platform\services\machineservice.ts" />
     <TypeScriptCompile Include="client\teams\platform\services\opsdescriptionservice.ts" />
@@ -1061,6 +1068,7 @@
     <TypeScriptCompile Include="client\shared\modules\areas.ts" />
     <TypeScriptCompile Include="client\shared\services\areaservice.ts" />
     <TypeScriptCompile Include="client\shared\shared.ts" />
+    <TypeScriptCompile Include="client\teams\shared\shared.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />

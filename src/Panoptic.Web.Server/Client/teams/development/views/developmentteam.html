@@ -5,7 +5,17 @@
         <p>
             The status of the different Builds.
         </p>
-
+        
+        <div class="row">
+            <div class="col-md-4" ng-repeat="column in builds">
+                <div ng-repeat="item in column">
+                    <div ng-if="item != null">
+                        <data-build-state build="item"></data-build-state>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="col-md-6">
         <h2>Outstanding work items</h2>
@@ -22,6 +32,7 @@
             The burn down for the current sprint
         </p>
 
-
+        <epoch-area chart-class="category20c" chart-data="burnDownGraph" chart-axes="burnDownGraphAxes">
+        </epoch-area>
     </div>
 </div>
