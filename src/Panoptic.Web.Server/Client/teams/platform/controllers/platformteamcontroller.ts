@@ -8,7 +8,7 @@ module panoptic.teams.platform
     {
         navigate: (path: string) => void;
         environments: Array<panoptic.teams.platform.IEnvironmentInformation>;
-        workitems: Array<panoptic.teams.platform.IWorkItemInformation>;
+        workitems: Array<panoptic.teams.shared.IWorkItemInformation>;
         releases: Array<panoptic.teams.platform.IReleaseInformation>;
         areaName: string;
         areaDescription: string;
@@ -40,7 +40,7 @@ module panoptic.teams.platform
                 })
                 .error(function (data)
                 {
-                    alert('failed to get the name and description for the ops area.');
+                    alert('failed to get the name and description for the platform team page.');
                 });
 
             $scope.environments = new Array<panoptic.teams.platform.IEnvironmentInformation>();
@@ -55,7 +55,7 @@ module panoptic.teams.platform
                     alert('no environments');
                 });
 
-            $scope.workitems = new Array<panoptic.teams.platform.IWorkItemInformation>();
+            $scope.workitems = new Array<panoptic.teams.shared.IWorkItemInformation>();
             workitemService.getWorkItems()
                 .success(function (data)
                 {
@@ -86,9 +86,9 @@ module panoptic.teams.platform
             [
                 '$location',
                 '$scope',
-                'opsDescriptionService',
+                'platformTeamDescriptionService',
                 'environmentService',
-                'workitemService',
+                'platformTeamWorkitemService',
                 'releaseService',
                 function (
                     $location: ng.ILocationService,

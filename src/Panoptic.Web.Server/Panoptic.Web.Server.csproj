@@ -177,6 +177,9 @@
     <Compile Include="Areas\Admin\AdminAreaDescription.cs" />
     <Compile Include="Areas\Home\Controllers\RouteController.cs" />
     <Compile Include="Areas\Home\Controllers\TeamController.cs" />
+    <Compile Include="Areas\Teams\Dev\Controllers\DevelopmentBuildController.cs" />
+    <Compile Include="Areas\Teams\Dev\Controllers\DevelopmentDescriptionController.cs" />
+    <Compile Include="Areas\Teams\Dev\Controllers\DevelopmentWorkItemController.cs" />
     <Compile Include="Areas\Teams\Dev\DevelopmentTeamDescriptionStorage.cs" />
     <Compile Include="Areas\Teams\Dev\DevelopmentTeamRouteDescriptionStorage.cs" />
     <Compile Include="Areas\Teams\Platform\Controllers\PlatformDescriptionController.cs" />
@@ -1046,6 +1049,12 @@
     <TypeScriptCompile Include="client\teams\development\controllers\developmentteamcontroller.ts" />
     <TypeScriptCompile Include="client\teams\development\developmentteam.ts" />
     <TypeScriptCompile Include="client\teams\development\directives\buildstate.ts" />
+    <TypeScriptCompile Include="client\teams\development\modules\buildinformation.ts" />
+    <TypeScriptCompile Include="client\teams\development\modules\burndown.ts" />
+    <TypeScriptCompile Include="client\teams\development\services\buildservice.ts" />
+    <TypeScriptCompile Include="client\teams\development\services\burndownservice.ts" />
+    <TypeScriptCompile Include="client\teams\development\services\developmentteamdescriptionservice.ts" />
+    <TypeScriptCompile Include="client\teams\development\services\workitemservice.ts" />
     <TypeScriptCompile Include="client\teams\platform\controllers\platformteamcontroller.ts" />
     <TypeScriptCompile Include="client\teams\platform\controllers\platformteamenvironmentcontroller.ts" />
     <TypeScriptCompile Include="client\teams\platform\directives\machinestate.ts" />
@@ -1057,7 +1066,7 @@
     <TypeScriptCompile Include="client\teams\platform\platformteam.ts" />
     <TypeScriptCompile Include="client\teams\platform\services\environmentservice.ts" />
     <TypeScriptCompile Include="client\teams\platform\services\machineservice.ts" />
-    <TypeScriptCompile Include="client\teams\platform\services\opsdescriptionservice.ts" />
+    <TypeScriptCompile Include="client\teams\platform\services\platformteamdescriptionservice.ts" />
     <TypeScriptCompile Include="client\teams\platform\services\releaseservice.ts" />
     <TypeScriptCompile Include="client\teams\platform\services\workitemservice.ts" />
     <TypeScriptCompile Include="client\panoptic.ts" />

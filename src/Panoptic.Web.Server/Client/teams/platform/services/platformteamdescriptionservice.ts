@@ -2,7 +2,7 @@
 
 module panoptic.teams.platform
 {
-    export interface IOpsDescriptionServiceProvider extends ng.IServiceProvider
+    export interface IPlatformTeamDescriptionServiceProvider extends ng.IServiceProvider
     {
         $get: () => IPlatformTeamDescriptionService;
     }
@@ -12,7 +12,7 @@ module panoptic.teams.platform
         getDescription: () => ng.IHttpPromise<panoptic.shared.IAreaDescriptionInformation>;
     }
 
-    class OpsDescriptionService implements IPlatformTeamDescriptionService
+    class PlatformTeamDescriptionService implements IPlatformTeamDescriptionService
     {
         getDescription: () => ng.IHttpPromise<panoptic.shared.IAreaDescriptionInformation>;
         constructor(private $http: ng.IHttpService, private globals: panoptic.core.IGlobalVariables)
@@ -26,11 +26,11 @@ module panoptic.teams.platform
     }
 
     angular.module('panoptic.teams.platform')
-        .factory('opsDescriptionService', function ()
+        .factory('platformTeamDescriptionService', function ()
         {
             var injector = angular.injector(['ng', 'panoptic.globals']);
             var $http: ng.IHttpService = <ng.IHttpService>injector.get('$http');
             var globals: panoptic.core.IGlobalVariables = <panoptic.core.IGlobalVariables>injector.get('globalsService');
-            return new OpsDescriptionService($http, globals);
+            return new PlatformTeamDescriptionService($http, globals);
         });
 }

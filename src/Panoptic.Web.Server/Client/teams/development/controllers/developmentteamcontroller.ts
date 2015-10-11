@@ -7,30 +7,51 @@ module panoptic.teams.development
     interface IDevelopmentTeamScope extends ng.IScope
     {
         navigate: (path: string) => void;
-        builds: Array<panoptic.teams.development.IBuildInformation>;
+        builds: Array<Array<panoptic.teams.development.IBuildInformation>>;
         workitems: Array<panoptic.teams.shared.IWorkItemInformation>;
-        machines: Array<panoptic.teams.platform.IMachineStatisticsViewInformation>;
+        burnDown: panoptic.teams.development.IBurnDownGraph;
         areaName: string;
         areaDescription: string;
 
         cpuGraphAxes: Array<any>;
     }
 
-    interface IPlatformTeamEnvironmentRouteParams extends ng.route.IRouteParamsService
+    interface IDevelopmentTeamRouteParams extends ng.route.IRouteParamsService
     {
         id: string;
     }
 
-    class PlatformTeamEnvironmentController extends panoptic.core.BaseController
+    class DevelopmentTeamController extends panoptic.core.BaseController
     {
         constructor(
             private $location: ng.ILocationService,
-            private $scope: IPlatformTeamEnvironmentScope,
-            private $routeParams: IPlatformTeamEnvironmentRouteParams,
-            private environmentService: panoptic.teams.platform.IEnvironmentService,
-            private machineService: panoptic.teams.platform.IMachineService)
+            private $scope: IDevelopmentTeamScope,
+            private $routeParams: IDevelopmentTeamRouteParams,
+            private descriptionService: panoptic.teams.development.IDevelopmentTeamDescriptionService,
+            private buildService: panoptic.teams.development.IBuildService,
+            private workitemService: panoptic.teams.development.IWorkItemService,
+            private burnDownService: panoptic.teams.development.IBurnDownService)
         {
             super();
+
+            function divideIntoColumns(arr: any[], size: number)
+            {
+                var newArr = [];
+                for (var i = 0; i < size; i++)
+                {
+                    var column = [];
+                    newArr.push(column);
+                }
+
+                for (var i = 0; i < arr.length; i += size)
+                {
+                    for (var j = 0; j < size; j++)
+                    {
+                        newArr[j].push(arr[i + j]);
+                    }
+                }
+                return newArr;
+            }
 
             $scope.navigate = function (path: string)
             {
@@ -39,77 +60,96 @@ module panoptic.teams.development
 
             $scope.cpuGraphAxes = ['left', 'right', 'bottom'];
 
-            $scope.services = new Array<panoptic.teams.platform.IServiceInformation>();
-            environmentService.getEnvironment($routeParams.id)
+            descriptionService.getDescription($routeParams.id)
                 .success(function (data)
                 {
-                    $scope.services = data.Services;
                     $scope.areaName = data.Name;
                     $scope.areaDescription = data.Description;
                     $scope.$apply();
                 })
-                .error(function ()
+                .error(function (data)
                 {
-                    alert('no environments');
+                    alert('failed to get the name and description for the development team page.');
                 });
 
-            $scope.machines = new Array<panoptic.teams.platform.IMachineStatisticsViewInformation>();
-            machineService.getMachines($routeParams.id)
+            $scope.builds = new Array<Array<panoptic.teams.development.IBuildInformation>>();
+            buildService.getBuilds($routeParams.id)
                 .success(function (data)
                 {
-                    angular.forEach(data, function (machine: panoptic.teams.platform.IMachineStatisticsInformation)
+                    var newArr = [];
+                    angular.forEach(data, function (build: panoptic.teams.development.IBuildInformation)
                     {
-                        var view =
-                            {
-                                Name: machine.Name,
-                                Status: machine.Status,
-                                CurrentCpu: machine.CurrentCpu,
-                                CpuHistory: new Array<panoptic.teams.platform.ICpuLoad>(),
-                                MemoryInUseInMb: machine.MemoryInUseInMb,
-                                TotalMemoryInMb: machine.TotalMemoryInMb,
-                                Storage: machine.Storage,
-                                CpuGraph:
-                                {
-                                    label: "Cpu history",
-                                    values: new Array<panoptic.teams.platform.ICpuLoadView>()
-                                }
-                            };
-                        angular.forEach(machine.CpuHistory, function (cpuLoad: panoptic.teams.platform.ICpuLoad)
-                        {
-                            view.CpuGraph.values.push({ x: cpuLoad.Time, y: cpuLoad.Load });
-                        });
+                        newArr.push(build);
+                    });
 
-                        $scope.machines.push(view);
+                    $scope.builds = divideIntoColumns(newArr, 3)
+                    $scope.$apply();
+                })
+                .error(function (data)
+                {
+                    alert('no builds');
+                });
+
+            $scope.workitems = new Array<panoptic.teams.shared.IWorkItemInformation>();
+            workitemService.getWorkItems($routeParams.id)
+                .success(function (data)
+                {
+                    $scope.workitems = data;
+                    $scope.$apply();
+                })
+                .error(function ()
+                {
+                    alert('no workitems');
+                });
+
+            $scope.burnDown =
+            {
+                label: '',
+                values: new Array<panoptic.teams.development.IBurnDownEntryView>(),
+            };
+            burnDownService.getBurnDown($routeParams.id)
+                .success(function (data)
+                {
+                    $scope.burnDown.label = data.Name
+                    angular.forEach(data.BurnDown, function (cpuLoad: panoptic.teams.development.IBurnDownEntry)
+                    {
+                        $scope.burnDown.values.push({ x: cpuLoad.Time, y: cpuLoad.Count });
                     });
                     $scope.$apply();
                 })
                 .error(function ()
                 {
-                    alert('no machines');
+                    alert('no burn down graph');
                 });
         }
     }
 
-    angular.module('panoptic.teams.platform')
-        .controller('PlatformTeamEnvironmentController',
+    angular.module('panoptic.teams.development')
+        .controller('DevelopmentTeamController',
             [
                 '$location',
                 '$scope',
                 '$routeParams',
-                'environmentService',
-                'machineService',
+                'developmentTeamDescriptionService',
+                'buildService',
+                'developmentTeamWorkItemService',
+                'burnDownService',
                 function (
                     $location: ng.ILocationService,
-                    $scope: IPlatformTeamEnvironmentScope,
-                    $routeParams: IPlatformTeamEnvironmentRouteParams,
-                    environmentService: panoptic.teams.platform.IEnvironmentService,
-                    machineService: panoptic.teams.platform.IMachineService)
+                    $scope: IDevelopmentTeamScope,
+                    $routeParams: IDevelopmentTeamRouteParams,
+                    descriptionService: panoptic.teams.development.IDevelopmentTeamDescriptionService,
+                    buildService: panoptic.teams.development.IBuildService,
+                    workitemService: panoptic.teams.development.IWorkItemService,
+                    burnDownService: panoptic.teams.development.IBurnDownService)
                 {
-                    return new PlatformTeamEnvironmentController(
+                    return new DevelopmentTeamController(
                         $location,
                         $scope,
                         $routeParams,
-                        environmentService,
-                        machineService);
+                        descriptionService,
+                        buildService,
+                        workitemService,
+                        burnDownService);
                 }]);
 }

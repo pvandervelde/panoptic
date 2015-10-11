@@ -27,7 +27,9 @@ module panoptic
             'panoptic.core',
             'panoptic.shared',
             'panoptic.home',
-            'panoptic.teams.platform'
+            'panoptic.teams.development',
+            'panoptic.teams.platform',
+            'panoptic.teams.shared'
         ])
         .config([
             '$locationProvider',

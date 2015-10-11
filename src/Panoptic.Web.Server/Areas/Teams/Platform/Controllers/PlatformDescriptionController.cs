@@ -23,7 +23,7 @@ namespace Panoptic.Web.Server.Areas.Teams.Platform.Controllers
         {
             var descr = new
             {
-                Name = "Ops",
+                Name = "Platform team",
                 Description = "An instant overview of the status of the different services" +
                     " and the status of the work done by the Platform team.",
             };
