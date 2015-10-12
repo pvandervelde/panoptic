@@ -9,7 +9,7 @@ module panoptic.teams.development
         navigate: (path: string) => void;
         builds: Array<Array<panoptic.teams.development.IBuildInformation>>;
         workitems: Array<panoptic.teams.shared.IWorkItemInformation>;
-        burnDown: panoptic.teams.development.IBurnDownGraph;
+        burnDown: Array<panoptic.teams.development.IBurnDownGraph>;
         areaName: string;
         areaDescription: string;
 
@@ -103,17 +103,17 @@ module panoptic.teams.development
                 });
 
             $scope.burnDown =
-            {
+            [{
                 label: '',
                 values: new Array<panoptic.teams.development.IBurnDownEntryView>(),
-            };
+            }];
             burnDownService.getBurnDown($routeParams.id)
                 .success(function (data)
                 {
-                    $scope.burnDown.label = data.Name
+                    $scope.burnDown[0].label = data.Name
                     angular.forEach(data.BurnDown, function (cpuLoad: panoptic.teams.development.IBurnDownEntry)
                     {
-                        $scope.burnDown.values.push({ x: cpuLoad.Time, y: cpuLoad.Count });
+                        $scope.burnDown[0].values.push({ x: cpuLoad.Time, y: cpuLoad.Count });
                     });
                     $scope.$apply();
                 })
