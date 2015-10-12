@@ -95,7 +95,7 @@
         }, true);
         $scope.$watch('chartData', function (newVal, oldVal)
         {
-            if (newVal != oldVal) { $scope.me.setData(newVal); }
+            if (newVal != oldVal) { $scope.me.update(newVal); }
         }, true);
     });
 
@@ -106,8 +106,7 @@
             if (scope.chartClass) { elem.addClass(scope.chartClass); }
             var options = scope.filterOptions();
             options.type = 'area';
-            elem.epoch(options);
-            $compile(elem)(scope);
+            var area = scope.renderEpoch(elem, options);
         };
         return angular.extend(angular.copy(baseDirective), { link: areaFunction });
     });
@@ -131,8 +130,7 @@
             if (scope.chartClass) { elem.addClass(scope.chartClass); }
             var options = scope.filterOptions();
             options.type = 'bar';
-            elem.epoch(options);
-            $compile(elem)(scope);
+            var bar = scope.renderEpoch(elem, options);
         };
         return angular.extend(angular.copy(baseDirective), { link: barFunction });
     });
@@ -156,8 +154,7 @@
             if (scope.chartClass) { elem.addClass(scope.chartClass); }
             var options = scope.filterOptions();
             options.type = 'line';
-            elem.epoch(options);
-            $compile(elem)(scope);
+            var line = scope.renderEpoch(elem, options);
         };
         return angular.extend(angular.copy(baseDirective), { link: lineFunction });
     });
@@ -181,8 +178,7 @@
             if (scope.chartClass) { elem.addClass(scope.chartClass); }
             var options = scope.filterOptions();
             options.type = 'pie';
-            elem.epoch(options);
-            $compile(elem)(scope);
+            var pie = scope.renderEpoch(elem, options);
         };
         return angular.extend(angular.copy(baseDirective), { link: pieFunction });
     });
@@ -194,8 +190,7 @@
             if (scope.chartClass) { elem.addClass(scope.chartClass); }
             var options = scope.filterOptions();
             options.type = 'scatter';
-            elem.epoch(options);
-            $compile(elem)(scope);
+            var scatter = scope.renderEpoch(elem, options);
         };
         return angular.extend(angular.copy(baseDirective), { link: linkFunction });
     });

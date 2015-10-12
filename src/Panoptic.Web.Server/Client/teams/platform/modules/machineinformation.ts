@@ -42,6 +42,6 @@
 
     export interface IMachineStatisticsViewInformation extends IMachineStatisticsInformation
     {
-        CpuGraph: ICpuGraphView;
+        CpuGraph: Array<ICpuGraphView>;
     }
 }

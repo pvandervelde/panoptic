@@ -68,14 +68,14 @@ module panoptic.teams.platform
                                 TotalMemoryInMb: machine.TotalMemoryInMb,
                                 Storage: machine.Storage,
                                 CpuGraph:
-                                {
+                                [{
                                     label: "Cpu history",
                                     values: new Array<panoptic.teams.platform.ICpuLoadView>()
-                                }
+                                }]
                             };
                         angular.forEach(machine.CpuHistory, function (cpuLoad: panoptic.teams.platform.ICpuLoad)
                         {
-                            view.CpuGraph.values.push({ x: cpuLoad.Time, y: cpuLoad.Load });
+                            view.CpuGraph[0].values.push({ x: cpuLoad.Time, y: cpuLoad.Load });
                         });
 
                         $scope.machines.push(view);
