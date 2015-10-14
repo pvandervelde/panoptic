@@ -13,7 +13,8 @@ module panoptic.teams.development
         areaName: string;
         areaDescription: string;
 
-        cpuGraphAxes: Array<any>;
+        burnDownGraphAxes: Array<any>;
+        burnDownGraphOptions: any;
     }
 
     interface IDevelopmentTeamRouteParams extends ng.route.IRouteParamsService
@@ -58,7 +59,16 @@ module panoptic.teams.development
                 $location.path(path);
             };
 
-            $scope.cpuGraphAxes = ['left', 'right', 'bottom'];
+            $scope.burnDownGraphAxes = ['left', 'right', 'bottom'];
+            $scope.burnDownGraphOptions =
+            {
+                ticks:
+                {
+                    right: 0,
+                    bottom: 0,
+                    left: 0
+                },
+            }
 
             descriptionService.getDescription($routeParams.id)
                 .success(function (data)

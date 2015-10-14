@@ -13,6 +13,7 @@ module panoptic.teams.platform
         areaDescription: string;
 
         cpuGraphAxes: Array<any>;
+        cpuGraphOptions: any;
     }
 
     interface IPlatformTeamEnvironmentRouteParams extends ng.route.IRouteParamsService
@@ -37,6 +38,15 @@ module panoptic.teams.platform
             };
 
             $scope.cpuGraphAxes = ['left', 'right', 'bottom'];
+            $scope.cpuGraphOptions =
+            {
+                ticks:
+                {
+                    right: 0,
+                    bottom: 0,
+                    left: 0
+                },
+            }
 
             $scope.services = new Array<panoptic.teams.platform.IServiceInformation>();
             environmentService.getEnvironment($routeParams.id)
