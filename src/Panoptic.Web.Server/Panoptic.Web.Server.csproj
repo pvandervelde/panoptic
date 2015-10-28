@@ -175,7 +175,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaDescription.cs" />
-    <Compile Include="Areas\Home\Controllers\RouteController.cs" />
     <Compile Include="Areas\Home\Controllers\TeamController.cs" />
     <Compile Include="Areas\Teams\Dev\Controllers\DevelopmentBuildController.cs" />
     <Compile Include="Areas\Teams\Dev\Controllers\DevelopmentDescriptionController.cs" />
@@ -1045,7 +1044,6 @@
     <TypeScriptCompile Include="client\home\services\homedescriptionservice.ts" />
     <TypeScriptCompile Include="client\home\services\teamservice.ts" />
     <TypeScriptCompile Include="client\shared\modules\routes.ts" />
-    <TypeScriptCompile Include="client\shared\services\routeservice.ts" />
     <TypeScriptCompile Include="client\teams\development\controllers\developmentteamcontroller.ts" />
     <TypeScriptCompile Include="client\teams\development\developmentteam.ts" />
     <TypeScriptCompile Include="client\teams\development\directives\buildstate.ts" />

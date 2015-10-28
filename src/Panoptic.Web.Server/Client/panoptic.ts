@@ -37,47 +37,14 @@ module panoptic
             '$windowProvider',
             'RestangularProvider',
             'globalsServiceProvider',
-            'routeServiceProvider',
             function (
                 $locationProvider: ng.ILocationProvider,
                 $routeProvider: angular.route.IRouteProvider,
                 $window: ng.IWindowService,
                 RestangularProvider: restangular.IProvider,
-                globalsServiceProvider: panoptic.core.IGlobalsProvider,
-                routeServiceProvider: panoptic.shared.IRouteServiceProvider)
+                globalsServiceProvider: panoptic.core.IGlobalsProvider)
             {
-                $locationProvider.html5Mode(true);
-
                 RestangularProvider.setBaseUrl('/api/v1');
-
-                $routeProvider
-                    .when('/', {
-                        controller: 'HomeController',
-                        templateUrl: 'client/home/views/home.html'
-                    })
-                    .otherwise({
-                        redirectTo: '/'
-                    });
-
-                var globals: panoptic.core.IGlobalVariables = globalsServiceProvider.$get();
-                var routeService: panoptic.shared.IRouteService = routeServiceProvider.$get();
-                routeService.getRoutes()
-                    .success(function (data)
-                    {
-                        angular.forEach(data, function (area: panoptic.shared.IRouteInformation)
-                        {
-                            $routeProvider.when(
-                                '/' + area.Path,
-                                {
-                                    controller: area.Controller,
-                                    templateUrl: appUtils.createViewUrl(area.TemplateUri, globals)
-                                });
-                        });
-                    })
-                    .error(function (error)
-                    {
-                        $window.alert('Could not get the routes');
-                    });
             }]);
 
     app.run([

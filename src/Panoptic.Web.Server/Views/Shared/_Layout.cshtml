@@ -1,4 +1,7 @@
 ﻿@using Panoptic.Web.Server.Controllers
+@using Panoptic.Web.Server.Common
+
+@model IList<Panoptic.Web.Server.Common.IRouteDescription>
 <!DOCTYPE html>
 <html>
     <head>
@@ -32,6 +35,44 @@
                 globals.version = '@(typeof(HomeController).Assembly.GetName().Version.ToString())';
                 return globals;
             });
+        </script>
+        <script>
+            angular.module('panoptic')
+                .config([
+                '$locationProvider',
+                '$routeProvider',
+                'globalsServiceProvider',
+                function (
+                    $locationProvider,
+                    $routeProvider,
+                    globalsServiceProvider)
+                {
+                    function createViewUrl(fragmnt, globals)
+                    {
+                        return globals.baseUrl + 'Client/' + fragmnt;
+                    }
+
+                    $locationProvider.html5Mode(true);
+
+                    globals = globalsServiceProvider.$get();
+                    $routeProvider
+                        .when('/', {
+                            controller: 'HomeController',
+                            templateUrl: 'client/home/views/home.html'
+                        })
+                    @foreach (var route in Model)
+                    {
+                        @:.when(
+                        @:    '/@route.AngularRouteTemplate',
+                        @:    {
+                        @:        controller: '@route.AngularController',
+                        @:        templateUrl: createViewUrl('@route.AngularTemplateUri', globals)
+                        @:    })
+                    }
+                        .otherwise({
+                            redirectTo: '/'
+                        });
+                }])
         </script>
     </head>
     <body ng-app="panoptic">
