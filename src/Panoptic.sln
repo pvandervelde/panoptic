@@ -1,18 +1,30 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22823.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panoptic", "Panoptic\Panoptic.csproj", "{EBD3F7AD-8459-4AF2-9264-78D3FE6C56F2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Unit.Panoptic", "Test.Unit.Panoptic\Test.Unit.Panoptic.csproj", "{FB846DA1-0910-4864-AD01-260F54BC9B6D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "codeanalysis", "codeanalysis", "{168AD0F5-2B65-47A7-B4A9-CBAFAD5340D4}"
 	ProjectSection(SolutionItems) = preProject
 		panoptic.ruleset = panoptic.ruleset
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{54903D03-1979-4593-89A7-D79A1DD591BE}"
+	ProjectSection(SolutionItems) = preProject
+		..\nuget.config = ..\nuget.config
+		..\packages.config = ..\packages.config
+		..\panoptic.msbuild = ..\panoptic.msbuild
+		..\settings.props = ..\settings.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "project", "project", "{76F37BCD-CA6C-4A89-927E-A837A8B34FAC}"
+	ProjectSection(SolutionItems) = preProject
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panoptic.Web.Server.Common", "Panoptic.Web.Server.Common\Panoptic.Web.Server.Common.csproj", "{769E88ED-157D-4473-81C6-7206313825AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panoptic.Web.Server", "Panoptic.Web.Server\Panoptic.Web.Server.csproj", "{6081A833-F361-453C-83BC-21FB23F3A98A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,14 +32,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EBD3F7AD-8459-4AF2-9264-78D3FE6C56F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EBD3F7AD-8459-4AF2-9264-78D3FE6C56F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EBD3F7AD-8459-4AF2-9264-78D3FE6C56F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EBD3F7AD-8459-4AF2-9264-78D3FE6C56F2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FB846DA1-0910-4864-AD01-260F54BC9B6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB846DA1-0910-4864-AD01-260F54BC9B6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB846DA1-0910-4864-AD01-260F54BC9B6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FB846DA1-0910-4864-AD01-260F54BC9B6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{769E88ED-157D-4473-81C6-7206313825AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{769E88ED-157D-4473-81C6-7206313825AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{769E88ED-157D-4473-81C6-7206313825AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{769E88ED-157D-4473-81C6-7206313825AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6081A833-F361-453C-83BC-21FB23F3A98A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6081A833-F361-453C-83BC-21FB23F3A98A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6081A833-F361-453C-83BC-21FB23F3A98A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6081A833-F361-453C-83BC-21FB23F3A98A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

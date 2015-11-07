@@ -1,0 +1,105 @@
+﻿@using Panoptic.Web.Server.Controllers
+@using Panoptic.Web.Server.Common
+
+@model IList<Panoptic.Web.Server.Common.IRouteDescription>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>@ViewBag.Title</title>
+
+        <base href="/" />
+
+        @Styles.Render("~/Content/css")
+
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/angular")
+        @Scripts.Render("~/bundles/bootstrap")
+
+        @Scripts.Render("~/bundles/panoptic")
+
+        <!--
+            Inject the global variables into an angular service.
+            From: http://dotnetspeak.com/2013/07/injecting-global-variables-into-angular-through-asp-net-mvc-master-page
+        -->
+        <script type="text/javascript">
+            angular.module('panoptic.globals', []).factory('globalsService', function ()
+            {
+                var globals = {};
+                globals.baseUrl = '@(Url.Content("~/"))';
+                globals.webApiBaseUrl = '@(Url.Content("~/api/v1/"))';
+                globals.version = '@(typeof(HomeController).Assembly.GetName().Version.ToString())';
+                return globals;
+            });
+        </script>
+        <script>
+            angular.module('panoptic')
+                .config([
+                '$locationProvider',
+                '$routeProvider',
+                'globalsServiceProvider',
+                function (
+                    $locationProvider,
+                    $routeProvider,
+                    globalsServiceProvider)
+                {
+                    function createViewUrl(fragmnt, globals)
+                    {
+                        return globals.baseUrl + 'Client/' + fragmnt;
+                    }
+
+                    $locationProvider.html5Mode(true);
+
+                    globals = globalsServiceProvider.$get();
+                    $routeProvider
+                        .when('/', {
+                            controller: 'HomeController',
+                            templateUrl: 'client/home/views/home.html'
+                        })
+                    @foreach (var route in Model)
+                    {
+                        @:.when(
+                        @:    '/@route.AngularRouteTemplate',
+                        @:    {
+                        @:        controller: '@route.AngularController',
+                        @:        templateUrl: createViewUrl('@route.AngularTemplateUri', globals)
+                        @:    })
+                    }
+                        .otherwise({
+                            redirectTo: '/'
+                        });
+                }])
+        </script>
+    </head>
+    <body ng-app="panoptic">
+        <div class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavbarController">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Home</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li ng-repeat="area in areas">
+                            <a data-no-click="" data-ng-click="navigate(area.Path)" data-ng-href="/{{ area.Path }}">{{ area.Name }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <footer ng-controller="PageFooterController">
+                <p>&copy; {{ date | date:'yyyy-MM-dd' }} - P. van der Velde</p>
+            </footer>
+        </div>
+    </body>
+</html>

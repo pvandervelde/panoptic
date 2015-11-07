@@ -1,0 +1,13 @@
+﻿.btn-lg, .btn-group-lg > .btn {
+    padding: 10px 15px;
+    margin: 10px 15px;
+}
+.bg-light {
+  background-color: #f8f5f0;
+}
+/*
+a.bg-light:hover,
+a.bg-light:focus {
+  background-color: #244363;
+}
+    */

@@ -198,3 +198,15 @@ AssemblyInfo.BuildInformation.cs
 AssemblyInfo.Company.cs
 AssemblyInfo.VersionNumber.cs
 AssemblyInfo.InternalsVisibleTo.cs
+src/Panoptic.Web.Client/Scripts/panoptic.js.map
+src/Panoptic.Web.Client/Scripts/panoptic.js
+src/Panoptic.Web.Client/Scripts/controllers/*.map
+src/Panoptic.Web.Client/Scripts/controllers/*.js
+src/Panoptic.Web.Client/directives/*.js
+src/Panoptic.Web.Client/directives/*.js.map
+src/Panoptic.Web.Client/Scripts/directives/*.js
+src/Panoptic.Web.Client/Scripts/directives/*.js.map
+src/Panoptic.Web.Server/Client/**/*.js
+src/Panoptic.Web.Server/Client/**/*.js.map
+src/Panoptic.Web.Server.Admin/Client/**/*.js
+src/Panoptic.Web.Server.Admin/Client/**/*.js.map
