@@ -25,7 +25,7 @@ module panoptic.home
         }
     }
 
-    angular.module('panoptic.home')
+    angular.module('panoptic.shared')
         .factory('teamService', function ()
         {
             var injector = angular.injector(['ng', 'panoptic.globals']);
