@@ -1,14 +1,2 @@
-﻿<data-area-header name="areaName" description="areaDescription"></data-area-header>
-<div class="row">
-    <div class="col-md-4" ng-repeat="column in teams">
-        <div ng-repeat="item in column">
-            <div ng-if="item != null">
-                <h2>{{ item.Name }}</h2>
-                <p>{{ item.Description }}</p>
-                <p><a data-no-click="" data-ng-click="navigate(item.RelativeUrl)" data-ng-href="/{{ item.RelativeUrl }}" class="btn btn-default">Learn more &#187;</a></p>
-                <br />
-                <br />
-            </div>
-        </div>
-    </div>
-</div>
+﻿﻿<data-sidebar teams="teams"></data-sidebar>
+<p>Stuff</p>

@@ -49,8 +49,13 @@ namespace Panoptic.Web.Server
 
             bundles.Add(new StyleBundle("~/Content/css")
                 .Include("~/Content/bootstrap.css")
-                .Include("~/Content/site.css")
-                .Include("~/Content/epoch.min.css"));
+                .Include("~/Content/AdminLTE.css")
+                .Include("~/Content/skins/_all-skins.css")
+                .Include("~/Content/morris/morris.css")
+                .Include("~/Content/jvectormap/jquery-jvectormap-1.2.2.css")
+                .Include("~/Content/datepicker/datepicker3.css")
+                .Include("~/Content/daterangepicker/daterangepicker-bs3.css")
+                .Include("~/Content/site.css"));
         }
     }
 }

@@ -7,7 +7,7 @@ module panoptic.home
     interface IHomeScope extends ng.IScope
     {
         navigate: (path: string) => void;
-        teams: Array<Array<panoptic.home.ITeamInformation>>;
+        teams: Array<panoptic.home.ITeamInformation>;
         areaName: string;
         areaDescription: string;
     }
@@ -58,7 +58,7 @@ module panoptic.home
                     alert('failed to get the name and description for the home area.');
                 });
 
-            $scope.teams = new Array<Array<panoptic.home.ITeamInformation>>();
+            $scope.teams = new Array<panoptic.home.ITeamInformation>();
             teamService.getTeams()
                 .success(function (data)
                 {
@@ -68,7 +68,7 @@ module panoptic.home
                         newArr.push(team);
                     });
 
-                    $scope.teams = divideIntoColumns(newArr, 3)
+                    $scope.teams = newArr;
                     $scope.$apply();
                 })
                 .error(function ()
